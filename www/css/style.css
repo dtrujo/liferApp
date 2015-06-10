@@ -1,1 +1,156 @@
-/* Empty. Add your own CSS if you like */
+
+/***********/
+/* General */
+/***********/
+
+.html, body { height: 100%; }
+.clear		  { float: none; clear: both;}
+.active		  { background: red !important }
+.title		  { top: 1px !important; left: 45px !important; }
+.iconGroup	{ float: right;}
+.scroll     { height: 99% !important;}
+
+
+/***********/
+/*  Icons  */
+/***********/
+
+
+.menuIcon { background: url(../img/menuicon.svg) !important;
+  			  background-size: 18px 15px !important;
+  			  background-repeat: no-repeat !important;
+  			  background-position: 12px !important;
+  			  width: 45px; }
+.orderIcon { background: url(../img/ordericon.svg) !important;
+  			  background-size: 25px 20px !important;
+  			  background-repeat: no-repeat !important;
+  			  background-position: 12px !important;
+  			  width: 50px; }
+.settingIcon{ background: url(../img/settingicon.svg) !important;
+  			  background-size: 25px 20px !important;
+  			  background-repeat: no-repeat !important;
+  			  background-position: 12px !important;
+  			  width: 50px; }
+.searchIcon { background: url(../img/searchicon.svg) !important;
+			    background-size: 25px 20px !important;
+			    background-repeat: no-repeat !important;
+			    background-position: 12px !important;
+			    width: 40px; }
+.filterIcon { background: url(../img/filtericon.svg) !important;
+			    background-size: 25px 20px !important;
+			    background-repeat: no-repeat !important;
+			    background-position: 12px !important;
+			    width: 40px; margin-right: 10px }
+.mapIcon { background: url(../img/mapicon.svg) !important;
+          background-size: 25px 20px !important;
+          background-repeat: no-repeat !important;
+          background-position: 12px !important;
+          width: 40px; margin-right: 10px }
+
+
+/***********/
+/* Nav Bar */
+/***********/
+
+
+.customBar, .title { font-family: 'gulim' !important }
+.eventsBar   		   { background-color: #B5D5A6 !important }
+.offersBar   		   { background-color: #D64E5E !important }
+.newsBar     		   { background-color: #5D99E2 !important }
+.articlesBar		   { background-color: #EEC058 !important }
+.clientsBar			   { background-color: #FA6F56 !important }
+.shopsBar			     { background-color: #EE91AB !important }
+.dashboardBar      { background-color: #8DCFC8 !important }
+
+
+/*************/
+/* DashBoard */
+/*************/
+ 
+
+.slogan             { position: absolute; top: 40%; left: 20%; }
+.slogan h2          { color: white !important; font-size: 21px; margin: 0px !important; text-shadow: 0px 0.081em 0.09em rgba(0, 0, 0, 0.4); }
+.slogan h3          { color: white !important; font-size: 17px; font-weight: 400; text-align: center; margin: 0px !important; text-shadow: 0px 0.081em 0.09em rgba(0, 0, 0, 0.4);}
+.contentImage       { width: 100%; height: 36.4% !important; display: block;overflow: hidden; position: relative; }
+.contentImage img   { width: 100% !important;}
+.whiteSeparator     { width: 100% !important; height: 2px; background-color: white;}
+.contentOptions     { position: relative !important; height: 63.5% !important;}
+.contentOptions img { width: 101%; margin-top: 5px; }
+.contentOptions h4  { color: white !important; margin:0 !important; position: absolute;
+                      text-align: center; font-size: 12px;font-weight: bold; top: 75%; left: 37%; 
+                      text-shadow: 0px 0.081em 0.09em rgba(0, 0, 0, 0.4); }
+
+.options         { position: absolute !important; height: 34% !important; width: 50% !important; }
+.eventsOptions   { background: #B5D5A6 url('../img/calendario.png') no-repeat 41% 60%; background-size: 115%; left: 0%; border-top: 2px solid white;}
+.offersOptions   { background: #D64E5E url('../img/offersicon.png') no-repeat 95% 70%; background-size: 95%; left: 50%; border-top: 2px solid white; }
+.newsOptions     { background: #5D99E2 url('../img/newsicon.png') no-repeat 20% 55%; background-size: 105%; left: 0%; top: 34% !important; }
+.articleOptions  { background: #EEC058 url('../img/articlesicon.png') no-repeat 35% 55%; background-size: 115%; left: 50%; top: 34% !important; }
+.clientsOptions  { background: #FA6F56 url('../img/clientsicon.png') no-repeat 50% 60%; background-size: 105%; left: 0%; top: 68% !important; }
+.shopsOptions    { background: #EE91AB url('../img/shopsicon.png') no-repeat 35% 55%; background-size: 100%; left: 50%; top: 68% !important; }
+
+
+/*************/
+/*   Events  */
+/*************/
+
+
+.eventInfoItem        { float:left; }
+.eventValueItem       { float:right; margin-top: 4%; }
+.eventInfoItem h3     { margin: 0px 0px 0px 0px; }
+.eventInfoItem p      { font-family: 'gulim'; font-size: 13px; margin: 0px; padding: 0px; }
+.eventInfoItem .small { color:black; font-size: 10px !important; margin-top: -5px !important; margin-left: 1px !important}
+.eventValueItem p     { float:left; background-color: #DF0808; padding: 1px 7px 1px 7px; color: white; border-radius: 5px; font-size: 11px; font-weight: bolder; margin-right: 15px; }
+.eventValueItem img   { width: 45%; margin: 30% 0% 0% 4%;}
+.item                 { border: none !important; padding: 20px 25px 0px 25px !important}
+.separator            { border-bottom: 1px solid rgb(239, 239, 239) !important; margin: 20px 1% 1px 1%;}
+  
+
+/*********************/
+/*   Events Details  */
+/*********************/
+
+
+.imageEvent                      { height: 37%; overflow: hidden; }
+.imageEvent img                  { width: 100%; }
+.detailsEvent                    { background-color: rgb(237, 237, 237); padding: 40px 20px 30px 20px; }
+.descriptionEvent                { padding: 40px 20px 30px 20px; }
+.descriptionEvent p              { font-family: 'gulim'; letter-spacing: -0.3px; font-size: 13px; }
+.detailsEvent ul                 { list-style: none; }
+.detailsEvent ul li              { font-family: 'gulim'; font-size: 12px; margin: -5px 0px 0px 0px !important; padding: 0px !important; }
+.detailsEvent ul .tEvent,.tEvent { font-family: "Helvetica Neue", "Roboto", "Segoe UI", sans-serif !important; text-transform: uppercase; color: #4E4E4E; font-size: 12px; font-weight: 600; margin-bottom: 20px !important; }
+.detailsEvent ul spam            { font-family: "Helvetica Neue", "Roboto", "Segoe UI", sans-serif !important; font-weight: 600; text-transform: uppercase; font-size: 10px; margin: 0px !important; padding: 0px !important; }
+
+
+/*****************/
+/*   Events Map  */
+/*****************/
+
+
+.angular-google-map-container { height: 700px !important }
+.marker-labels                { width: 160px; padding: 10px;   background: #fff; border-radius: 5px; }
+
+
+/*************/
+/*  Clients  */
+/*************/
+
+
+.clientContent	{background-color: #FA6F56}
+
+
+/*************/
+/*   Offers  */
+/*************/
+
+.offerImage           { float:left; margin-right: 20px !important;}
+.offerImage img       { width: 55px !important; height: 50px !important;}
+.offerInfoItem        { float:left; }
+.offerValueItem       { float:right; margin-top: 4%; }
+.offerInfoItem h3     { margin: 0px 0px 0px 0px; }
+.offerInfoItem p      { font-family: 'gulim'; font-size: 13px; margin: 0px; padding: 0px; }
+.offerInfoItem .small { color:black; font-size: 10px !important; margin-top: -5px !important; margin-left: 1px !important}
+.offerValueItem p     { float:left; background-color: #DF0808; padding: 1px 7px 1px 7px; color: white; border-radius: 5px; font-size: 11px; font-weight: bolder; margin-right: 15px; }
+.offerValueItem img   { width: 45%; margin: 30% 0% 0% 4%;}
+.item                 { border: none !important; padding: 20px 25px 0px 25px !important}
+.separator            { border-bottom: 1px solid rgb(239, 239, 239) !important; margin: 20px 1% 1px 1%;}
+

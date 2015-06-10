@@ -1,0 +1,32 @@
+<ion-view view-title="Eventos">
+	<ion-nav-bar align-title="left" class="bar-clear customBar eventsBar">
+	    <ion-nav-back-button>
+	    </ion-nav-back-button>
+	    <ion-nav-buttons>
+	      	<button class="button button-icon button-clear menuIcon" menu-toggle="left">
+	      	</button>
+	      	<h1 class="title">Eventos</h1>
+	      	<button class="button button-icon button-clear orderIcon"></button>
+	 	</ion-nav-buttons>
+	</ion-nav-bar>
+	<ion-content>
+		<!-- List of events -->
+		<ion-list show-delete="false" can-swipe="true">
+	        <ion-item ng-repeat="event in events" ng-click="eventDetails()">
+	    		<div class="eventItem">
+	    			<div class="eventInfoItem">
+	    				<h3>{{event.Title}}</h3>
+	    				<p>{{event.Date}}</p>
+	    				<p class='small'><strong>Hora:</strong> {{event.Time}}</p>
+	    			</div>
+	    			<div class="eventValueItem">
+	    				<!--<p class='new'>Nuevo</p>-->
+	    				<img src="img/nexticon.png">	    				
+	    			</div>
+	    			<div class="clear"></div>
+	    		</div>
+	    		<div class="separator"></div>
+	    	</ion-item>
+		</ion-list>
+  	</ion-content>
+</ion-view>
