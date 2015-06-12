@@ -9,7 +9,12 @@ angular.module('liferapp', ['ionic', 'liferapp.controllers', 'uiGmapgoogle-maps'
 })
 
 // Config
-.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) { 
+
+  // disable animation between pages
+  $ionicConfigProvider.views.transition('none');
+  
+  // set state to navigation 
   $stateProvider
 
     // State to control when the event menu has been fired
@@ -116,7 +121,18 @@ angular.module('liferapp', ['ionic', 'liferapp.controllers', 'uiGmapgoogle-maps'
           controller: "ArticlesController"
         }
       }
-    })  
+    }) 
+
+    // Create state to article details view
+    .state('eventmenu.articleDetails', {
+      url: "/articleDetails",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/ArticleDetailsView.html",
+          controller: "ArticleDetailsController"
+        }
+      }
+    }) 
 
     // Create state to clients view
     .state('eventmenu.clients', {
@@ -138,7 +154,18 @@ angular.module('liferapp', ['ionic', 'liferapp.controllers', 'uiGmapgoogle-maps'
           controller: "ShopsController"
         }
       }
-    });
+    })
+
+    // Create state to shops details view
+    .state('eventmenu.shopDetails', {
+      url: "/shopDetails",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/ShopDetailsView.html",
+          controller: "ShopDetailsController"
+        }
+      }
+    }); 
 
   // By default launch dashboard view in to event view
   $urlRouterProvider.otherwise('/event/dashboard');

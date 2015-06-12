@@ -6,9 +6,31 @@
 	      	<button class="button button-icon button-clear menuIcon" menu-toggle="left">
 	      	</button>
 	      	<h1 class="title">Tiendas</h1>
-	      	<button class="button button-icon button-clear filterIcon"></button>
+	      	<button class="button button-icon button-clear filterIcon" ng-click="shopsFilter()"></button>
 	 	</ion-nav-buttons>
 	</ion-nav-bar>
 	<ion-content>
+		<!-- List of events -->
+		<ion-list show-delete="false" can-swipe="true">
+		  	<ion-item ng-repeat="shop in shops" ng-click="shopDetails()">
+		    	<div class="shopItem">
+		    		<div class="offerImage">
+		    			<img src="{{shop.Img}}">
+		    			<div class="clear"></div>
+		    		</div>
+		    		<div class="shopInfoItem">
+		    			<h3>{{shop.Name}}</h3>
+		    			<p>{{shop.Direction}}</p>
+		    			<p class='small'><strong>{{shop.City}} - {{shop.State}}</strong></p>
+		    		</div>
+		    		<div class="shopValueItem">
+	    				<!--<p class='new'>Nuevo</p>-->
+	    				<img src="img/nexticon.png">	    				
+	    			</div>
+		    		<div class="clear"></div>
+		    	</div>
+		    	<div class="separator"></div>
+		    </ion-item>
+		</ion-list>
   	</ion-content>
 </ion-view>

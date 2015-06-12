@@ -9,9 +9,89 @@
       	</ion-nav-buttons>
       	<ion-nav-buttons side="right">
       		<button class="button button-icon button-clear searchIcon"></button>
-      		<button class="button button-icon button-clear filterIcon"></button>
+      		<button class="button button-icon button-clear filterIcon" ng-click="articlesFilter()"></button>
       	</ion-nav-buttons>
 	</ion-nav-bar>
 	<ion-content>
+		<ion-tabs class="tabs-clear tabsArticles">
+
+			<!-- TOP -->
+	  		<ion-tab title="TOP">
+	  		  	<ion-content>
+		    		<ion-list show-delete="false" can-swipe="true">
+					  	<ion-item ng-repeat="articleTop in articlesTop" ng-click="articleDetails()">
+					    	<div class="offerItem">
+					    		<div class="offerImage">
+					    			<img src="{{articleTop.Img}}">
+					    			<div class="clear"></div>
+					    		</div>
+					    		<div class="offerInfoItem">
+					    			<h3>{{articleTop.Name}}</h3>
+					    			<p>{{articleTop.Family}}</p>
+					    			<p class='small'><strong>Referencia:</strong> {{articleTop.Reference}}</p>
+					    		</div>
+					    		<div class="offerValueItem">		 
+					    			<img src="img/nexticon.png">	    				
+					    		</div>
+					    		<div class="clear"></div>
+					    	</div>
+				    		<div class="separator"></div>
+				    	</ion-item>
+					</ion-list>
+				</ion-content>
+	  		</ion-tab>
+
+	  		<!-- OFFERS -->
+	  		<ion-tab title="OFERTAS">
+	  			<ion-content>
+		  			<ion-list show-delete="false" can-swipe="true">
+					  	<ion-item ng-repeat="articleOffer in articlesOffer" ng-click="articleDetails()">
+					    	<div class="offerItem">
+					    		<div class="offerImage">
+					    			<img src="{{articleOffer.Img}}">
+					    			<div class="clear"></div>
+					    		</div>
+					    		<div class="offerInfoItem">
+					    			<h3>{{articleOffer.Name}}</h3>
+					    			<p>{{articleOffer.Family}}</p>
+					    			<p class='small'><strong>Referencia:</strong> {{articleOffer.Reference}}</p>
+					    		</div>
+					    		<div class="offerValueItem">		 
+					    			<img src="img/nexticon.png">	    				
+					    		</div>
+					    		<div class="clear"></div>
+					    	</div>
+				    		<div class="separator"></div>
+				    	</ion-item>
+					</ion-list>
+				</ion-content>
+	  		</ion-tab>
+
+	  		<!-- OUTLET -->
+	  		<ion-tab title="OUTLET" >
+	  			<ion-content>
+		    		<ion-list show-delete="false" can-swipe="true">
+					  	<ion-item ng-repeat="articleOutlet in articlesOutlet" ng-click="articleDetails()">
+					    	<div class="offerItem">
+					    		<div class="offerImage">
+					    			<img src="{{articleOutlet.Img}}">
+					    			<div class="clear"></div>
+					    		</div>
+					    		<div class="offerInfoItem">
+					    			<h3>{{articleOutlet.Name}}</h3>
+					    			<p>{{articleOutlet.Family}}</p>
+					    			<p class='small'><strong>Referencia:</strong> {{articleOutlet.Reference}}</p>
+					    		</div>
+					    		<div class="offerValueItem">		 
+					    			<img src="img/nexticon.png">	    				
+					    		</div>
+					    		<div class="clear"></div>
+					    	</div>
+				    		<div class="separator"></div>
+				    	</ion-item>
+					</ion-list>
+				</ion-content>
+	  		</ion-tab>
+		</ion-tabs>
   	</ion-content>
 </ion-view>

@@ -8,6 +8,15 @@
 	      	</button>
 	 	</ion-nav-buttons>
 	</ion-nav-bar>
-	<ion-content class="clientContent">
+	<ion-content class="login">
+		<div class="loginForm">
+	    	<label class="item item-input itemUsername">
+	        	<input type="text" placeholder="Username">
+	      	</label>
+	      	<label class="item item-input itemPassword">
+	        	<input type="text" placeholder="Password">
+	      	</label>
+	      	<button class="loginButton button button-block button-light" ng-click="login()">Login</button>
+	    </div>
   	</ion-content>
 </ion-view>

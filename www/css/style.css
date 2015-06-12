@@ -3,12 +3,24 @@
 /* General */
 /***********/
 
+
 .html, body { height: 100%; }
 .clear		  { float: none; clear: both;}
-.active		  { background: red !important }
 .title		  { top: 1px !important; left: 45px !important; }
 .iconGroup	{ float: right;}
 .scroll     { height: 99% !important;}
+
+
+/***********/
+/* Hacking */
+/***********/
+
+
+.spinner svg                { width: 45px !important; margin-left: 0px !important; height: 44px !important;}
+.loading img                { width: 40%;}
+.loading-container          { background-color: rgba(255, 255, 255, 0.9) !important;}
+.loading-container .loading { padding: 0px !important;  border-radius: none !important; background-color: transparent !important; color: transparent !important; }
+::-webkit-input-placeholder { color: white !important; }
 
 
 /***********/
@@ -49,18 +61,31 @@
 
 
 /***********/
+/*   Menu  */
+/***********/
+
+
+.menu         { background-color: #262626; }
+.menu ul      { background-color: #262626; list-style: none; margin: 10% 10% 50% 10%;}
+.menu ul li   { border-bottom: 1px solid #494747 !important; margin: 0px 0px 1px 0px; padding: 15px 0px 15px 0px; }
+.menu ul li a { float:left; background-color: #262626; font-family: 'gulim'; color: white !important; padding: 3px 0px 0px 0px !important; }
+.menu h1      { margin-left:10%; font-family: 'gulim'; font-size: 25px !important; margin-top: 10%; color: gray !important; }
+.asterik      { float: left !important; margin-right: 10px !important; width: 5px !important; height: 23px; }
+
+
+/***********/
 /* Nav Bar */
 /***********/
 
 
-.customBar, .title { font-family: 'gulim' !important }
-.eventsBar   		   { background-color: #B5D5A6 !important }
-.offersBar   		   { background-color: #D64E5E !important }
-.newsBar     		   { background-color: #5D99E2 !important }
-.articlesBar		   { background-color: #EEC058 !important }
-.clientsBar			   { background-color: #FA6F56 !important }
-.shopsBar			     { background-color: #EE91AB !important }
-.dashboardBar      { background-color: #8DCFC8 !important }
+.customBar, .title        { font-family: 'gulim' !important }
+.eventsBar, .mEvents   		{ background-color: #B5D5A6 !important }
+.offersBar, .mOffers   		{ background-color: #D64E5E !important }
+.newsBar, .mNews     		  { background-color: #5D99E2 !important }
+.articlesBar, .mArticles	{ background-color: #EEC058 !important }
+.clientsBar, .mClients		{ background-color: #FA6F56 !important }
+.shopsBar, .mShops			  { background-color: #EE91AB !important }
+.dashboardBar, .mHome     { background-color: #8DCFC8 !important }
 
 
 /*************/
@@ -131,16 +156,9 @@
 
 
 /*************/
-/*  Clients  */
-/*************/
-
-
-.clientContent	{background-color: #FA6F56}
-
-
-/*************/
 /*   Offers  */
 /*************/
+
 
 .offerImage           { float:left; margin-right: 20px !important;}
 .offerImage img       { width: 55px !important; height: 50px !important;}
@@ -151,6 +169,84 @@
 .offerInfoItem .small { color:black; font-size: 10px !important; margin-top: -5px !important; margin-left: 1px !important}
 .offerValueItem p     { float:left; background-color: #DF0808; padding: 1px 7px 1px 7px; color: white; border-radius: 5px; font-size: 11px; font-weight: bolder; margin-right: 15px; }
 .offerValueItem img   { width: 45%; margin: 30% 0% 0% 4%;}
-.item                 { border: none !important; padding: 20px 25px 0px 25px !important}
-.separator            { border-bottom: 1px solid rgb(239, 239, 239) !important; margin: 20px 1% 1px 1%;}
+
+
+/*************/
+/*   Shops   */
+/*************/
+
+
+.shopImage           { float:left;}
+.shopImage img       { width: 40% !important; }
+.shopInfoItem        { float:left; }
+.shopValueItem       { float:right; margin-top: 4%; }
+.shopInfoItem h3     { margin: 0px 0px 0px 0px; }
+.shopInfoItem p      { font-family: 'gulim'; font-size: 13px; margin: 0px; padding: 0px; }
+.shopInfoItem .small { color:black; font-size: 10px !important; margin-top: -5px !important; margin-left: 1px !important}
+.shopValueItem p     { float:left; background-color: #DF0808; padding: 1px 7px 1px 7px; color: white; border-radius: 5px; font-size: 11px; font-weight: bolder; margin-right: 15px; }
+.shopValueItem img   { width: 45%; margin: 30% 0% 0% 4%;}
+
+
+/*********************/
+/*   Shops Details   */
+/*********************/
+
+
+.descriptionEvent ul { list-style: none !important; }
+.principalUl         { font-size: 10px; font-weight: 600; }
+.principalUl li      { font-size: 10px; font-weight: 600; padding-left: 20px}
+.detailUl            { font-family: 'gulim'; margin-bottom: 10px; margin-top: 10px !important; margin-left: 10%; font-size: 12px; font-weight: 200 !important; font-family: 'gulim' !important; }
+.detailUl li         { font-family: 'gulim'; font-size: 12px; font-weight: 200 !important; font-family: 'gulim' !important; }
+.descriptionShop     { padding: 20px 20px 30px 20px;}
+.descriptionShop p   { font-family: 'gulim'; letter-spacing: -0.3px; font-size: 13px; margin-top: 20px}
+.principalUl i       { width: 40px; height: 16px; margin: 0px 10px 0px 0px !important; font-size: 18px; padding-top: 15px !important;}
+
+
+
+/*********************/
+/*      Articles     */
+/*********************/
+
+.tabsArticles .list     { margin-top: 15%;}
+.tabsArticles .tabs     { top:0px !important; }
+.moreInfoArticle        { height: 70px !important; padding: 25px 0px 25px 0px !important; border-top: 1px solid #ddd; margin: 0px 20px;}
+.availableArticle       { float: left; }
+.availableArticle img   { width: 16% !important; float: left !important; margin-right: 0px !important; }
+.availableArticle p     { color: #7ED321 !important; font-family: "Helvetica Neue", "Roboto", "Segoe UI", sans-serif !important; font-size: 11px; font-weight: bolder; float: right; margin-left: 0px; }
+.priceArticle           { float: right; }
+.priceArticle p         { color:gray; font-family: "gulim" !important; font-size: 25px;}
+
+
+/*********************/
+/*   Filter View     */
+/*********************/
+
+
+.modal                  { background-color: black; opacity: 0.9 !important; text-align: center }
+.modal .header          { background-image:none !important; background-color: black; opacity: 0.9 !important; text-align: center; border:none !important; }
+.modal ul               { list-style: none !important; color: white !important; margin: 17% 20%;}
+.modal ul li            { margin: 20px 0px 20px 0px !important; border-top: 1px solid rgb(53, 52, 52) !important; font-family: 'gulim'; padding: 30px 0px 10px 0px; font-size: 30px; }
+.modal ul li:last-child { border-bottom: 1px solid rgb(53, 52, 52) !important; padding: 30px 0px 30px 0px;}
+.modal h1               { font-family: 'gulim'; font-size: 35px !important; margin-top: 20%; color: gray !important; }
+.modal .button          { width: 40px !important; }
+
+
+/*************/
+/*   Login   */
+/*************/
+
+
+.login                    { background-image: url("../img/lifer.png"); background-position: 50% 10%;
+                            background-repeat: no-repeat; background-attachment: fixed;
+                            background-size: 33%; background-color: #FA6F56; padding: 20px 30px; }
+.loginForm                { padding: 50% 10% 10% 10% }
+.loginForm > label        { background-color: transparent; background-repeat: no-repeat; 
+                            border-width: 0px 0px 1px 0px; padding: 14px 3px 0px 3px !important;
+                            border-color: rgba(255, 255, 255, 0.3); margin-bottom: 20px; }
+.loginForm .itemUsername  { background-image: url("../img/usericon.png"); background-size: 20px; background-position: 0px 12px; }
+.loginForm .itemPassword  { background-image: url("../img/passwordicon.png"); background-size: 16px; background-position: 4px 11px; }
+.loginForm input          { color: white !important; padding-left: 35px;padding-bottom: 11px;border-bottom: 1px solid lightgray;}
+.login .button            { border: none; border-radius: 0; background-color: #EEC058 !important; color:rgba(255,255,255,1) !important;  margin-top: 45px !important; font-size: 16px}
+.clientContent            { background-color: #FA6F56 }
+
 
