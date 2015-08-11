@@ -53,7 +53,7 @@ angular.module('liferapp.controllers', [])
 /**
  * Events Controller
  */
-.controller('EventsController', function($scope, $state, $ionicLoading){
+.controller('EventsController', function($scope, $state, $http, Events, $ionicLoading){
 
 	// go to event's details
 	$scope.eventDetails = function(){
@@ -63,32 +63,17 @@ angular.module('liferapp.controllers', [])
     // setup the loader and show spinner
 	$ionicLoading.show({
 		template:'<img src="img/lifericon.png"></img><br/><ion-spinner icon="dots" class="spinner-dark"></ion-spinner>',
-	    duration: 2000,
 	    noBackdrop: true
 	});
 
-	// create events manually, later we will 
-	// change with the data API provider
-	var events = [];
-	for (i = 1; i < 100; i++) { 
-	    var newEvent = 
-	    { 
-	    	'Id' : i,
-	    	'Title' : 'Título del Evento ' + i,
-     	  	'Description' : 'Descripción del evento ' + i,
-     	  	'Date' : "Martes 3, Abril 2015",
-     	  	'Time' : "14:30",
-     	  	'Scheduler' : '10:00-13:00 y 16:00-20:00',
-     	  	'Place' : 'Plaza de la Trinidad',
-     	  	'Direction' : 'C/ La Langosta, 5',
-     	  	'City' : 'La Laguna',
-     	  	'Country' : 'Sta. Cruz de Tenerife'
-     	}
-     	events.push(newEvent);
-	}
-
-	// pass to events binding
-	$scope.events = events;
+	// Access to the event calling service 
+	Events.getEvents().success( function (data){
+		
+		// pass to events binding adn hiden loading
+		$scope.events = data;
+		$ionicLoading.hide();
+	});
+	
 })
 
 

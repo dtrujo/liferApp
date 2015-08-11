@@ -121,7 +121,7 @@
 
 .eventInfoItem        { float:left; }
 .eventValueItem       { float:right; margin-top: 4%; }
-.eventInfoItem h3     { margin: 0px 0px 0px 0px; }
+.eventInfoItem h3     { margin: 0px 0px 5px 0px; }
 .eventInfoItem p      { font-family: 'gulim'; font-size: 13px; margin: 0px; padding: 0px; }
 .eventInfoItem .small { color:black; font-size: 10px !important; margin-top: -5px !important; margin-left: 1px !important}
 .eventValueItem p     { float:left; background-color: #DF0808; padding: 1px 7px 1px 7px; color: white; border-radius: 5px; font-size: 11px; font-weight: bolder; margin-right: 15px; }

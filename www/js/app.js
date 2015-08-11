@@ -1,5 +1,5 @@
 // Ionic liferapp
-angular.module('liferapp', ['ionic', 'liferapp.controllers', 'uiGmapgoogle-maps'])
+angular.module('liferapp', ['ionic', 'liferapp.controllers', 'uiGmapgoogle-maps', 'liferapp.services'])
 
 // Run
 .run(function($ionicPlatform) {
