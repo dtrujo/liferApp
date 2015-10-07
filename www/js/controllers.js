@@ -53,7 +53,7 @@ angular.module('liferapp.controllers', [])
 /**
  * Events Controller
  */
-.controller('EventsController', function($scope, $state, $http, Events, $ionicLoading){
+.controller('EventsController', function($scope, $state, $http, API, $ionicLoading){
 
 	// go to event's details
 	$scope.eventDetails = function(){
@@ -67,13 +67,12 @@ angular.module('liferapp.controllers', [])
 	});
 
 	// Access to the event calling service 
-	Events.getEvents().success( function (data){
+	API.getEvents().success( function (data){
 		
 		// pass to events binding adn hiden loading
 		$scope.events = data;
 		$ionicLoading.hide();
 	});
-	
 })
 
 
@@ -216,12 +215,11 @@ angular.module('liferapp.controllers', [])
 /**
  * News Controller
  */
-.controller('NewsController', function($scope, $state, $ionicLoading, $ionicModal){
+.controller('NewsController', function($scope, $state, $ionicLoading, API, $ionicModal){
 
     // setup the loader and show spinner
 	$ionicLoading.show({
 		template:'<img src="img/cowicon.png"></img><br/><ion-spinner icon="dots" class="spinner-dark"></ion-spinner>',
-	    duration: 2000,
 	    noBackdrop: true
 	});
 
@@ -244,25 +242,13 @@ angular.module('liferapp.controllers', [])
 		$state.go('eventmenu.newDetails');
 	};
 
-	// create news manually, later we will 
-	// change with the data API provider
-	var news = [];
-	for (i = 1; i < 100; i++) { 
-	    var newNew = 
-	    { 
-	    	'Id' : i,
-	    	'Title' : 'Título de la noticia ' + i,
-     	  	'Description' : 'Descripción de la noticia ' + i,
-     	  	'Date' : "Jueves 3, Julio 2015",
-     	  	'Time' : "14:30",
-     	  	'Author': 'dtrujo',
-     	  	'Category': 'Juegos Infantiles'
-     	}
-     	news.push(newNew);
-	}
-
-	// pass to news binding
-	$scope.news = news;
+	// Access to the event calling service 
+	API.getNews().success( function (data){
+		
+		// pass to events binding adn hiden loading
+		$scope.news = data;
+		$ionicLoading.hide();
+	});
 })
 
 
@@ -283,15 +269,13 @@ angular.module('liferapp.controllers', [])
 /**
  * Articles Controller
  */
-.controller('ArticlesController', function($scope, $state, $ionicLoading, $ionicModal){
+.controller('ArticlesController', function($scope, $state, $http, API, $ionicLoading, $ionicModal){
 
 	// setup the loader and show spinner
 	$ionicLoading.show({
 		template:'<img src="img/cowicon.png"></img><br/><ion-spinner icon="dots" class="spinner-dark"></ion-spinner>',
-	    duration: 2000,
 	    noBackdrop: true
 	});
-
 
 	// Load the modal from the given template URL
     $ionicModal.fromTemplateUrl('templates/FilterView.html', function($ionicModal) 
@@ -301,7 +285,6 @@ angular.module('liferapp.controllers', [])
 			animation: 'popIn'
     	}
     ); 
-
 
 	// show article filter
 	$scope.articlesFilter = function(){
@@ -313,59 +296,16 @@ angular.module('liferapp.controllers', [])
 		$state.go('eventmenu.articleDetails');
 	};
 
-	// create articles manually, later we will 
-	// change with the data API provider
-	var articlesTop = [];
-	var articlesOffer = [];
-	var articlesOutlet = [];
+	// Access to the articles calling service 
+	API.getArticles().success( function (data){
+		
+		// pass to events binding adn hiden loading
+		$scope.articlesTop = data;
+		$scope.articlesOffer = data;
+		$scope.articlesOutlet = data;
 
-	for (i = 1; i < 100; i++) { 
-	    var articleTopNew = 
-	    { 
-	    	'Id' : i,
-	    	'Name' : 'Artículo Top ' + i,
-     	  	'Description' : 'Descripción del artículo ' + i,
-     	  	'Reference' : 'AX00000025',
-     	  	'Available' : 'Disponible',
-     	  	'Family': 'Psicomotricidad Fina',
-     	  	'Age': '3 - 8 años',
-     	  	'Price': '125€',
-     	  	'Img': 'http://83.36.56.136/Fotos/045003131.jpg'
-     	}
-     	var articleOfferNew = 
-	    { 
-	    	'Id' : i,
-	    	'Name' : 'Artículo Offer ' + i,
-     	  	'Description' : 'Descripción del artículo ' + i,
-     	  	'Reference' : 'BCDE000025',
-     	  	'Available' : 'Disponible',
-     	  	'Family': 'Construcciones y Puzzles',
-     	  	'Age': '+11 años',
-     	  	'Price': '15€',
-     	  	'Img': 'http://83.36.56.136/Fotos/125010572.jpg'
-     	}
-     	var articleOutletNew = 
-	    { 
-	    	'Id' : i,
-	    	'Name' : 'Artículo Outlet ' + i,
-     	  	'Description' : 'Descripción del artículo ' + i,
-     	  	'Reference' : 'AX002342025',
-     	  	'Available' : 'Disponible',
-     	  	'Family': 'Mobiliario escuelas',
-     	  	'Age': '1 - 3 años',
-     	  	'Price': '325€',
-     	  	'Img': 'http://83.36.56.136/Fotos/084801229.jpg'
-     	}
-
-     	articlesTop.push(articleTopNew);
-     	articlesOffer.push(articleOfferNew);
-     	articlesOutlet.push(articleOutletNew);
-	}
-
-	// pass to articles binding
-	$scope.articlesTop = articlesTop;
-	$scope.articlesOffer = articlesOffer;
-	$scope.articlesOutlet = articlesOutlet;
+		$ionicLoading.hide();
+	});
 })
 
 
@@ -393,12 +333,11 @@ angular.module('liferapp.controllers', [])
 /**
  * Shops Controller
  */
-.controller('ShopsController', function($scope, $state, $ionicLoading, $ionicModal){
+.controller('ShopsController', function($scope, $state, $http, API, $ionicLoading, $ionicModal){
 
     // setup the loader and show spinner
 	$ionicLoading.show({
 		template:'<img src="img/cowicon.png"></img><br/><ion-spinner icon="dots" class="spinner-dark"></ion-spinner>',
-	    duration: 2000,
 	    noBackdrop: true
 	});
 
@@ -421,105 +360,14 @@ angular.module('liferapp.controllers', [])
 		$state.go('eventmenu.shopDetails');
 	};
 
-	// create shops manually, later we will 
-	// change with the data API provider
-	var shops = [
-		{ 
-	    	'Id' : '1',
-	    	'Name' : 'Tienda Tenerife 1 ',
-     	  	'Direction' : 'C/ La laguna esquina derecha',
-     	  	'Country' : "España",
-     	  	'State': 'Sta. Cruz de Tenerife',
-     	  	'City' : "La Laguna",
-     	  	'Tlf': '+34 922 345 566',
-     	  	'Email': 'liferlalaguna@lifer.com',
-     	  	'Web': 'www.lifer.es',
-     	  	'Description': 'Descripción tienda de La Laguna',
-     	  	'Scheduler': 'L-V de 10:00-13:00 y 16:30 - 20:00',
-     	  	'Img':'img/tenerifeicon.png'
-     	},{ 
-	    	'Id' : '2',
-	    	'Name' : 'Tienda Tenerife 2 ',
-     	  	'Direction' : 'C/ La laguna esquina Izquierda',
-     	  	'Country' : "España",
-     	  	'State': 'Sta. Cruz de Tenerife',
-     	  	'City' : "La Laguna",
-     	  	'Tlf': '+34 922 345 566',
-     	  	'Email': 'liferlalaguna@lifer.com',
-     	  	'Web': 'www.lifer.es',
-     	  	'Description': 'Descripción tienda de La Laguna',
-     	  	'Scheduler': 'L-V de 10:00-13:00 y 16:30 - 20:00',
-     	  	'Img':'img/tenerifeicon.png'
-     	},{ 
-	    	'Id' : '3',
-	    	'Name' : 'Tienda Tenerife 3 ',
-     	  	'Direction' : 'C/ La laguna esquina derecha',
-     	  	'Country' : "España",
-     	  	'State': 'Sta. Cruz de Tenerife',
-     	  	'City' : "La Laguna",
-     	  	'Tlf': '+34 922 345 566',
-     	  	'Email': 'liferlalaguna@lifer.com',
-     	  	'Web': 'www.lifer.es',
-     	  	'Description': 'Descripción tienda de La Laguna',
-     	  	'Scheduler': 'L-V de 10:00-13:00 y 16:30 - 20:00',
-     	  	'Img':'img/tenerifeicon.png'
-     	},{ 
-	    	'Id' : '4',
-	    	'Name' : 'Tienda La Palma 1 ',
-     	  	'Direction' : 'C/ La laguna esquina derecha',
-     	  	'Country' : "España",
-     	  	'State': 'Sta. Cruz de Tenerife',
-     	  	'City' : "La Palmas",
-     	  	'Tlf': '+34 922 345 566',
-     	  	'Email': 'liferlalaguna@lifer.com',
-     	  	'Web': 'www.lifer.es',
-     	  	'Description': 'Descripción tienda de La Laguna',
-     	  	'Scheduler': 'L-V de 10:00-13:00 y 16:30 - 20:00',
-     	  	'Img':'img/lapalmaicon.png'
-     	},{ 
-	    	'Id' : '5',
-	    	'Name' : 'Tienda Las Palmas 1',
-     	  	'Direction' : 'C/ León y Castillo',
-     	  	'Country' : "España",
-     	  	'State': 'Las Palmas de G.C.',
-     	  	'City' : "Las Palmas de G.C.",
-     	  	'Tlf': '+34 922 345 566',
-     	  	'Email': 'liferlaspalmas@lifer.com',
-     	  	'Web': 'www.lifer.es',
-     	  	'Description': 'Descripción tienda de Las Palmas',
-     	  	'Scheduler': 'L-V de 10:00-13:00 y 16:30 - 20:00',
-     	  	'Img':'img/grancanariaicon.png'
-     	},{ 
-	    	'Id' : '6',
-	    	'Name' : 'Tienda Las Palmas 2 ',
-     	  	'Direction' : 'C/ León y Castillo',
-     	  	'Country' : "España",
-     	  	'State': 'Las Palmas de G.C.',
-     	  	'City' : "Las Palmas de G.C.",
-     	  	'Tlf': '+34 922 345 566',
-     	  	'Email': 'liferlaspalmas@lifer.com',
-     	  	'Web': 'www.lifer.es',
-     	  	'Description': 'Descripción tienda de Las Palmas',
-     	  	'Scheduler': 'L-V de 10:00-13:00 y 16:30 - 20:00',
-     	  	'Img':'img/grancanariaicon.png'
-     	},{ 
-	    	'Id' : '7',
-	    	'Name' : 'Tienda Fuerteventura 1 ',
-     	  	'Direction' : 'C/ Puerto del Rosario',
-     	  	'Country' : "España",
-     	  	'State': 'Las Palmas de G.C.',
-     	  	'City' : "Las Palmas de G.C.",
-     	  	'Tlf': '+34 922 345 566',
-     	  	'Email': 'liferfuerteventura@lifer.com',
-     	  	'Web': 'www.lifer.es',
-     	  	'Description': 'Descripción tienda de Fuerteventura',
-     	  	'Scheduler': 'L-V de 10:00-13:00 y 16:30 - 20:00',
-     	  	'Img':'img/fuerteventuraicon.png'
-     	}
-    ];
-
-	// pass to news binding
-	$scope.shops = shops;
+	// Access to the articles calling service 
+	API.getTiendas().success( function (data){
+		
+		// pass to events binding adn hiden loading
+		$scope.shops = data;
+		
+		$ionicLoading.hide();
+	});
 })
 
 
