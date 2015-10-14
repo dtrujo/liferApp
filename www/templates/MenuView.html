@@ -1,5 +1,9 @@
- <ion-side-menus enable-menu-with-back-views="false">
+ <ion-side-menus enable-menu-with-back-views="true">
 	<ion-side-menu-content ng-controller="ContentController">
+		<ion-nav-bar align-title="left" class="bar bar-header bar-light customBar">	
+			<ion-nav-back-button class="button-clear backButton">
+			</ion-nav-back-button>
+		</ion-nav-bar>
 	  	<ion-nav-view name="menuContent">
 		</ion-nav-view>
 	</ion-side-menu-content> 

@@ -1,18 +1,16 @@
-<ion-view view-title="Noticias">
-	<ion-nav-bar align-title="left" class="bar-clear customBar newsBar">
-	    <ion-nav-back-button>
-	    </ion-nav-back-button>
-	    <ion-nav-buttons>
-	      	<button class="button button-icon button-clear menuIcon" menu-toggle="left">
-	      	</button>
-	      	<h1 class="title">Noticias</h1>
-	      	<button class="button button-icon button-clear filterIcon" ng-click="newsFilter()"></button>
-	 	</ion-nav-buttons>
-	</ion-nav-bar>
+<ion-view view-title="Noticias" class="newsBar" hide-back-button="true">
+	<ion-nav-buttons side="left">
+    	<button class="button button-clear backButton" menu-toggle="left">
+			<i class="icon ion-navicon"></i>
+		</button>
+  	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<button class="button button-icon button-clear filterIcon" ng-click="newsFilter()"></button>
+	</ion-nav-buttons>
 	<ion-content>
-		<!-- List of events -->
+		<!-- List of news -->
 		<ion-list show-delete="false" can-swipe="true">
-		  	<ion-item ng-repeat="new in news" ng-click="newDetails()">
+		  	<ion-item ng-repeat="new in news" ng-click="newDetails($index)">
 		    	<div class="eventItem">
 		    		<div class="eventInfoItem">
 		    			<h3>{{new.Titulo}}</h3>

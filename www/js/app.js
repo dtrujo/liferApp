@@ -11,11 +11,11 @@ angular.module('liferapp', ['ionic', 'liferapp.controllers', 'uiGmapgoogle-maps'
 // Config
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) { 
 
-  // disable animation between pages
-  $ionicConfigProvider.views.transition('none');
-  
-  // set state to navigation 
-  $stateProvider
+    // disable animation between pages
+    $ionicConfigProvider.views.transition('platform');
+
+    // navigation
+    $stateProvider
 
     // State to control when the event menu has been fired
     .state('eventmenu', {
@@ -48,7 +48,7 @@ angular.module('liferapp', ['ionic', 'liferapp.controllers', 'uiGmapgoogle-maps'
     
      // Create state to event details view
     .state('eventmenu.eventDetails', {
-      url: "/eventDetails",
+      url: "/eventDetails/:id",
       views: {
         'menuContent' :{
           templateUrl: "templates/EventDetailsView.html",
@@ -59,7 +59,7 @@ angular.module('liferapp', ['ionic', 'liferapp.controllers', 'uiGmapgoogle-maps'
 
     // Create state to event map view
     .state('eventmenu.eventMap', {
-      url: "/eventMap",
+      url: "/eventMap/:coordenadas",
       views: {
         'menuContent' :{
           templateUrl: "templates/EventMapView.html",
@@ -103,7 +103,7 @@ angular.module('liferapp', ['ionic', 'liferapp.controllers', 'uiGmapgoogle-maps'
 
     // Create state to new details view
     .state('eventmenu.newDetails', {
-      url: "/newDetails",
+      url: "/newDetails/:id",
       views: {
         'menuContent' :{
           templateUrl: "templates/NewDetailsView.html",
@@ -158,15 +158,26 @@ angular.module('liferapp', ['ionic', 'liferapp.controllers', 'uiGmapgoogle-maps'
 
     // Create state to shops details view
     .state('eventmenu.shopDetails', {
-      url: "/shopDetails",
+      url: "/shopDetails/:id",
       views: {
         'menuContent' :{
           templateUrl: "templates/ShopDetailsView.html",
           controller: "ShopDetailsController"
         }
       }
-    }); 
+    })
+    
+    // Create state to shops Map view
+    .state('eventmenu.shopMap', {
+      url: "/shopMap/:coordenadas",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/ShopMapView.html",
+          controller: "ShopMapController"
+        }
+      }
+    });
 
-  // By default launch dashboard view in to event view
-  $urlRouterProvider.otherwise('/event/dashboard');
+    // By default launch dashboard view in to event view
+    $urlRouterProvider.otherwise('/event/dashboard');
 });

@@ -1,59 +1,28 @@
-<ion-view view-title="Detalles de la Tienda">
-	<ion-nav-bar align-title="left" class="bar-clear customBar shopsBar">
-	    <ion-nav-back-button>
-	    </ion-nav-back-button>
-	    <ion-nav-buttons>
-	      	<button class="button button-icon button-clear menuIcon" menu-toggle="left">
-	      	</button>
-	      	<h1 class="title">Detalle de la Tienda</h1>
-	      	<button class="button button-icon button-clear ion-ios-telephone-outline" ng-click="call()"></button>
-	 	</ion-nav-buttons>
-	</ion-nav-bar>
+<ion-view view-title="Detalles de la Tienda" class="shopsBar">
+	<ion-nav-buttons side="right">
+		<button class="button button-icon button-clear mapIcon backButton" ng-click="shopMap()"></button>
+		<button class="button button-icon button-clear ion-ios-telephone-outline backButton" ng-click="call()"></button>
+	</ion-nav-buttons>
 	<ion-content>
 		<div class="imageEvent">
-			<ui-gmap-google-map 
-	 			class="map angular-google-map-container" 
-	 			center='map.center' zoom='map.zoom' 
-	 			events="map.markersEvents">
-	        	<ui-gmap-marker 
-	          		coords="marker.coords" options="marker.options" 
-	          		events="marker.events" idkey="marker.id" 
-	          		closeClick="hideMarkerPopup()"
-	          	 	onClicked="showMarkerPopup()">
-	          	</ui-gmap-marker>       
-       		</ui-gmap-google-map>
+			<img src="http://83.36.56.136/fotos/tienda1.jpg"">
 		</div>
 		<div class="detailsEvent">
 			<ul>
-				<li class="tEvent">Tienda Lifer de Candelaria</li>
-				<li><spam>Dirección:</spam> C/ Candelaria esquina superior, 5</li>
-				<li><spam>Provincia:</spam> Sta. Cruz de Tenerife</li>
-				<li><spam>CP:</spam> 350003</li>
+				<li class="tEvent">{{shop.Nombre}}</li>
+				<li><spam>Dirección:</spam> {{shop.Direccion}}</li>
+				<li><spam>Provincia:</spam> {{shop.Provincia}}</li>
+				<li><spam>CP:</spam> {{shop.CP}}</li>
 			</ul>
 		</div>
 		<div class="descriptionShop">
 			<ul class="principalUl">
-				<li class="tlfli"><i class="icon ion-android-call"></i> TELÉFONOS:
-					<ul class="detailUl">
-						<li>(+34) 922 123 453</li>
-						<li>(+34) 922 123 453</li>
-					</ul>
-				</li>
-				<li class="emailli"><i class="icon ion-android-mail"></i> EMAILS:
-					<ul class="detailUl">
-						<li>infonombredelatienda@lifer.es</li>
-						<li>proveedoresdelatienda@lifer.es</li>
-					</ul>
-				</li>
-				<li class="timeli"><i class="icon ion-android-time"></i>HORARIO:
-					<ul class="detailUl">
-						<li>L-V de 10:00-13:00 y 16:30 - 20:00</li>
-						<li>S: 10:00-13:00</li>
-					</ul>
-				</li>
-				<li class="webli"><i class="icon ion-android-globe"></i>WEB: www.lifer.es</li>
+				<li class="tlfli"><i class="icon ion-android-call"></i>TELÉFONOS: <span class="detailUl">{{shop.Telefono}}</span></li>
+				<li class="emailli"><i class="icon ion-ios-email-outline"></i>EMAILS: <span class="detailUl">{{shop.Email}}</span></li>
+				<li class="timeli"><i class="icon ion-android-time"></i>HORARIO: <span class="detailUl">{{shop.Horario}}</span></li>
+				<li class="webli"><i class="icon ion-android-globe"></i>WEB: <span class="detailUl">{{shop.Web}}</span></li>
 			</ul>
-			<p>El próximo sábado día 30 de Abril, tendrá lugar la III Fería del Juguete Exclusivas Lifer. El evento tendrá lugar en la plaza de La Laguna. Tendremos todo tipo de atracciones tanto para los mas pequeños como para mayores.</p>
+			<p>{{shop.Descripcion}}</p>
 		</div>
   	</ion-content>
 </ion-view>

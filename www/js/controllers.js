@@ -4,19 +4,14 @@ angular.module('liferapp.controllers', [])
 /**
  * Content Controller
  */
-.controller('ContentController', function($scope, $state, $ionicSideMenuDelegate){
-	
-	// create effect fot the toggle menu
-	$scope.toggleLeft = function() {
-    	$ionicSideMenuDelegate.toggleLeft();
-  	};
+.controller('ContentController', function($scope, $state){
 })
 
 
 /**
  * Dashboard Controller
  */
-.controller('DashboardController', function($scope, $state, $ionicViewSwitcher){
+.controller('DashboardController', function($ionicHistory, $scope, $state, $ionicViewSwitcher, $ionicSideMenuDelegate){
 
 	// go to events
 	$scope.events = function(){
@@ -55,42 +50,67 @@ angular.module('liferapp.controllers', [])
  */
 .controller('EventsController', function($scope, $state, $http, API, $ionicLoading){
 
-	// go to event's details
-	$scope.eventDetails = function(){
-		$state.go('eventmenu.eventDetails');
-	};
-	
-    // setup the loader and show spinner
-	$ionicLoading.show({
-		template:'<img src="img/lifericon.png"></img><br/><ion-spinner icon="dots" class="spinner-dark"></ion-spinner>',
-	    noBackdrop: true
-	});
-
-	// Access to the event calling service 
-	API.getEvents().success( function (data){
+	// Make actions when the view be loaded
+	$scope.$on('$ionicView.loaded', function (viewInfo, state) {
 		
-		// pass to events binding adn hiden loading
-		$scope.events = data;
-		$ionicLoading.hide();
-	});
+		// Show element waiting
+		$ionicLoading.show({
+			template:'<img src="img/lifericon.png"></img><br/><ion-spinner icon="dots" class="spinner-dark"></ion-spinner>',
+	    	noBackdrop: true
+		});
+    });
+	
+	// Make actions when the view be loaded
+	$scope.$on('$ionicView.enter', function (viewInfo, state) {
+				
+		// Access to the event calling service 
+		API.getEvents().success( function (data){	
+		
+			// Pass to events binding and hidden loading
+			$scope.events = data;
+			$ionicLoading.hide();
+		});
+    });
+	
+	// go to event's details pass params to find the
+	// single event and acceso data
+	$scope.eventDetails = function(index){
+		var event = $scope.events[index];
+		$state.go('eventmenu.eventDetails', { "id": event.Codigo });
+	};
 })
 
 
 /**
  * Event details Controller
  */
-.controller('EventDetailsController', function($scope, $state, $ionicLoading){
+.controller('EventDetailsController', function($scope, $stateParams, $state, $http, API, $ionicLoading){
 
-    // setup the loader and show spinner
-	$ionicLoading.show({
-		template:'<img src="img/cowicon.png"></img><br/><ion-spinner icon="dots" class="spinner-dark"></ion-spinner>',
-	    duration: 2000,
-	    noBackdrop: true
-	});
+	// Make actions when the view be loaded
+	$scope.$on('$ionicView.loaded', function (viewInfo, state) {
 
+		// setup the loader and show spinner
+		$ionicLoading.show({
+			template:'<img src="img/cowicon.png"></img><br/><ion-spinner icon="dots" class="spinner-dark"></ion-spinner>',
+			noBackdrop: true
+		});
+    });
+	
+	// Make actions when the view be loaded
+	$scope.$on('$ionicView.enter', function (viewInfo, state) {
+				
+		// Access to the event calling service using the code 
+		API.getEventById($stateParams.id).success( function (data){
+			
+			// pass to events binding and hidden loading
+			$scope.event = data;
+			$ionicLoading.hide();
+		});
+    });
+	
 	// go to event's map
 	$scope.eventMap = function(){
-		$state.go('eventmenu.eventMap');
+		$state.go('eventmenu.eventMap', { "coordenadas": $scope.event.Coordenadas });
 	};
 })
 
@@ -98,19 +118,23 @@ angular.module('liferapp.controllers', [])
 /**
  * Event Map Controller
  */
-.controller('EventMapController', function($scope, $state, $ionicLoading){
+.controller('EventMapController', function($scope, $stateParams, $state, $ionicLoading){
 
-    // setup the loader and show spinner
-	$ionicLoading.show({
-		template:'<img src="img/cowicon.png"></img><br/><ion-spinner icon="dots" class="spinner-dark"></ion-spinner>',
-	    duration: 5000,
-	    noBackdrop: true
-	});
+	// Make actions when the view be loaded
+	$scope.$on('$ionicView.loaded', function (viewInfo, state) {
 
+		// setup the loader and show spinner
+		$ionicLoading.show({
+			template:'<img src="img/cowicon.png"></img><br/><ion-spinner icon="dots" class="spinner-dark"></ion-spinner>',
+			duration: 5000,
+			noBackdrop: true
+		});
+    });
+	
 	// initial location
 	$scope.myLocation = {
-    	lng : '',
-    	lat: ''
+    	lng : $stateParams.coordenadas.split(",")[1],
+    	lat: $stateParams.coordenadas.split(",")[0]
   	}
 
    	// this function create map and prepare params
@@ -121,8 +145,8 @@ angular.module('liferapp.controllers', [])
   		// when the geolocation arrives and to update all the watchers
     	$scope.$apply(function() {
 	   
-	    	$scope.myLocation.lng = position.coords.longitude;
-	      	$scope.myLocation.lat = position.coords.latitude;
+	    	//$scope.myLocation.lng = position.coords.longitude;
+	      	//$scope.myLocation.lat = position.coords.latitude;
 	 
 	 		// map
 	      	$scope.map = {
@@ -153,9 +177,13 @@ angular.module('liferapp.controllers', [])
 	    });
 	}
 
-	// when the map is loaded we draw the map 
-	// passing how params the draw function
-   	navigator.geolocation.getCurrentPosition($scope.drawMap);
+	// Make actions when the view be loaded
+	$scope.$on('$ionicView.enter', function (viewInfo, state) {
+						
+		// when the map is loaded we draw the map 
+		// passing how params the draw function
+   		navigator.geolocation.getCurrentPosition($scope.drawMap);
+    });
 })
 
 
@@ -216,53 +244,77 @@ angular.module('liferapp.controllers', [])
  * News Controller
  */
 .controller('NewsController', function($scope, $state, $ionicLoading, API, $ionicModal){
-
-    // setup the loader and show spinner
-	$ionicLoading.show({
-		template:'<img src="img/cowicon.png"></img><br/><ion-spinner icon="dots" class="spinner-dark"></ion-spinner>',
-	    noBackdrop: true
-	});
-
+	
+	// Make actions when the view be loaded
+	$scope.$on('$ionicView.loaded', function (viewInfo, state) {
+		
+		// setup the loader and show spinner
+		$ionicLoading.show({
+			template:'<img src="img/cowicon.png"></img><br/><ion-spinner icon="dots" class="spinner-dark"></ion-spinner>',
+			noBackdrop: true
+		});
+    });
+	
+	// Make actions when the view be loaded
+	$scope.$on('$ionicView.enter', function (viewInfo, state) {
+			
+		// Access to the event calling service 
+		API.getNews().success( function (data){
+			
+			// pass to events binding adn hiden loading
+			$scope.news = data;
+			$ionicLoading.hide();
+		});
+    });
+	
+	// go to event's details
+	$scope.newDetails = function(index){
+		var single = $scope.news[index];
+		$state.go('eventmenu.newDetails', { "id": single.Codigo });
+	};
+	
 	// Load the modal from the given template URL
-    $ionicModal.fromTemplateUrl('templates/FilterView.html', function($ionicModal) 
+    $ionicModal.fromTemplateUrl('templates/FilterNewView.html', function($ionicModal) 
     	{ $scope.modal = $ionicModal; }, 
     	{
 			scope: $scope,
 			animation: 'popIn'
     	}
     ); 
-
+	
 	// show article filter
 	$scope.newsFilter = function(){
 		$scope.modal.show();
 	}
-
-	// go to event's details
-	$scope.newDetails = function(){
-		$state.go('eventmenu.newDetails');
-	};
-
-	// Access to the event calling service 
-	API.getNews().success( function (data){
-		
-		// pass to events binding adn hiden loading
-		$scope.news = data;
-		$ionicLoading.hide();
-	});
 })
 
 
 /**
  * New details Controller
  */
-.controller('NewDetailsController', function($scope, $state, $ionicLoading){
+.controller('NewDetailsController', function($scope, $state, $ionicLoading, $stateParams, API){
 
-    // setup the loader and show spinner
-	$ionicLoading.show({
-		template:'<img src="img/cowicon.png"></img><br/><ion-spinner icon="dots" class="spinner-dark"></ion-spinner>',
-	    duration: 2000,
-	    noBackdrop: true
-	});
+	// Make actions when the view be loaded
+	$scope.$on('$ionicView.loaded', function (viewInfo, state) {
+
+		// setup the loader and show spinner
+		$ionicLoading.show({
+			template:'<img src="img/cowicon.png"></img><br/><ion-spinner icon="dots" class="spinner-dark"></ion-spinner>',
+			noBackdrop: true
+		});
+    });
+	
+	// Make actions when the view be loaded
+	$scope.$on('$ionicView.enter', function (viewInfo, state) {
+				
+		// Access to the event calling service using the code 
+		API.getNewById($stateParams.id).success( function (data){
+			
+			// pass to events binding and hidden loading
+			$scope.new = data;
+			$ionicLoading.hide();
+		});
+    });	
 })
 
 
@@ -324,75 +376,112 @@ angular.module('liferapp.controllers', [])
 
 
 /**
- * Clients Controller
- */
-.controller('ClientsController', function($scope, $state){
-})
-
-
-/**
  * Shops Controller
  */
 .controller('ShopsController', function($scope, $state, $http, API, $ionicLoading, $ionicModal){
-
-    // setup the loader and show spinner
-	$ionicLoading.show({
-		template:'<img src="img/cowicon.png"></img><br/><ion-spinner icon="dots" class="spinner-dark"></ion-spinner>',
-	    noBackdrop: true
-	});
-
+	
+	// Make actions when the view be loaded
+	$scope.$on('$ionicView.loaded', function (viewInfo, state) {
+		
+		// setup the loader and show spinner
+		$ionicLoading.show({
+			template:'<img src="img/cowicon.png"></img><br/><ion-spinner icon="dots" class="spinner-dark"></ion-spinner>',
+			noBackdrop: true
+		});
+    });
+	
+	// Make actions when the view be loaded
+	$scope.$on('$ionicView.enter', function (viewInfo, state) {
+			
+		// Access to the articles calling service 
+		API.getShops().success( function (data){
+			
+			// pass to events binding adn hiden loading
+			$scope.shops = data;
+			$ionicLoading.hide();
+		});
+    });
+	
+	// go to event's details
+	$scope.shopDetails = function(index){
+		var shop = $scope.shops[index];
+		$state.go('eventmenu.shopDetails', { "id": shop.Codigo });
+	};
+	
 	// Load the modal from the given template URL
-    $ionicModal.fromTemplateUrl('templates/FilterView.html', function($ionicModal) 
+    $ionicModal.fromTemplateUrl('templates/FilterShopView.html', function($ionicModal) 
     	{ $scope.modal = $ionicModal; }, 
     	{
 			scope: $scope,
 			animation: 'popIn'
     	}
     ); 
-
-	// show shop filter
+	
+	// show article filter
 	$scope.shopsFilter = function(){
 		$scope.modal.show();
 	}
-
-	// go to shop's details
-	$scope.shopDetails = function(){
-		$state.go('eventmenu.shopDetails');
-	};
-
-	// Access to the articles calling service 
-	API.getTiendas().success( function (data){
-		
-		// pass to events binding adn hiden loading
-		$scope.shops = data;
-		
-		$ionicLoading.hide();
-	});
 })
 
 
 /**
  * Shop details Controller
  */
-.controller('ShopDetailsController', function($scope, $state, $ionicLoading){
+.controller('ShopDetailsController', function($scope, $state, $ionicLoading, $stateParams, API){
 
-    // setup the loader and show spinner
-	$ionicLoading.show({
-		template:'<img src="img/cowicon.png"></img><br/><ion-spinner icon="dots" class="spinner-dark"></ion-spinner>',
-	    duration: 5000,
-	    noBackdrop: true
-	});
+	// Make actions when the view be loaded
+	$scope.$on('$ionicView.loaded', function (viewInfo, state) {
 
+		// setup the loader and show spinner
+		$ionicLoading.show({
+			template:'<img src="img/cowicon.png"></img><br/><ion-spinner icon="dots" class="spinner-dark"></ion-spinner>',
+			noBackdrop: true
+		});
+    });
+	
+	// Make actions when the view be loaded
+	$scope.$on('$ionicView.enter', function (viewInfo, state) {
+				
+		// Access to the event calling service using the code 
+		API.getShopById($stateParams.id).success( function (data){
+		   
+			// pass to events binding and hidden loading
+			$scope.shop = data;
+			$ionicLoading.hide();
+		});
+    });	
+
+	// go to event's map
+	$scope.shopMap = function(){
+		$state.go('eventmenu.shopMap', { "coordenadas": $scope.shop.Coordenadas });
+	};
+	
+	// call telephone
+  	$scope.call = function (){
+  		document.location.href = 'tel:+1-800-555-1234';
+  	}
+})
+
+
+/**
+ * Shop Map Controller
+ */
+.controller('ShopMapController', function($scope, $stateParams, $state, $ionicLoading){
+
+	// Make actions when the view be loaded
+	$scope.$on('$ionicView.loaded', function (viewInfo, state) {
+
+		// setup the loader and show spinner
+		$ionicLoading.show({
+			template:'<img src="img/cowicon.png"></img><br/><ion-spinner icon="dots" class="spinner-dark"></ion-spinner>',
+			noBackdrop: true
+		});
+    });
+	
 	// initial location
 	$scope.myLocation = {
-    	lng : '',
-    	lat: ''
-  	}
-
-  	// call telephone
-  	$scope.call = function (){
-  		console.log('esto');
-  		document.location.href = 'tel:+1-800-555-1234';
+    	lng : $stateParams.coordenadas.split(",")[1],
+    	lat: $stateParams.coordenadas.split(",")[0]
   	}
 
    	// this function create map and prepare params
@@ -402,10 +491,7 @@ angular.module('liferapp.controllers', [])
   		// $scope.$apply is needed to trigger the digest cycle 
   		// when the geolocation arrives and to update all the watchers
     	$scope.$apply(function() {
-	   
-	    	$scope.myLocation.lng = position.coords.longitude;
-	      	$scope.myLocation.lat = position.coords.latitude;
-	 
+
 	 		// map
 	      	$scope.map = {
 	        	center: {
@@ -433,9 +519,24 @@ angular.module('liferapp.controllers', [])
 	        	labelClass: "marker-labels"
 	      	};
 	    });
+		
+		// hide loader
+		$ionicLoading.hide();
 	}
 
-	// when the map is loaded we draw the map 
-	// passing how params the draw function
-   	navigator.geolocation.getCurrentPosition($scope.drawMap);
+	// Make actions when the view be loaded
+	$scope.$on('$ionicView.enter', function (viewInfo, state) {
+						
+		// when the map is loaded we draw the map 
+		// passing how params the draw function
+   		navigator.geolocation.getCurrentPosition($scope.drawMap);
+    });
+})
+
+
+/**
+ * Clients Controller
+ */
+.controller('ClientsController', function($scope, $state){
+	
 })

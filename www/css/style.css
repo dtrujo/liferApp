@@ -1,14 +1,14 @@
 
 /***********/
-/* Generol */
+/* General */
 /***********/
 
 
-.html, body { height: 100%; }
+.html, body   { height: 100%; }
 .clear		  { float: none; clear: both;}
 .title		  { top: 1px !important; left: 45px !important; }
-.iconGroup	{ float: right;}
-.scroll     { height: 99% !important;}
+.iconGroup 	  { float: right;}
+.scroll       { height: 99% !important;}
 
 
 /***********/
@@ -18,9 +18,10 @@
 
 .spinner svg                { width: 45px !important; margin-left: 0px !important; height: 44px !important;}
 .loading img                { width: 40%;}
-.loading-container          { background-color: rgba(255, 255, 255, 0.9) !important;}
+.loading-container          { background-color: rgba(255, 255, 255, 0.9) !important; margin-top: 44px !important;}
 .loading-container .loading { padding: 0px !important;  border-radius: none !important; background-color: transparent !important; color: transparent !important; }
 ::-webkit-input-placeholder { color: white !important; }
+.backButton                 { color: white !important; }
 
 
 /***********/
@@ -28,21 +29,21 @@
 /***********/
 
 
-.menuIcon { background: url(../img/menuicon.svg) !important;
-  			  background-size: 18px 15px !important;
-  			  background-repeat: no-repeat !important;
-  			  background-position: 12px !important;
-  			  width: 45px; }
-.orderIcon { background: url(../img/ordericon.svg) !important;
-  			  background-size: 25px 20px !important;
-  			  background-repeat: no-repeat !important;
-  			  background-position: 12px !important;
-  			  width: 50px; }
+.menuIcon   { background: url(../img/menuicon.svg) !important;
+  			    background-size: 18px 15px !important;
+  			    background-repeat: no-repeat !important;
+  			    background-position: 12px !important;
+  			    width: 45px; }
+.orderIcon  { background: url(../img/ordericon.svg) !important;
+  			    background-size: 25px 20px !important;
+  			    background-repeat: no-repeat !important;
+  			    background-position: 12px !important;
+  			    width: 50px; }
 .settingIcon{ background: url(../img/settingicon.svg) !important;
-  			  background-size: 25px 20px !important;
-  			  background-repeat: no-repeat !important;
-  			  background-position: 12px !important;
-  			  width: 50px; }
+  			    background-size: 25px 20px !important;
+  			    background-repeat: no-repeat !important;
+  			    background-position: 12px !important;
+  			    width: 50px; }
 .searchIcon { background: url(../img/searchicon.svg) !important;
 			    background-size: 25px 20px !important;
 			    background-repeat: no-repeat !important;
@@ -53,11 +54,11 @@
 			    background-repeat: no-repeat !important;
 			    background-position: 12px !important;
 			    width: 40px; margin-right: 10px }
-.mapIcon { background: url(../img/mapicon.svg) !important;
-          background-size: 25px 20px !important;
-          background-repeat: no-repeat !important;
-          background-position: 12px !important;
-          width: 40px; margin-right: 10px }
+.mapIcon    { background: url(../img/mapicon.svg) !important;
+                background-size: 25px 20px !important;
+                background-repeat: no-repeat !important;
+                background-position: 12px !important;
+                width: 40px; margin-right: 10px }
 
 
 /***********/
@@ -78,14 +79,14 @@
 /***********/
 
 
-.customBar, .title        { font-family: 'gulim' !important }
+.customBar, .title          { font-family: 'gulim' !important; background: none !important; color: white !important; }
 .eventsBar, .mEvents   		{ background-color: #B5D5A6 !important }
 .offersBar, .mOffers   		{ background-color: #D64E5E !important }
-.newsBar, .mNews     		  { background-color: #5D99E2 !important }
+.newsBar, .mNews     		{ background-color: #5D99E2 !important }
 .articlesBar, .mArticles	{ background-color: #EEC058 !important }
 .clientsBar, .mClients		{ background-color: #FA6F56 !important }
-.shopsBar, .mShops			  { background-color: #EE91AB !important }
-.dashboardBar, .mHome     { background-color: #8DCFC8 !important }
+.shopsBar, .mShops			{ background-color: #EE91AB !important }
+.dashboardBar, .mHome       { background-color: #8DCFC8 !important }
 
 
 /*************/
@@ -119,9 +120,9 @@
 /*************/
 
 
-.eventInfoItem        { float:left; }
+.eventInfoItem        { float:left; width: 85%; }
 .eventValueItem       { float:right; margin-top: 4%; }
-.eventInfoItem h3     { margin: 0px 0px 5px 0px; }
+.eventInfoItem h3     { margin: 0px 0px 0px 0px; }
 .eventInfoItem p      { font-family: 'gulim'; font-size: 13px; margin: 0px; padding: 0px; }
 .eventInfoItem .small { color:black; font-size: 10px !important; margin-top: -5px !important; margin-left: 1px !important}
 .eventValueItem p     { float:left; background-color: #DF0808; padding: 1px 7px 1px 7px; color: white; border-radius: 5px; font-size: 11px; font-weight: bolder; margin-right: 15px; }
@@ -137,8 +138,8 @@
 
 .imageEvent                      { height: 37%; overflow: hidden; }
 .imageEvent img                  { width: 100%; }
-.detailsEvent                    { background-color: rgb(237, 237, 237); padding: 40px 20px 30px 20px; }
-.descriptionEvent                { padding: 40px 20px 30px 20px; }
+.detailsEvent                    { background-color: rgb(237, 237, 237); padding: 40px 20px 30px 20px; min-height: 130px;}
+.descriptionEvent                { padding: 40px 20px 30px 20px; background-color: white; margin-bottom: 10px !important; min-height: 185px;}
 .descriptionEvent p              { font-family: 'gulim'; letter-spacing: -0.3px; font-size: 13px; }
 .detailsEvent ul                 { list-style: none; }
 .detailsEvent ul li              { font-family: 'gulim'; font-size: 12px; margin: -5px 0px 0px 0px !important; padding: 0px !important; }
@@ -160,7 +161,7 @@
 /*************/
 
 
-.offerImage           { float:left; margin-right: 20px !important;}
+.offerImage           { float:left; margin-right: 10px !important;}
 .offerImage img       { width: 55px !important; height: 50px !important;}
 .offerInfoItem        { float:left; }
 .offerValueItem       { float:right; margin-top: 4%; }
@@ -178,7 +179,7 @@
 
 .shopImage           { float:left;}
 .shopImage img       { width: 40% !important; }
-.shopInfoItem        { float:left; }
+.shopInfoItem        { float:left; width: 70%; white-space: nowrap; }
 .shopValueItem       { float:right; margin-top: 4%; }
 .shopInfoItem h3     { margin: 0px 0px 0px 0px; }
 .shopInfoItem p      { font-family: 'gulim'; font-size: 13px; margin: 0px; padding: 0px; }
@@ -194,10 +195,10 @@
 
 .descriptionEvent ul { list-style: none !important; }
 .principalUl         { font-size: 10px; font-weight: 600; }
-.principalUl li      { font-size: 10px; font-weight: 600; padding-left: 20px}
-.detailUl            { font-family: 'gulim'; margin-bottom: 10px; margin-top: 10px !important; margin-left: 10%; font-size: 12px; font-weight: 200 !important; font-family: 'gulim' !important; }
+.principalUl li      { font-size: 10px; font-weight: 600; padding-left: 20px; margin-bottom: 10px; }
+.detailUl            { font-family: 'gulim'; margin-bottom: 20px; margin-left: 2%; font-size: 12px; font-weight: 200 !important; font-family: 'gulim' !important; }
 .detailUl li         { font-family: 'gulim'; font-size: 12px; font-weight: 200 !important; font-family: 'gulim' !important; }
-.descriptionShop     { padding: 20px 20px 30px 20px;}
+.descriptionShop     { padding: 40px 20px 30px 20px; background-color: white; margin-bottom: 10px !important; min-height: 185px;}
 .descriptionShop p   { font-family: 'gulim'; letter-spacing: -0.3px; font-size: 13px; margin-top: 20px}
 .principalUl i       { width: 40px; height: 16px; margin: 0px 10px 0px 0px !important; font-size: 18px; padding-top: 15px !important;}
 

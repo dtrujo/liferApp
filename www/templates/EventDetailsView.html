@@ -1,30 +1,24 @@
-<ion-view view-title="Detalles del Evento">
-	<ion-nav-bar align-title="left" class="bar-clear customBar eventsBar">
-	    <ion-nav-back-button>
-	    </ion-nav-back-button>
-	    <ion-nav-buttons>
-	      	<button class="button button-icon button-clear menuIcon" menu-toggle="left">
-	      	</button>
-	      	<h1 class="title">Detalles del Evento</h1>
-	      	<button class="button button-icon button-clear mapIcon" ng-click="eventMap()"></button>
-	 	</ion-nav-buttons>
-	</ion-nav-bar>
+<ion-view view-title="Detalles del Evento" class="eventsBar">
+	<ion-nav-buttons side="right">
+		<button class="button button-icon button-clear mapIcon" ng-click="eventMap()"></button>
+	</ion-nav-buttons>
 	<ion-content>
 		<div class="imageEvent">
-			<img src="img/imageDetailsEvent.png" />
+			<img src="http://83.36.56.136/fotos/evento9.png" />
 		</div>
 		<div class="detailsEvent">
 			<ul>
-				<li class="tEvent">Título Del Evento</li>
-				<li><spam>Lugar:</spam> Plaza de la Trinidad</li>
-				<li><spam>Fecha:</spam> Martes 2, Abril 2015</li>
-				<li><spam>Horario:</spam> 10:00-14:00 y 16:00-20:00</li>
+				<li class="tEvent">{{event.Titulo}}</li>
+				<li><spam>Lugar:</spam> {{event.Direccion}}</li>
+				<li><spam>Población:</spam> {{event.Poblacion}}</li>
+				<li><spam>Provincia:</spam> {{event.Provincia}}</li>
+				<li><spam>Fecha:</spam> {{event.FechaInicio}} - {{event.FechaFin}}</li>
+				<li><spam>Horario:</spam> {{event.Horario}}</li>
 			</ul>
 		</div>
 		<div class="descriptionEvent">
 			<h3 class="tEvent">DESCRIPCIÓN</h3>
-			<p>El próximo sábado día 30 de Abril, tendrá lugar la III Fería del Juguete Exclusivas Lifer. El evento tendrá lugar en la plaza de La Laguna. Tendremos todo tipo de atracciones tanto para los mas pequeños como para mayores.</p>
-			<p>Contaremos con payasos, castillos inchables y como no con juguetes lúdicos para desarrollar las habilidades de los más pequeños. Si quieres pasar un día diferente, no dudes en pasarte a jugar con EXCLUSIVAS LIFER.</p>
+			<p>{{event.Descripcion}}</p>
 		</div>
   	</ion-content>
 </ion-view>

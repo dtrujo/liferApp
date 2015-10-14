@@ -1,21 +1,19 @@
-<ion-view view-title="Tiendas">
-	<ion-nav-bar align-title="left" class="bar-clear customBar shopsBar">
-	    <ion-nav-back-button>
-	    </ion-nav-back-button>
-	    <ion-nav-buttons>
-	      	<button class="button button-icon button-clear menuIcon" menu-toggle="left">
-	      	</button>
-	      	<h1 class="title">Tiendas</h1>
-	      	<button class="button button-icon button-clear filterIcon" ng-click="shopsFilter()"></button>
-	 	</ion-nav-buttons>
-	</ion-nav-bar>
+<ion-view view-title="Tiendas" class="shopsBar" hide-back-button="true">
+	<ion-nav-buttons side="left">
+    	<button class="button button-clear backButton" menu-toggle="left">
+			<i class="icon ion-navicon"></i>
+		</button>
+  	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<button class="button button-icon button-clear filterIcon" ng-click="shopsFilter()"></button>
+	</ion-nav-buttons>
 	<ion-content>
-		<!-- List of events -->
+		<!-- List of shops -->
 		<ion-list show-delete="false" can-swipe="true">
-		  	<ion-item ng-repeat="shop in shops" ng-click="shopDetails()">
+		  	<ion-item ng-repeat="shop in shops" ng-click="shopDetails($index)">
 		    	<div class="shopItem">
 		    		<div class="offerImage">
-		    			<img src="{{shop.Img}}">
+		    			<img src="http://83.36.56.136/fotos/tienda1.jpg">
 		    			<div class="clear"></div>
 		    		</div>
 		    		<div class="shopInfoItem">
