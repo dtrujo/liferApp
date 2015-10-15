@@ -1,62 +1,33 @@
-<ion-view view-title="Artículos">
-	<ion-nav-bar align-title="left" class="bar-clear customBar articlesBar">
-	    <ion-nav-back-button>
-	    </ion-nav-back-button>
-	    <ion-nav-buttons>
-	      	<button class="button button-icon button-clear menuIcon" menu-toggle="left">
-	      	</button>
-	      	<h1 class="title">Artículos</h1>	    
-      	</ion-nav-buttons>
-      	<ion-nav-buttons side="right">
-      		<button class="button button-icon button-clear searchIcon"></button>
-      		<button class="button button-icon button-clear filterIcon" ng-click="articlesFilter()"></button>
-      	</ion-nav-buttons>
-	</ion-nav-bar>
-	<ion-content>
+<ion-view view-title="Artículos" class="articlesBar" hide-back-button="true">
+	<ion-nav-buttons side="left">
+    	<button class="button button-clear backButton" menu-toggle="left">
+			<i class="icon ion-navicon"></i>
+		</button>
+  	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<button class="button button-icon button-clear searchIcon backButton"></button>
+		<button class="button button-icon button-clear filterIcon backButton" ng-click="articlesFilter()"></button>
+	</ion-nav-buttons>
+	
+	<ion-content class="backgroundWhite">
 		<ion-tabs class="tabs-clear tabsArticles">
 
 			<!-- TOP -->
 	  		<ion-tab title="TOP">
 	  		  	<ion-content>
 		    		<ion-list show-delete="false" can-swipe="true">
-					  	<ion-item ng-repeat="articleTop in articlesTop" ng-click="articleDetails()">
-					    	<div class="offerItem">
+					  	<ion-item ng-repeat="articleTop in articlesTop" ng-click="articleTopDetails($index)">
+					    	<div class="shopItem">
 					    		<div class="offerImage">
-					    			<img src="http://213.4.39.205/Fotos/{{articleTop.Codigo}}.jpg">
+					    			<img src="http://83.36.56.136/Fotos/{{articleTop.Codigo}}.jpg">
 					    			<div class="clear"></div>
 					    		</div>
-					    		<div class="offerInfoItem">
+					    		<div class="shopInfoItem">
 					    			<h3>{{articleTop.Nombre}}</h3>
 					    			<p>{{articleTop.Familia}}</p>
 					    			<p class='small'><strong>Referencia:</strong> {{articleTop.Codigo}}</p>
 					    		</div>
-					    		<div class="offerValueItem">		 
-					    			<img src="img/nexticon.png">	    				
-					    		</div>
-					    		<div class="clear"></div>
-					    	</div>
-				    		<div class="separator"></div>
-				    	</ion-item>
-					</ion-list>
-				</ion-content>
-	  		</ion-tab>
-
-	  		<!-- OFFERS -->
-	  		<ion-tab title="OFERTAS">
-	  			<ion-content>
-		  			<ion-list show-delete="false" can-swipe="true">
-					  	<ion-item ng-repeat="articleOffer in articlesOffer" ng-click="articleDetails()">
-					    	<div class="offerItem">
-					    		<div class="offerImage">
-					    			<img src="http://213.4.39.205/Fotos/{{articleOffer.Codigo}}.jpg">
-					    			<div class="clear"></div>
-					    		</div>
-					    		<div class="offerInfoItem">
-					    			<h3>{{articleOffer.Nombre}}</h3>
-					    			<p>{{articleOffer.Familia}}</p>
-					    			<p class='small'><strong>Referencia:</strong> {{articleOffer.Codigo}}</p>
-					    		</div>
-					    		<div class="offerValueItem">		 
+					    		<div class="shopValueItem">		 
 					    			<img src="img/nexticon.png">	    				
 					    		</div>
 					    		<div class="clear"></div>
@@ -71,18 +42,18 @@
 	  		<ion-tab title="OUTLET" >
 	  			<ion-content>
 		    		<ion-list show-delete="false" can-swipe="true">
-					  	<ion-item ng-repeat="articleOutlet in articlesOutlet" ng-click="articleDetails()">
-					    	<div class="offerItem">
+					  	<ion-item ng-repeat="articleOutlet in articlesOutlet" ng-click="articleOutletDetails($index)">
+					    	<div class="shopItem">
 					    		<div class="offerImage">
-					    			<img src="http://213.4.39.205/Fotos/{{articleOutlet.Codigo}}.jpg">
+					    			<img src="http://83.36.56.136/Fotos/{{articleOutlet.Codigo}}.jpg">
 					    			<div class="clear"></div>
 					    		</div>
-					    		<div class="offerInfoItem">
+					    		<div class="shopInfoItem">
 					    			<h3>{{articleOutlet.Nombre}}</h3>
 					    			<p>{{articleOutlet.Familia}}</p>
 					    			<p class='small'><strong>Referencia:</strong> {{articleOutlet.Codigo}}</p>
 					    		</div>
-					    		<div class="offerValueItem">		 
+					    		<div class="shopValueItem">		 
 					    			<img src="img/nexticon.png">	    				
 					    		</div>
 					    		<div class="clear"></div>

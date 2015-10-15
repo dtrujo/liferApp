@@ -22,6 +22,7 @@
 .loading-container .loading { padding: 0px !important;  border-radius: none !important; background-color: transparent !important; color: transparent !important; }
 ::-webkit-input-placeholder { color: white !important; }
 .backButton                 { color: white !important; }
+.backgroundWhite            { background-color: white !important;} 
 
 
 /***********/
@@ -79,14 +80,14 @@
 /***********/
 
 
-.customBar, .title          { font-family: 'gulim' !important; background: none !important; color: white !important; }
+.customBar, .title            { font-family: 'gulim' !important; background: none !important; color: white !important; }
 .eventsBar, .mEvents   		{ background-color: #B5D5A6 !important }
 .offersBar, .mOffers   		{ background-color: #D64E5E !important }
 .newsBar, .mNews     		{ background-color: #5D99E2 !important }
 .articlesBar, .mArticles	{ background-color: #EEC058 !important }
 .clientsBar, .mClients		{ background-color: #FA6F56 !important }
-.shopsBar, .mShops			{ background-color: #EE91AB !important }
-.dashboardBar, .mHome       { background-color: #8DCFC8 !important }
+.shopsBar, .mShops	      { background-color: #EE91AB !important }
+.dashboardBar, .mHome         { background-color: #8DCFC8 !important }
 
 
 /*************/
@@ -209,13 +210,14 @@
 /*********************/
 
 .tabsArticles .list     { margin-top: 15%;}
-.tabsArticles .tabs     { top:0px !important; }
-.moreInfoArticle        { height: 70px !important; padding: 25px 0px 25px 0px !important; border-top: 1px solid #ddd; margin: 0px 20px;}
+.tabsArticles .tabs     { top:-2px !important; }
+.moreInfoArticle        { margin-bottom: 10px !important; background-color: white!important; height: 70px !important; padding: 25px 20px 25px 20px !important; border-top: 1px solid #ddd;}
 .availableArticle       { float: left; }
 .availableArticle img   { width: 16% !important; float: left !important; margin-right: 0px !important; }
 .availableArticle p     { color: #7ED321 !important; font-family: "Helvetica Neue", "Roboto", "Segoe UI", sans-serif !important; font-size: 11px; font-weight: bolder; float: right; margin-left: 0px; }
 .priceArticle           { float: right; }
-.priceArticle p         { color:gray; font-family: "gulim" !important; font-size: 25px;}
+.priceArticle p         { color:gray; font-family: "gulim" !important; font-size: 20px;}
+.descriptionArticle     { padding: 40px 20px 30px 20px; background-color: white; min-height: 175px;}
 
 
 /*********************/

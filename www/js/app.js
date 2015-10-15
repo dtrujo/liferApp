@@ -125,7 +125,7 @@ angular.module('liferapp', ['ionic', 'liferapp.controllers', 'uiGmapgoogle-maps'
 
     // Create state to article details view
     .state('eventmenu.articleDetails', {
-      url: "/articleDetails",
+      url: "/articleDetails/:codigo",
       views: {
         'menuContent' :{
           templateUrl: "templates/ArticleDetailsView.html",

@@ -32,9 +32,15 @@ angular.module('liferapp.services', [])
 			},
 			getArticles: function() {
 				return $http({
-					url: urlBase + '/articulos/movil',
+					url: urlBase + '/articulos?topventas=20',
 					method: 'GET'
 				})
+			},
+			getArticleByCode : function(Codigo) {
+				return $http({
+					url: urlBase + '/articulos?codigo=' + Codigo,
+					method: 'GET'
+				})	
 			},
 			getShops: function() {
 				return $http({

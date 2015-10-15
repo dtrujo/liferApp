@@ -126,7 +126,6 @@ angular.module('liferapp.controllers', [])
 		// setup the loader and show spinner
 		$ionicLoading.show({
 			template:'<img src="img/cowicon.png"></img><br/><ion-spinner icon="dots" class="spinner-dark"></ion-spinner>',
-			duration: 5000,
 			noBackdrop: true
 		});
     });
@@ -175,6 +174,9 @@ angular.module('liferapp.controllers', [])
 	        	labelClass: "marker-labels"
 	      	};
 	    });
+		
+		// hide loader
+		$ionicLoading.hide();
 	}
 
 	// Make actions when the view be loaded
@@ -323,14 +325,18 @@ angular.module('liferapp.controllers', [])
  */
 .controller('ArticlesController', function($scope, $state, $http, API, $ionicLoading, $ionicModal){
 
-	// setup the loader and show spinner
-	$ionicLoading.show({
-		template:'<img src="img/cowicon.png"></img><br/><ion-spinner icon="dots" class="spinner-dark"></ion-spinner>',
-	    noBackdrop: true
-	});
+	// Make actions when the view be loaded
+	$scope.$on('$ionicView.loaded', function (viewInfo, state) {
+
+		// setup the loader and show spinner
+		$ionicLoading.show({
+			template:'<img src="img/cowicon.png"></img><br/><ion-spinner icon="dots" class="spinner-dark"></ion-spinner>',
+			noBackdrop: true
+		});
+    });
 
 	// Load the modal from the given template URL
-    $ionicModal.fromTemplateUrl('templates/FilterView.html', function($ionicModal) 
+    $ionicModal.fromTemplateUrl('templates/FilterArticleView.html', function($ionicModal) 
     	{ $scope.modal = $ionicModal; }, 
     	{
 			scope: $scope,
@@ -343,35 +349,60 @@ angular.module('liferapp.controllers', [])
 		$scope.modal.show();
 	}
 
-	// go to articles's details
-	$scope.articleDetails = function(){
-		$state.go('eventmenu.articleDetails');
+	// go to articlesTop's details
+	$scope.articleTopDetails = function(index){
+		var article = $scope.articlesTop[index];
+		$state.go('eventmenu.articleDetails', {"codigo" : article.Codigo});
 	};
+	
+	// go to articlesOutlet's details
+	$scope.articleOutletDetails = function(index){
+		var article = $scope.articleOutlet[index];
+		$state.go('eventmenu.articleDetails', {"codigo" : article.Codigo});
+	};
+	
+	// Make actions when the view be loaded
+	$scope.$on('$ionicView.enter', function (viewInfo, state) {
+				
+		// Access to the articles calling service 
+		API.getArticles().success( function (data){
 
-	// Access to the articles calling service 
-	API.getArticles().success( function (data){
-		
-		// pass to events binding adn hiden loading
-		$scope.articlesTop = data;
-		$scope.articlesOffer = data;
-		$scope.articlesOutlet = data;
-
-		$ionicLoading.hide();
-	});
+			// pass to events binding adn hiden loading
+			$scope.articlesTop = data;
+			$scope.articlesOutlet = data;
+	
+			$ionicLoading.hide();
+		});
+    });	
 })
 
 
 /**
  * Article details Controller
  */
-.controller('ArticleDetailsController', function($scope, $state, $ionicLoading){
+.controller('ArticleDetailsController', function($scope, $state, $ionicLoading, $stateParams, API){
 
-    // setup the loader and show spinner
-	$ionicLoading.show({
-		template:'<img src="img/cowicon.png"></img><br/><ion-spinner icon="dots" class="spinner-dark"></ion-spinner>',
-	    duration: 2000,
-	    noBackdrop: true
-	});
+	// Make actions when the view be loaded
+	$scope.$on('$ionicView.loaded', function (viewInfo, state) {
+
+		// setup the loader and show spinner
+		$ionicLoading.show({
+			template:'<img src="img/cowicon.png"></img><br/><ion-spinner icon="dots" class="spinner-dark"></ion-spinner>',
+			noBackdrop: true
+		});
+    });
+	
+	// Make actions when the view be loaded
+	$scope.$on('$ionicView.enter', function (viewInfo, state) {
+
+		// Access to the event calling service using the code 
+		API.getArticleByCode($stateParams.codigo).success( function (data){
+			
+			// pass to events binding and hidden loading
+			$scope.article = data;
+			$ionicLoading.hide();
+		});
+    });	
 })
 
 
