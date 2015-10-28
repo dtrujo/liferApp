@@ -1,0 +1,25 @@
+<ion-view view-title="Resultado búsqueda" class="articlesBar">
+	<ion-content class="backgroundWhite">
+		<ion-list show-delete="false" can-swipe="true">
+			<ion-item ng-repeat="article in articles" ng-click="articleDetails($index)">
+				<div class="shopItem">
+					<div class="offerImage">
+						<img src="http://83.36.56.136/Fotos/{{article.Foto}}">
+						<div class="clear"></div>
+					</div>
+					<div class="shopInfoItem">
+						<h3>{{article.Nombre}}</h3>
+						<p>{{article.Familia}}</p>
+						<p class='small'><strong>Referencia:</strong> {{article.Codigo}}</p>
+					</div>
+					<div class="shopValueItem">		 
+						<img src="img/nexticon.png">	    				
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="separator"></div>
+			</ion-item>
+			<ion-infinite-scroll spinner="dots" on-infinite="loadMore()" immediate-check="false" distance="10%"></ion-infinite-scroll>
+		</ion-list>	
+  	</ion-content>
+</ion-view>

@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget id="com.ionicframework.liferapp121000" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>liferApp</name>
-  <description>
-        Linkios Team APP.
-    </description>
-  <author email="dtrujo@gmail.com" href="http://www.linkios.com/">
-      Linkios Team
-    </author>
+  <description> Linkios Team APP</description>
+  <author email="dtrujo@gmail.com" href="http://www.linkios.com/">Linkios Team</author>
   <content src="index.html"/>
   <access origin="tel:*" launch-external="yes"/>
   <access origin="mailto:*" launch-external="yes"/>

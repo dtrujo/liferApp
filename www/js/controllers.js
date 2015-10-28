@@ -1,48 +1,111 @@
 angular.module('liferapp.controllers', [])
 
 
+
 /**
- * Content Controller
+ * _Dashboard Controller
  */
-.controller('ContentController', function($scope, $state){
-})
+
 
 
 /**
  * Dashboard Controller
  */
-.controller('DashboardController', function($ionicHistory, $scope, $state, $ionicViewSwitcher, $ionicSideMenuDelegate){
+.controller('DashboardController', function($timeout, $ionicHistory, $scope, $state, $ionicViewSwitcher, $ionicSideMenuDelegate){
 
+	// inizializate object
+	$scope.property = {};
+
+	// Reset animation before loaded view each time
+	$scope.$on('$ionicView.loaded', function (viewInfo, state) {
+		$scope.property.animatedEvent = "";	
+    });
+	
 	// go to events
 	$scope.events = function(){
-		$state.go('eventmenu.events');
+		
+		// add class
+		$scope.property.animatedEvent = "rubberBand";
+		
+		// wait 2 sec to change state go to events view
+		$timeout(function(){
+			$scope.property.animatedEvent = "";	
+			$state.go('eventmenu.events');
+		}, 1000);   
 	};
 
 	// go to news
 	$scope.news = function(){
-		$state.go('eventmenu.news');
+		
+		// add class
+		$scope.property.animatedNew = "rubberBand";
+		
+		// wait 2 sec to change state go to new view
+		$timeout(function(){
+			$scope.property.animatedNew = "";	
+			$state.go('eventmenu.news');
+		}, 1500); 
 	};
 
 	// go to offers
 	$scope.offers = function(){
-		$state.go('eventmenu.offers');
+		
+		// add class
+		$scope.property.animatedOffer = "rubberBand";
+		
+		// wait 2 sec to change state go to offer view
+		$timeout(function(){
+			$scope.property.animatedOffer = "";	
+			$state.go('eventmenu.offers');
+		}, 1000); 
 	};
 
 	// go to clients
 	$scope.clients = function(){
-		$state.go('eventmenu.clients');
+		
+		// add class
+		$scope.property.animatedClient = "rubberBand";
+		
+		// wait 2 sec to change state go to client view
+		$timeout(function(){
+			$scope.property.animatedClient = "";	
+			$state.go('eventmenu.clients');
+		}, 1000); 
 	};
 
 	// go to articles
 	$scope.articles = function(){
-		$state.go('eventmenu.articles');
+		
+		// add class
+		$scope.property.animatedArticle = "rubberBand";
+		
+		// wait 2 sec to change state go to article view
+		$timeout(function(){
+			$scope.property.animatedArticle = "";	
+			$state.go('eventmenu.articles');
+		}, 1000);
 	};
 
 	// go to shops
 	$scope.shops = function(){
-		$state.go('eventmenu.shops');
+		
+		// add class
+		$scope.property.animatedShop = "rubberBand";
+		
+		// wait 2 sec to change state go to shop view
+		$timeout(function(){
+			$scope.property.animatedShop = "";	
+			$state.go('eventmenu.shops');
+		}, 1000);
 	};
 })
+
+
+
+/**
+ * _Events Controller
+ */
+
 
 
 /**
@@ -91,7 +154,7 @@ angular.module('liferapp.controllers', [])
 
 		// setup the loader and show spinner
 		$ionicLoading.show({
-			template:'<img src="img/cowicon.png"></img><br/><ion-spinner icon="dots" class="spinner-dark"></ion-spinner>',
+			template:'<img src="img/lifericon.png"></img><br/><ion-spinner icon="dots" class="spinner-dark"></ion-spinner>',
 			noBackdrop: true
 		});
     });
@@ -125,7 +188,7 @@ angular.module('liferapp.controllers', [])
 
 		// setup the loader and show spinner
 		$ionicLoading.show({
-			template:'<img src="img/cowicon.png"></img><br/><ion-spinner icon="dots" class="spinner-dark"></ion-spinner>',
+			template:'<img src="img/lifericon.png"></img><br/><ion-spinner icon="dots" class="spinner-dark"></ion-spinner>',
 			noBackdrop: true
 		});
     });
@@ -143,10 +206,7 @@ angular.module('liferapp.controllers', [])
   		// $scope.$apply is needed to trigger the digest cycle 
   		// when the geolocation arrives and to update all the watchers
     	$scope.$apply(function() {
-	   
-	    	//$scope.myLocation.lng = position.coords.longitude;
-	      	//$scope.myLocation.lat = position.coords.latitude;
-	 
+
 	 		// map
 	      	$scope.map = {
 	        	center: {
@@ -187,6 +247,13 @@ angular.module('liferapp.controllers', [])
    		navigator.geolocation.getCurrentPosition($scope.drawMap);
     });
 })
+
+
+
+/**
+ * _Offers Controller
+ */
+
 
 
 /**
@@ -240,6 +307,13 @@ angular.module('liferapp.controllers', [])
 	    noBackdrop: true
 	});
 })
+
+
+
+/**
+ * _News Controller
+ */
+
 
 
 /**
@@ -320,6 +394,13 @@ angular.module('liferapp.controllers', [])
 })
 
 
+
+/**
+ * _Articles
+ */
+
+
+
 /**
  * Articles Controller
  */
@@ -330,7 +411,7 @@ angular.module('liferapp.controllers', [])
 
 		// setup the loader and show spinner
 		$ionicLoading.show({
-			template:'<img src="img/cowicon.png"></img><br/><ion-spinner icon="dots" class="spinner-dark"></ion-spinner>',
+			template:'<img src="img/chickenicon.png"></img><br/><ion-spinner icon="dots" class="spinner-dark"></ion-spinner>',
 			noBackdrop: true
 		});
     });
@@ -343,10 +424,20 @@ angular.module('liferapp.controllers', [])
 			animation: 'popIn'
     	}
     ); 
+	
+	// hide modal and change the view going to search filter view
+  	$scope.filterArticles = function(index) {
+		$scope.modal.hide();
+  	};
 
 	// show article filter
 	$scope.articlesFilter = function(){
 		$scope.modal.show();
+	}
+
+	// article search view
+	$scope.articlesSearch = function(){
+		$state.go('eventmenu.articlesSearch');
 	}
 
 	// go to articlesTop's details
@@ -378,6 +469,134 @@ angular.module('liferapp.controllers', [])
 
 
 /**
+ * Article Search Controller
+ */
+.controller('ArticlesSearchController', function($scope, $state, $ionicLoading, $stateParams, API){
+	
+	$scope.filter = {};
+	
+	// Make actions when the view be loaded
+	// we can add families in this point
+	$scope.$on('$ionicView.loaded', function (viewInfo, state) {
+	
+			// Get all families calling service
+			API.getFamilies().success( function (data){
+	
+				// pass to articles binding adn hiden loading
+				$scope.families = data;
+			});	
+    });	
+	
+	// search function using input values
+	$scope.searchArticle = function (){
+		
+		// check if there is reference value
+		if (this.reference)
+		{
+			// if we have a reference we can redirect automatically to details view
+			// here we can check if the articles exit or not and show screen if it isnt
+			$state.go('eventmenu.articleDetails', {"codigo" : this.reference});
+		}
+		else{
+			
+			// check if the family and age are undefined
+			var key = ($scope.filter.key) ? $scope.filter.key : '';
+			var fam = ($scope.filter.family) ? $scope.filter.family : '';
+			var age = ($scope.filter.age) ? $scope.filter.age : '';
+			var pmin = ($scope.filter.minPrice) ? $scope.filter.minPrice : '';
+			var pmax = ($scope.filter.maxPrice) ? $scope.filter.maxPrice : '';
+			
+			// if we havent reference, we need to find using the diferent types of filter
+			// we redirect to list view to result view
+			var filter = "key=" + key + 
+						 "&fam=" + fam +  
+						 "&edad=" + age +  
+						 "&pmin=" +  pmin + 
+						 "&pmax=" +  pmax;
+			
+			console.log(filter);
+			
+			// go to search result
+			$state.go('eventmenu.articlesSearchResult', {"filtro" : filter});
+		}
+	}
+})
+
+
+/**
+ * Articles Search Result Controller
+ */
+.controller('ArticlesSearchResultController', function(
+	$scope, $ionicScrollDelegate, $stateParams, $state, $http, API, $ionicLoading, $ionicModal){
+	
+	var init, filter;
+
+	// initialize the articles list
+	$scope.articles = [];
+	
+	// Make actions when the view be loaded
+	$scope.$on('$ionicView.loaded', function (viewInfo, state) {
+
+		// setup the loader and show spinner
+		$ionicLoading.show({
+			template:'<img src="img/chickenicon.png"></img><br/><ion-spinner icon="dots" class="spinner-dark"></ion-spinner>',
+			noBackdrop: true
+		});
+    });
+	
+	// Make actions when the view be loaded
+	$scope.$on('$ionicView.enter', function (viewInfo, state) {
+		
+		// control if there are articles for not reload the list
+		if ($scope.articles.length == 0)
+		{
+			init = 0;
+			filter = $stateParams.filtro + "&init=" + init + "&count=9";
+			
+			// Access to the articles calling service
+			API.getArticlesByFilter(filter).success( function (data){
+	
+				// pass to articles binding adn hiden loading
+				$scope.articles = data;
+				$ionicLoading.hide();
+				
+				// update new init to take articles
+				init += 10;
+			});
+		}
+    });	
+	
+ 	// load more articles while we can do it
+	$scope.loadMore = function() {
+
+		// refresh the filter to take actual init value
+		filter = $stateParams.filtro + "&init=" + init + "&count=10";
+		
+		// Access to the articles calling service 
+		API.getArticlesByFilter(filter).success( function (data){
+			
+			// add articles in to array
+			data.forEach(function(element) {
+				$scope.articles.push(element);
+			}, this);
+			
+			// update new init to take articles
+			init += 11;
+			
+			// stop scroll
+			$scope.$broadcast('scroll.infiniteScrollComplete');
+		});
+	};
+
+	// go to articles's details
+	$scope.articleDetails = function(index){
+		var article = $scope.articles[index];
+		$state.go('eventmenu.articleDetails', {"codigo" : article.Codigo});
+	};
+})
+
+
+/**
  * Article details Controller
  */
 .controller('ArticleDetailsController', function($scope, $state, $ionicLoading, $stateParams, API){
@@ -387,7 +606,7 @@ angular.module('liferapp.controllers', [])
 
 		// setup the loader and show spinner
 		$ionicLoading.show({
-			template:'<img src="img/cowicon.png"></img><br/><ion-spinner icon="dots" class="spinner-dark"></ion-spinner>',
+			template:'<img src="img/chickenicon.png"></img><br/><ion-spinner icon="dots" class="spinner-dark"></ion-spinner>',
 			noBackdrop: true
 		});
     });
@@ -406,6 +625,13 @@ angular.module('liferapp.controllers', [])
 })
 
 
+
+/**
+ * _Shops Controller
+ */
+
+
+
 /**
  * Shops Controller
  */
@@ -416,7 +642,7 @@ angular.module('liferapp.controllers', [])
 		
 		// setup the loader and show spinner
 		$ionicLoading.show({
-			template:'<img src="img/cowicon.png"></img><br/><ion-spinner icon="dots" class="spinner-dark"></ion-spinner>',
+			template:'<img src="img/pinkicon.png"></img><br/><ion-spinner icon="dots" class="spinner-dark"></ion-spinner>',
 			noBackdrop: true
 		});
     });
@@ -465,7 +691,7 @@ angular.module('liferapp.controllers', [])
 
 		// setup the loader and show spinner
 		$ionicLoading.show({
-			template:'<img src="img/cowicon.png"></img><br/><ion-spinner icon="dots" class="spinner-dark"></ion-spinner>',
+			template:'<img src="img/pinkicon.png"></img><br/><ion-spinner icon="dots" class="spinner-dark"></ion-spinner>',
 			noBackdrop: true
 		});
     });
@@ -504,7 +730,7 @@ angular.module('liferapp.controllers', [])
 
 		// setup the loader and show spinner
 		$ionicLoading.show({
-			template:'<img src="img/cowicon.png"></img><br/><ion-spinner icon="dots" class="spinner-dark"></ion-spinner>',
+			template:'<img src="img/pinkicon.png"></img><br/><ion-spinner icon="dots" class="spinner-dark"></ion-spinner>',
 			noBackdrop: true
 		});
     });
@@ -565,9 +791,32 @@ angular.module('liferapp.controllers', [])
 })
 
 
+
+/**
+ * _Clients Controller
+ */
+
+
+
 /**
  * Clients Controller
  */
 .controller('ClientsController', function($scope, $state){
 	
 })
+
+
+
+/**
+ * _Content Controller
+ */
+
+
+
+/**
+ * Content Controller
+ */
+.controller('ContentController', function($scope, $state){
+	
+})
+

@@ -30,11 +30,23 @@ angular.module('liferapp.services', [])
 					method: 'GET'
 				})	
 			},
+			getFamilies: function() {
+				return $http({
+					url: urlBase + '/familias',
+					method: 'GET'
+				})
+			},			
 			getArticles: function() {
 				return $http({
 					url: urlBase + '/articulos?topventas=20',
 					method: 'GET'
 				})
+			},
+			getArticlesByFilter : function(Filter) {
+				return $http({
+					url: urlBase + '/articulos?' + Filter,
+					method: 'GET'
+				})	
 			},
 			getArticleByCode : function(Codigo) {
 				return $http({

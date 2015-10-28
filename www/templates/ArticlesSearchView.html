@@ -1,0 +1,46 @@
+<ion-view view-title="Buscador de artículos" class="articlesBar">
+	<ion-content class="backgroundWhite">
+		<div class="list referenceList">
+			<label class="item item-input">
+				<span class="input-label">Rereferencia</span>
+				<input type="text" placeholder="Referencia artículo" ng-model="reference">
+			</label>
+		</div>
+		<div class="list articleList">
+			<label class="item item-input">
+				<span class="input-label">Artículo</span>
+				<input type="text" placeholder="Palabra mágica" ng-model="filter.key">
+			</label>
+			<label class="item item-input item-select">
+				<div class="input-label">Familia</div>
+				<select ng-model="filter.family">
+					<option value="" selected="true">Todas</option>
+					<option 
+						ng-repeat="family in families" 
+						value="{{family.Codigo}}" >
+						{{family.Descripcion}}
+					</option>
+				</select>
+			</label>
+			<label class="item item-input item-select">
+				<div class="input-label">Edad</div>
+				<select ng-model="filter.age">
+					<option value="" selected="true">Todas</option>
+					<option value="0-3">De 0 años a 3 años</option>
+					<option value="4-6">De 4 años a 6 años</option>
+					<option value=">7">Más de 7 años</option>
+				</select>
+			</label>
+			<label class="item item-input">
+				<span class="input-label">P. Min</span>
+				<input type="text" placeholder="Precio mínimo" ng-model="filter.minPrice">
+			</label>
+			<label class="item item-input">
+				<span class="input-label">P. Max</span>
+				<input type="text" placeholder="Precio maximo" ng-model="filter.maxPrice">
+			</label>
+		</div>
+		
+		<button class="button buttonSearch" ng-click="searchArticle()" />
+  	</ion-content>
+</ion-view>

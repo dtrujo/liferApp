@@ -7,32 +7,49 @@
 	<ion-nav-buttons side="right">
 		<button class="button button-icon button-clear settingIcon"></button>
 	</ion-nav-buttons>
-	<ion-content>
+	<ion-content scroll="false">
 		<div class="contentImage">
 			<div class="whiteSeparator"></div>
-			<img src="img/imageDashboard.png" />
-			<div class="slogan">
-				<h2>EDUCAMOS JUGANDO</h2>
-				<h3>Aprendemos juntos</h2>
-			</div>
+			<ion-slide-box auto-play="true" does-continue="true" slide-interval="5000">
+				<ion-slide>
+					<img src="img/imageDashboard1.jpg" />
+					<div class="slogan">
+						<h2>EDUCAMOS JUGANDO</h2>
+						<h3>Aprendemos juntos</h2>
+					</div>
+				</ion-slide>
+				<ion-slide>
+					<img src="img/imageDashboard2.jpg" />
+					<div class="slogan">
+						<h2>EL FUTURO</h2>
+						<h3>está en sus manos</h2>
+					</div>
+				</ion-slide>
+			</ion-slide-box>
 		</div>
 		<div class="contentOptions">
-			<div class="options eventsOptions" ng-click="events()">			
+			<div class="options eventsOptions" ng-click="events()">
+				<img src="img/iconevent.png" class="animated infinite {{property.animatedEvent}}" />			
 				<h4>EVENTOS</h4>
 			</div>
-			<div class="options offersOptions" ng-click="offers()">			
+			<div class="options offersOptions" ng-click="offers()">	
+				<img src="img/iconoffer.png" class="animated infinite {{property.animatedOffer}}" />		
 				<h4>OFERTAS</h4>
 			</div>
-			<div class="options newsOptions" ng-click="news()">			
+			<div class="options newsOptions" ng-click="news()">	
+				<img src="img/iconnew.png" class="animated infinite {{property.animatedNew}}" />		
 				<h4>NOTICIAS</h4>
 			</div>
-			<div class="options articleOptions" ng-click="articles()">		
+			<div class="options articleOptions" ng-click="articles()">
+				<img src="img/iconarticle.png" class="animated infinite {{property.animatedArticle}}" />		
 				<h4>ARTÍCULOS</h4>
 			</div>
 			<div class="options clientsOptions" ng-click="clients()">
+				<img src="img/iconclient.png" class="animated infinite {{property.animatedClient}}" />
 				<h4>CLIENTES</h4>
 			</div>
-			<div class="options shopsOptions" ng-click="shops()">				
+			<div class="options shopsOptions" ng-click="shops()">	
+				<img src="img/iconshop.png" class="animated infinite {{property.animatedShop}}" />			
 				<h4>TIENDAS</h4>
 			</div>
 		</div>

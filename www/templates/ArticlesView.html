@@ -5,7 +5,7 @@
 		</button>
   	</ion-nav-buttons>
 	<ion-nav-buttons side="right">
-		<button class="button button-icon button-clear searchIcon backButton"></button>
+		<button class="button button-icon button-clear searchIcon backButton" ng-click="articlesSearch()"></button>
 		<button class="button button-icon button-clear filterIcon backButton" ng-click="articlesFilter()"></button>
 	</ion-nav-buttons>
 	
@@ -19,7 +19,7 @@
 					  	<ion-item ng-repeat="articleTop in articlesTop" ng-click="articleTopDetails($index)">
 					    	<div class="shopItem">
 					    		<div class="offerImage">
-					    			<img src="http://83.36.56.136/Fotos/{{articleTop.Codigo}}.jpg">
+					    			<img src="http://83.36.56.136/Fotos/{{articleTop.Foto}}">
 					    			<div class="clear"></div>
 					    		</div>
 					    		<div class="shopInfoItem">

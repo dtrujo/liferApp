@@ -3,9 +3,8 @@ angular.module('liferapp', ['ionic', 'liferapp.controllers', 'uiGmapgoogle-maps'
 
 // Run
 .run(function($ionicPlatform) {
-  $ionicPlatform.ready(function() {
-    // ionic is loaded
-  });
+    $ionicPlatform.ready(function() {
+    });
 })
 
 // Config
@@ -130,6 +129,28 @@ angular.module('liferapp', ['ionic', 'liferapp.controllers', 'uiGmapgoogle-maps'
         'menuContent' :{
           templateUrl: "templates/ArticleDetailsView.html",
           controller: "ArticleDetailsController"
+        }
+      }
+    }) 
+   
+    // Create state to articles search result view
+    .state('eventmenu.articlesSearchResult', {
+      url: "/articlesSearchResult/:filtro",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/ArticlesSearchResultView.html",
+          controller: "ArticlesSearchResultController"
+        }
+      }
+    })
+    
+    // Create state to article search view
+    .state('eventmenu.articlesSearch', {
+      url: "/articlesSearch",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/ArticlesSearchView.html",
+          controller: "ArticlesSearchController"
         }
       }
     }) 
