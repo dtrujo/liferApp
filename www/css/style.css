@@ -18,7 +18,7 @@
 
 .spinner svg                { width: 45px !important; margin-left: 0px !important; height: 44px !important;}
 .loading img                { width: 40%;}
-.loading-container          { background-color: rgba(255, 255, 255, 0.9) !important; margin-top: 44px !important;}
+.loading-container          { background-color: rgba(255, 255, 255, 0.9) !important;}
 .loading-container .loading { padding: 0px !important;  border-radius: none !important; background-color: transparent !important; color: transparent !important; }
 ::-webkit-input-placeholder { color: white !important; }
 .backButton                 { color: white !important; }

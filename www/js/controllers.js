@@ -42,9 +42,9 @@ angular.module('liferapp.controllers', [])
 		
 		// wait 2 sec to change state go to new view
 		$timeout(function(){
-			$scope.property.animatedNew = "";	
+			$scope.property.animatedNew = "";
 			$state.go('eventmenu.news');
-		}, 1500); 
+		}, 1500);
 	};
 
 	// go to offers
@@ -55,9 +55,9 @@ angular.module('liferapp.controllers', [])
 		
 		// wait 2 sec to change state go to offer view
 		$timeout(function(){
-			$scope.property.animatedOffer = "";	
+			$scope.property.animatedOffer = "";
 			$state.go('eventmenu.offers');
-		}, 1000); 
+		}, 1000);
 	};
 
 	// go to clients
@@ -68,9 +68,9 @@ angular.module('liferapp.controllers', [])
 		
 		// wait 2 sec to change state go to client view
 		$timeout(function(){
-			$scope.property.animatedClient = "";	
+			$scope.property.animatedClient = "";
 			$state.go('eventmenu.clients');
-		}, 1000); 
+		}, 1000);
 	};
 
 	// go to articles
@@ -94,7 +94,7 @@ angular.module('liferapp.controllers', [])
 		
 		// wait 2 sec to change state go to shop view
 		$timeout(function(){
-			$scope.property.animatedShop = "";	
+			$scope.property.animatedShop = "";
 			$state.go('eventmenu.shops');
 		}, 1000);
 	};
@@ -160,7 +160,7 @@ angular.module('liferapp.controllers', [])
     });
 	
 	// Make actions when the view be loaded
-	$scope.$on('$ionicView.enter', function (viewInfo, state) {
+	$scope.$on('$ionicView.enter', function (viewInfo, state) {		
 				
 		// Access to the event calling service using the code 
 		API.getEventById($stateParams.id).success( function (data){
@@ -261,13 +261,18 @@ angular.module('liferapp.controllers', [])
  */
 .controller('OffersController', function($scope, $state, $ionicLoading){
 
-    // setup the loader and show spinner
-	$ionicLoading.show({
-		template:'<img src="img/cowicon.png"></img><br/><ion-spinner icon="dots" class="spinner-dark"></ion-spinner>',
-	    duration: 2000,
-	    noBackdrop: true
-	});
-
+	// Make actions when the view be loaded
+	$scope.$on('$ionicView.loaded', function (viewInfo, state) {
+		
+		// setup the loader and show spinner
+		$ionicLoading.show({
+			template:'<img src="img/cowicon.png"></img><br/><ion-spinner icon="dots" class="spinner-dark"></ion-spinner>',
+			duration: 2000,
+			noBackdrop: true
+		});
+	
+    });
+	
 	// go to offers's details
 	$scope.offerDetails = function(){
 		$state.go('eventmenu.offerDetails');
@@ -410,6 +415,7 @@ angular.module('liferapp.controllers', [])
 	$scope.$on('$ionicView.loaded', function (viewInfo, state) {
 
 		// setup the loader and show spinner
+		// remove
 		$ionicLoading.show({
 			template:'<img src="img/chickenicon.png"></img><br/><ion-spinner icon="dots" class="spinner-dark"></ion-spinner>',
 			noBackdrop: true
@@ -454,14 +460,14 @@ angular.module('liferapp.controllers', [])
 	
 	// Make actions when the view be loaded
 	$scope.$on('$ionicView.enter', function (viewInfo, state) {
-				
+		
 		// Access to the articles calling service 
 		API.getArticles().success( function (data){
 
 			// pass to events binding adn hiden loading
 			$scope.articlesTop = data;
 			$scope.articlesOutlet = data;
-	
+			
 			$ionicLoading.hide();
 		});
     });	
@@ -479,12 +485,12 @@ angular.module('liferapp.controllers', [])
 	// we can add families in this point
 	$scope.$on('$ionicView.loaded', function (viewInfo, state) {
 	
-			// Get all families calling service
-			API.getFamilies().success( function (data){
-	
-				// pass to articles binding adn hiden loading
-				$scope.families = data;
-			});	
+		// Get all families calling service
+		API.getFamilies().success( function (data){
+
+			// pass to articles binding adn hiden loading
+			$scope.families = data;
+		});	
     });	
 	
 	// search function using input values
@@ -513,8 +519,6 @@ angular.module('liferapp.controllers', [])
 						 "&edad=" + age +  
 						 "&pmin=" +  pmin + 
 						 "&pmax=" +  pmax;
-			
-			console.log(filter);
 			
 			// go to search result
 			$state.go('eventmenu.articlesSearchResult', {"filtro" : filter});
@@ -552,7 +556,7 @@ angular.module('liferapp.controllers', [])
 		{
 			init = 0;
 			filter = $stateParams.filtro + "&init=" + init + "&count=9";
-			
+
 			// Access to the articles calling service
 			API.getArticlesByFilter(filter).success( function (data){
 	
@@ -614,6 +618,8 @@ angular.module('liferapp.controllers', [])
 	// Make actions when the view be loaded
 	$scope.$on('$ionicView.enter', function (viewInfo, state) {
 
+		$scope.article = {"Id":0,"Nombre":"ESQUELETO DE DINOSAURIO,TIRANOSAURIO-REX","Codigo":"010002242","Familia":"MAQUETAS","Marca":"","Descripcion":null,"EdadMin":null,"EdadMax":null,"Cantidad":0.0,"Precio":0.0,"Foto":"010002242.JPG"};
+		
 		// Access to the event calling service using the code 
 		API.getArticleByCode($stateParams.codigo).success( function (data){
 			

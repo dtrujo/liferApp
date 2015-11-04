@@ -4,10 +4,13 @@
 			<i class="icon ion-navicon"></i>
 		</button>
   	</ion-nav-buttons>
-	<ion-nav-buttons side="right">
+	  
+	<!-- Add right button to filter for now disable -->	  
+	<!--<ion-nav-buttons side="right">
 		<button class="button button-icon button-clear orderIcon"></button>
-	</ion-nav-buttons>
-	<ion-content>
+	</ion-nav-buttons>-->
+	
+	<ion-content class="backgroundWhite">
 		<!-- List of events -->
 		<ion-list show-delete="false" can-swipe="true">
 	        <ion-item ng-repeat="event in events" ng-click="eventDetails($index)">

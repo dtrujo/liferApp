@@ -1,15 +1,20 @@
 // Ionic liferapp
-angular.module('liferapp', ['ionic', 'liferapp.controllers', 'uiGmapgoogle-maps', 'liferapp.services'])
+angular.module('liferapp', ['ionic', 'liferapp.controllers', 'uiGmapgoogle-maps', 'liferapp.services', 'ngIOS9UIWebViewPatch'])
 
 // Run
 .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
+
     });
 })
 
 // Config
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) { 
 
+    // change the previous text if you dont show the title back button
+    $ionicConfigProvider.backButton.previousTitleText(false);
+    $ionicConfigProvider.backButton.text('');
+  
     // disable animation between pages
     $ionicConfigProvider.views.transition('platform');
 
