@@ -1,0 +1,29 @@
+<ion-view view-title="Recuperar contraseña" class="clientsBar">
+	<ion-content class="backgroundWhite">
+        <form name="recoveryPasswordForm" novalidate="" ng-click="recoveryPassword(recoveryPasswordForm)">
+            <div class="list articleList">
+                <p class='pTitle'>Datos del Cliente</p>	 
+                 <p class="informationFieldsRecovery ">Introduzca la dirección de correo que vinculó a su cuenta de cliente para poder enviarle la información con sus datos de acceso.</p>
+                <label class="item item-input">
+                    <span class="input-label"
+                            ng-class="{'span-has-errors':recoveryPasswordForm.email.$invalid 
+                                        && recoveryPasswordForm.$submitted }">Email
+                    </span>
+                    <input type="text" placeholder="email" name="email" 
+                            ng-model="personalDetails.email" required>
+                    <div class="requiredAlert" 
+                            ng-class="{'has-errors-i':recoveryPasswordForm.email.$invalid 
+                                        && recoveryPasswordForm.$submitted }" >
+                        <i class="ion-alert"></i>	
+                    </div>
+                </label>
+                <p class="informationFields"><i class="ion-information"></i>Todos los campos son obligatorios</p>
+                <p class='messageError' ng-class="{'showError' : showError }">¡No hemos encontrado un cliente con ese correo!</p>
+            </div>
+            <button class="button buttonPass" type="submit">
+                <i class="ion-checkmark-round"></i>
+            </button>
+        </form>
+    </ion-content>
+</ion-view>
+        

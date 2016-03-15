@@ -2,10 +2,16 @@ angular.module('liferapp.services', [])
 	.factory('API', function($http) {
 
 		// API directions 
-		var urlBase = 'http://83.36.56.136/webapilinkios/api';
+		var urlBase = 'http://213.97.238.120/webapilinkios/api';
 
 		// return diferent methods
 		return{
+            getLocations : function(idProvincia) {
+				return $http({
+					url: urlBase + '/clientes?CodProvince=' + idProvincia,
+					method: 'GET'
+				})	
+			},
 			getEvents : function() {
 				return $http({
 					url: urlBase + '/eventos',
@@ -36,9 +42,9 @@ angular.module('liferapp.services', [])
 					method: 'GET'
 				})
 			},			
-			getArticles: function() {
+			getArticles: function(ArticleType) {
 				return $http({
-					url: urlBase + '/articulos?topventas=20',
+					url: urlBase + '/articulos?ArticleType=' + ArticleType,
 					method: 'GET'
 				})
 			},
@@ -65,6 +71,57 @@ angular.module('liferapp.services', [])
 					url: urlBase + '/tiendas?Id=' + Id,
 					method: 'GET'
 				})
-			} 
+			},
+			addClient: function(client) {
+				return $http({
+					url: urlBase + '/clientes',
+					method: 'POST',
+					data: client
+				})
+			},
+            recoveryPass: function(email) {
+				return $http({
+					url: urlBase + '/clientes?UserEmail=' + email,
+					method: 'POST',
+                    data: { UserEmail: email }
+				})
+			},
+            changePass: function(user, password) {
+				return $http({
+					url: urlBase + '/clientes?UserPass=' + user + '&DatPassWord=' + password,
+					method: 'POST',
+                    data: { UserPass: user, DatPassWord: password }
+				})
+			},
+			getClientByUser: function(user) {
+				return $http({
+					url: urlBase + '/clientes?User=' + user,
+					method: 'GET'
+				})
+			},
+			getClientLogin: function(user, password) {
+				return $http({
+					url: urlBase + '/clientes?User=' + user + '&PassWord=' + password,
+					method: 'GET'
+				})
+			},  
+			getClientPurchase: function(code) {
+				return $http({
+					url: urlBase + '/compras?Codigo=' + code,
+					method: 'GET'
+				})
+			},
+			getClientPurchaseDetails: function(doc) {
+				return $http({
+					url: urlBase + '/compras?NumeroDocumento=' + doc,
+					method: 'GET'
+				})
+			},
+			getClientPoints: function(code) {
+				return $http({
+					url: urlBase + '/compras?CodigoUsuario=' + code,
+					method: 'GET'
+				})
+			}    
 		}
 });

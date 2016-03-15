@@ -11,13 +11,26 @@ angular.module('liferapp', ['ionic', 'liferapp.controllers', 'uiGmapgoogle-maps'
 // Config
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) { 
 
-    // change the previous text if you dont show the title back button
+    
+    // GENERAL CONFIG PARAMS  
+  
+    
+    // disable title text in the back button
     $ionicConfigProvider.backButton.previousTitleText(false);
+    
+    // change the previous text if you dont show the title back button
     $ionicConfigProvider.backButton.text('');
   
     // disable animation between pages
     $ionicConfigProvider.views.transition('platform');
+    
+    // Forward cache when navigate not recreate state
+    $ionicConfigProvider.views.forwardCache(true)
+    
 
+    //  NAVIGATIONS TO STATES 
+ 
+    
     // navigation
     $stateProvider
 
@@ -25,7 +38,8 @@ angular.module('liferapp', ['ionic', 'liferapp.controllers', 'uiGmapgoogle-maps'
     .state('eventmenu', {
       url: "/event",
       abstract: true,
-      templateUrl: "templates/MenuView.html"
+      templateUrl: "templates/MenuView.html",
+      controller: "MenuController"
     })
 
     // Parent menu call dashboard view
@@ -160,13 +174,157 @@ angular.module('liferapp', ['ionic', 'liferapp.controllers', 'uiGmapgoogle-maps'
       }
     }) 
 
-    // Create state to clients view
-    .state('eventmenu.clients', {
-      url: "/clients",
+    // Create state to login view
+    .state('eventmenu.login', {
+      cache: false,
+      url: "/login",
       views: {
         'menuContent' :{
-          templateUrl: "templates/ClientsView.html",
-          controller: "ClientsController"
+          templateUrl: "templates/ClientLoginView.html",
+          controller: "ClientLoginController"
+        }
+      }
+    }) 
+    
+    // Create state to client view
+    .state('eventmenu.client', {
+      url: "/client/:user",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/ClientView.html",
+          controller: "ClientController"
+        }
+      }
+    }) 
+    
+    // Create state to client settigns view
+    .state('eventmenu.settings', {
+      url: "/client/:user",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/ClientSettingsView.html",
+          controller: "ClientSettingsController"
+        }
+      }
+    }) 
+    
+    // Create state to client successfully view
+    .state('eventmenu.successfully', {
+      url: "/successfully/:user",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/ClientSuccessfullyView.html",
+          controller: "ClientSuccessfullyController"
+        }
+      }
+    }) 
+    
+    // Create state to client successfully recovery view
+    .state('eventmenu.successfullyRecovery', {
+      url: "/successfullyRecovery",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/ClientSuccessfullyRecoveryView.html",
+          controller: "ClientSuccessfullyRecoveryController"
+        }
+      }
+    }) 
+    
+   // Create state to client successfully change password view
+    .state('eventmenu.successfullyChangePass', {
+      url: "/successfullyChangePass",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/ClientSuccessfullyChangePassView.html",
+          controller: "ClientSuccessfullyChangePassController"
+        }
+      }
+    }) 
+    
+    // Create state to client recovery view
+    .state('eventmenu.recovery', {
+      url: "/recovery",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/ClientRecoveryView.html",
+          controller: "ClientRecoveryController"
+        }
+      }
+    }) 
+    
+    // Create state to barcode view
+    .state('eventmenu.barcode', {
+      url: "/barcode/:user",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/ClientBarCodeView.html",
+          controller: "ClientBarCodeController"
+        }
+      }
+    }) 
+    
+    // Create state to purchases view
+    .state('eventmenu.purchases', {
+      url: "/purchases/:code",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/ClientPurchasesView.html",
+          controller: "ClientPurchasesController"
+        }
+      }
+    }) 
+    
+    // Create state to purchase details view
+    .state('eventmenu.purchaseDetails', {
+      url: "/purchaseDetails/:purchase",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/ClientPurchaseDetailsView.html",
+          controller: "PurchaseDetailsController"
+        }
+      }
+    })
+    
+    // Create state to article purchase details view
+    .state('eventmenu.purchaseArticleDetails', {
+      url: "/purchaseArticleDetails/:article",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/ClientPurchaseArticleDetailsView.html",
+          controller: "PurchaseArticleDetailsController"
+        }
+      }
+    })
+    
+    // Create state to points view
+    .state('eventmenu.points', {
+      url: "/points/:code",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/ClientPointsView.html",
+          controller: "ClientPointsController"
+        }
+      }
+    }) 
+    
+    // Create state to messages view
+    .state('eventmenu.messages', {
+      url: "/messages",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/ClientMessagesView.html",
+          controller: "ClientMessagesController"
+        }
+      }
+    }) 
+    
+    // Create state to clients register view
+    .state('eventmenu.clientRegister', {
+      url: "/clientRegister",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/ClientRegisterView.html",
+          controller: "ClientRegisterController"
         }
       }
     }) 
@@ -200,6 +358,16 @@ angular.module('liferapp', ['ionic', 'liferapp.controllers', 'uiGmapgoogle-maps'
         'menuContent' :{
           templateUrl: "templates/ShopMapView.html",
           controller: "ShopMapController"
+        }
+      }
+    })
+    
+    // Create state to error view
+    .state('eventmenu.error', {
+      url: "/error",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/ErrorView.html"
         }
       }
     });

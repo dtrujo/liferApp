@@ -1,26 +1,26 @@
-<ion-view view-title="Detalles de la Tienda" class="shopsBar">
+<ion-view view-title="Tienda" class="shopsBar">
 	<ion-nav-buttons side="right">
-		<button class="button button-icon button-clear mapIcon backButton" ng-click="shopMap()"></button>
-		<button class="button button-icon button-clear ion-ios-telephone-outline backButton" ng-click="call()"></button>
+		<button class="button button-icon button-clear" ng-click="shopMap()"><i class="barIcon ion-android-pin"></i></button>
+		<button class="button button-icon button-clear" ng-click="call()"><i class="barIcon ion-android-call"></i></button>
 	</ion-nav-buttons>
-	<ion-content>
+	<ion-content class="backgroundWhite">
 		<div class="imageEvent">
-			<img src="http://83.36.56.136/fotos/tienda1.jpg"">
+			<img src="http://213.97.238.120/fotos/000_fotosapp/{{shop.Foto}}">
 		</div>
 		<div class="detailsEvent">
 			<ul>
 				<li class="tEvent">{{shop.Nombre}}</li>
-				<li><spam>Dirección:</spam> {{shop.Direccion}}</li>
-				<li><spam>Provincia:</spam> {{shop.Provincia}}</li>
-				<li><spam>CP:</spam> {{shop.CP}}</li>
+				<li><p class="headerDetail">Dirección:</p><p class="contentDetail">{{shop.Direccion}}</p></li>
+				<li><p class="headerDetail">Localidad:</p><p class="contentDetail">{{shop.Provincia}}</p></li>
+				<li><p class="headerDetail">CP:</p><p class="contentDetail">{{shop.CP}}</p></li>
 			</ul>
 		</div>
 		<div class="descriptionShop">
 			<ul class="principalUl">
-				<li class="tlfli"><i class="icon ion-android-call"></i>TELÉFONOS: <span class="detailUl">{{shop.Telefono}}</span></li>
-				<li class="emailli"><i class="icon ion-ios-email-outline"></i>EMAILS: <span class="detailUl">{{shop.Email}}</span></li>
-				<li class="timeli"><i class="icon ion-android-time"></i>HORARIO: <span class="detailUl">{{shop.Horario}}</span></li>
-				<li class="webli"><i class="icon ion-android-globe"></i>WEB: <span class="detailUl">{{shop.Web}}</span></li>
+				<li class="tlfli"><i class="icon ion-android-call"></i><p class="spamDetail">TELÉFONOS:</p><p class="spamContentDetail">{{shop.Telefono}}</p><div class="clear"></div></li>
+				<li class="emailli"><i class="icon ion-ios-email-outline"></i><p class="spamDetail">EMAIL:</p><p class="spamContentDetail">{{shop.Email}}</p></li>
+				<li class="webli"><i class="icon ion-android-globe"></i><p class="spamDetail">WEB:</p><p class="spamContentDetail">{{shop.Web}}</p></li>
+				<li class="timeli"><i class="icon ion-android-time"></i><p class="spamDetail">HORARIO:</p><p class="spamContentDetail">{{shop.Horario}}</p></li>				
 			</ul>
 			<p>{{shop.Descripcion}}</p>
 		</div>

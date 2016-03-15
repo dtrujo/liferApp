@@ -5,12 +5,11 @@
 		</button>
   	</ion-nav-buttons>
 	<ion-content class="backgroundWhite">
-		<!-- List of offers -->
 		<ion-list show-delete="false" can-swipe="true">
 		  	<ion-item ng-repeat="offer in offers" ng-click="offerDetails()">
 		    	<div class="offerItem">
 		    		<div class="offerImage">
-		    			<img src="http://83.36.56.136/Fotos/045003131.jpg">
+		    			<img src="http://213.97.238.120/Fotos/045003131.jpg">
 		    			<div class="clear"></div>
 		    		</div>
 		    		<div class="offerInfoItem">
@@ -26,6 +25,9 @@
 		    	</div>
 		    	<div class="separator"></div>
 		    </ion-item>
+			<ion-item ng-show="showEmpty" class="emptyItem">
+				<img src="img/empty.png" style=" width: 100px; height: 100px;"></img><br /> No hay ofertas
+			</ion-item>
 		</ion-list>
   	</ion-content>
 </ion-view>

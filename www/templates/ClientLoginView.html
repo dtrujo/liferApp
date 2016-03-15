@@ -1,0 +1,39 @@
+<ion-view view-title="" hide-back-button="true" class="clientsBar"> 
+	<ion-nav-buttons side="left">
+    	<button class="button button-clear backButton" menu-toggle="left">
+			<i class="icon ion-navicon"></i>
+		</button>
+  	</ion-nav-buttons>
+	<ion-content class="login">
+		<img src="img/lifer.png">
+		<div class="loginForm">
+			<form name="authorizationForm" novalidate="" ng-submit="login(authorizationForm)"> 
+				<label class="item item-input itemUsername">
+					<input type="text" placeholder="Username" name="user" ng-model="personalDetails.user" required
+						   ng-class="{'has-errors-login':authorizationForm.user.$invalid && authorizationForm.$submitted }">
+					<div class="requiredLogin" 
+						 ng-class="{'has-errors-i':authorizationForm.user.$invalid && authorizationForm.$submitted }">
+						<i class="ion-alert"></i>	
+					</div>
+				</label>
+				<label class="item item-input itemPassword">
+					<input type="text" placeholder="Password" name="password" ng-model="personalDetails.password" required
+					       ng-class="{'has-errors-login':authorizationForm.user.$invalid && authorizationForm.$submitted }">
+					<div class="requiredLogin" 
+						 ng-class="{'has-errors-i':authorizationForm.password.$invalid && authorizationForm.$submitted }" >
+						<i class="ion-alert"></i>	
+					</div>
+				</label>
+				<div ng-class="{{ errorMessageClass }}" >
+					 <p class="errorP">{{errorMessage}}</p>	
+				</div>
+				<button class="loginButton button button-block button-light" type="submit">Login</button>
+                <a href="#" ng-click="recovery()" class="lostlink">¿Olvidó su contraseña?</a>
+			</form>
+		</div>
+		<div class="addAccount">
+			<button ng-click="register()" nav-transition="none">+</button>
+			<p>Añadir nueva cuenta</p>
+		</div>
+  	</ion-content>
+</ion-view>

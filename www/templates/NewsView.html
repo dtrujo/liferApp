@@ -17,7 +17,7 @@
 		    	<div class="eventItem">
 		    		<div class="eventInfoItem">
 		    			<h3>{{new.Titulo}}</h3>
-		    			<p>{{new.Fecha}}</p>
+		    			<p class='small'><strong>Fecha:</strong> {{new.Fecha}}</p>
 		    			<p class='small'><strong>Categoría:</strong> {{new.Categoria}}</p>
 		    		</div>
 		    		<div class="eventValueItem">
@@ -28,6 +28,9 @@
 		    	</div>
 		    	<div class="separator"></div>
 		    </ion-item>
+			<ion-item ng-show="showEmpty" class="emptyItem">
+				<img src="img/empty.png" style=" width: 100px; height: 100px;"></img><br /> No hay noticias
+			</ion-item>
 		</ion-list>
   	</ion-content>
 </ion-view>

@@ -21,13 +21,15 @@
 	    				<p class='small'><strong>Horario:</strong> {{event.Horario}}</p>
 	    			</div>
 	    			<div class="eventValueItem">
-	    				<!--<p class='new'>Nuevo</p>-->
 	    				<img src="img/nexticon.png">	    				
 	    			</div>
 	    			<div class="clear"></div>
 	    		</div>
 	    		<div class="separator"></div>
 	    	</ion-item>
+			<ion-item ng-show="showEmpty" class="emptyItem">
+				<img src="img/empty.png" style=" width: 100px; height: 100px;"></img><br /> No hay eventos
+			</ion-item>
 		</ion-list>
   	</ion-content>
 </ion-view>

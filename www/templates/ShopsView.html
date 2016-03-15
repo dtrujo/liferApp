@@ -16,7 +16,7 @@
 		  	<ion-item ng-repeat="shop in shops" ng-click="shopDetails($index)">
 		    	<div class="shopItem">
 		    		<div class="offerImage">
-		    			<img src="http://83.36.56.136/fotos/tienda1.jpg">
+		    			<img src="http://213.97.238.120/fotos/000_fotosapp/{{shop.Foto}}">
 		    			<div class="clear"></div>
 		    		</div>
 		    		<div class="shopInfoItem">
@@ -31,6 +31,9 @@
 		    	</div>
 		    	<div class="separator"></div>
 		    </ion-item>
+			<ion-item ng-show="showEmpty" class="emptyItem">
+				<img src="img/empty.png" style=" width: 100px; height: 100px;"></img><br /> No hay tiendas
+			</ion-item>
 		</ion-list>
   	</ion-content>
 </ion-view>

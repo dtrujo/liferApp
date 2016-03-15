@@ -1,0 +1,27 @@
+<ion-view view-title="Puntos Canjeados" class="clientsBar">
+	<ion-content class="backgroundWhite">
+		<ion-list show-delete="false" can-swipe="true">
+		  	<ion-item ng-repeat="point in points">
+		    	<div class="offerItem">
+		    		<div class="pricePoint">
+		    			<p>{{point.Ndocumento}}</p>
+		    		</div>
+		    		<div class="detailPoint">
+		    			<h3><i class="ion-trophy"></i>&nbsp;&nbsp;{{point.Puntos}} ({{point.Total}}€)</h3>
+						<p class="pointByPoint">
+							TOTAL FACT: {{point.Base}}€
+						</p>
+						<hr class="hr" />
+		    			<p>{{point.Fecha}}</p>
+						<div class="clear"></div>
+		    		</div>
+		    		<div class="clear"></div>
+		    	</div>
+		    	<div class="separator"></div>
+		    </ion-item>
+			<ion-item ng-show="showEmpty" class="emptyItem">
+				<img src="img/empty.png" style=" width: 100px; height: 100px;"></img><br />No tiene puntos
+			</ion-item>
+		</ion-list>
+  	</ion-content>
+</ion-view>

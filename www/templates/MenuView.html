@@ -1,6 +1,6 @@
  <ion-side-menus enable-menu-with-back-views="false">
 	<ion-side-menu-content ng-controller="ContentController">
-		<ion-nav-bar align-title="left" class="bar-stable customBar">	
+		<ion-nav-bar align-title="center" class="bar-stable customBar">	
 			<ion-nav-back-button class="button-clear backButton">
 			</ion-nav-back-button>
 		</ion-nav-bar>
@@ -11,20 +11,20 @@
 	<ion-side-menu side="left">
 	  	<ion-content class="menu">
 			<h1>Menu</h1>
-			<ul class="list">
+			<ul class="listMenu">
 				<li><div class="asterik mHome"></div><a href="#/event/dashboard" class="item" menu-close>Inicio</a><div class="clear"></div></li>
 				<li><div class="asterik mEvents"></div><a href="#/event/events" class="item" menu-close>Eventos</a><div class="clear"></div></li>
 				<li><div class="asterik mOffers"></div><a href="#/event/offers" class="item" menu-close>Ofertas</a><div class="clear"></div></li>
 				<li><div class="asterik mNews"></div><a href="#/event/news" class="item" menu-close>Noticias</a><div class="clear"></div></li>
 				<li><div class="asterik mArticles"></div><a href="#/event/articles" class="item" menu-close>Artículos</a><div class="clear"></div></li>
-				<li><div class="asterik mClients"></div><a href="#/event/clients" class="item" menu-close>Clientes</a><div class="clear"></div></li>
+				<li><div class="asterik mClients"></div><a href="#" ng-click="clients()" class="item" menu-close>Clientes</a><div class="clear"></div></li>
 				<li><div class="asterik mShops"></div><a href="#/event/shops" class="item" menu-close>Tiendas</a><div class="clear"></div></li>
 				<li class="noBorder"> 
 					<ul class="menuSocial">
-						<li><img src="img/facebook.png" /></li>
-						<li><img src="img/twitter.png" /></li>
-						<li><img src="img/instagram.png" /></li>
-						<li><img src="img/you-tube.png" /></li>
+						<li><a href="#" ng-click="openFacebook()"><i class='social ion-social-facebook'></i></a></li>
+						<li><a href="#" ng-click="openTwitter()"><i class='social ion-social-twitter'></i></a></li>
+						<li><a href="#" ng-click="openYoutube()"><i class='social ion-social-youtube'></i></a></li>
+						<!--<li><img src="img/instagram.png" /></li>-->
 					</ul>
 				</li>
 			</ul>

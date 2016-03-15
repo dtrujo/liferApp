@@ -1,18 +1,22 @@
-<ion-view view-title="Detalles de la Noticia" class="newsBar">
-	<ion-content>
+<ion-view view-title="Noticia" class="newsBar">
+	<ion-content class="backgroundWhite">
 		<div class="imageEvent">
-			<img src="http://83.36.56.136/fotos/noticia9.jpg" />
+			<img src="http://213.97.238.120/fotos/000_fotosapp/{{new.Foto}}">
 		</div>
-		<div class="detailsEvent">
+		<div class="detailsNew">
 			<ul>
-				<li class="tEvent">{{new.Titulo}}</li>				
-				<li><spam>Fecha:</spam> {{new.Fecha}}</li>
-				<li><spam>Categoría:</spam> {{new.Categoria}}</li>
+				<li class="tNew">{{new.Titulo}}</li>
+				<li><p class="headerNewDetail">Fecha:</p><p class="contentDetail">{{new.Fecha}}</p></li>	
+				<li><p class="headerNewDetail">Categoría:</p><p class="contentDetail">{{new.Categoria}}</p></li>
 			</ul>
 		</div>
 		<div class="descriptionEvent">
-			<h3 class="tEvent">DESCRIPCIÓN</h3>
+			<!--<h3 class="tNew">DESCRIPCIÓN</h3>-->
 			<p>{{new.Descripcion}}</p>
+		</div>
+		<div class="urlEvent">
+			<!--<h3 class="tNew">ENLACE</h3>-->
+			<a href="#" ng-click="openURL()">{{new.Enlace}}</a>
 		</div>
   	</ion-content>
 </ion-view>

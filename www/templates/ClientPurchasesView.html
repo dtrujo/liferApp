@@ -1,0 +1,30 @@
+<ion-view view-title="Compras Realizadas" class="clientsBar">
+	<ion-content class="backgroundWhite">
+		<ion-list show-delete="false" can-swipe="true">
+		  	<ion-item ng-repeat="purchase in purchases" ng-click="purchaseDetails(purchase.Ndocumento)">
+		    	<div class="offerItem">
+		    		<div class="pricePurchase">
+		    			<p>{{purchase.Ndocumento}}</p>
+		    		</div>
+		    		<div class="detailPurchase">
+		    			<h3>{{purchase.Total}} €</h3>
+						<p class="pointByPurchase" ng-class="{purchaseRed: purchase.Puntos.indexOf('-') != -1}">
+							<i class="ion-trophy"></i>{{purchase.Puntos}}
+						</p>
+						<hr class="hr" />
+		    			<p>{{purchase.Fecha}}</p>
+						<div class="clear"></div>
+		    		</div>
+		    		<div class="purchaseItem">
+		    			<img src="img/nexticon.png">	    				
+		    		</div>
+		    		<div class="clear"></div>
+		    	</div>
+		    	<div class="separator"></div>
+		    </ion-item>
+			<ion-item ng-show="showEmpty" class="emptyItem">
+				<img src="img/empty.png" style=" width: 100px; height: 100px;"></img><br />No tiene compras
+			</ion-item>
+		</ion-list>
+  	</ion-content>
+</ion-view>

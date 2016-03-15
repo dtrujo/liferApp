@@ -1,0 +1,41 @@
+<ion-view view-title="Cambio de contraseña" class="clientsBar">
+	<ion-content class="backgroundWhite">
+        <form name="changePasswordForm" novalidate="" ng-click="changePassword(changePasswordForm)">
+            <div class="list articleList">
+                <p class='pTitle'>Datos del Cliente</p>	 
+                <label class="item item-input">
+                    <span class="input-label"
+                          ng-class="{'span-has-errors':changePasswordForm.newPassword.$invalid 
+                                        && changePasswordForm.$submitted }">Nueva Contraseña
+                    </span>
+                    <input type="text" placeholder="newPassword" name="newPassword" 
+                           ng-model="personalDetails.newPassword" required>
+                    <div class="requiredAlert" 
+                         ng-class="{'has-errors-i':changePasswordForm.newPassword.$invalid 
+                                        && changePasswordForm.$submitted }" >
+                        <i class="ion-alert"></i>	
+                    </div>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label"
+                          ng-class="{'span-has-errors':changePasswordForm.confirmPassword.$invalid 
+                                        && changePasswordForm.$submitted }">Repita Contraseña
+                    </span>
+                    <input type="text" placeholder="confirmPassword" name="confirmPassword" 
+                           ng-model="personalDetails.confirmPassword" required>
+                    <div class="requiredAlert" 
+                         ng-class="{'has-errors-i':changePasswordForm.confirmPassword.$invalid 
+                                        && changePasswordForm.$submitted }" >
+                        <i class="ion-alert"></i>	
+                    </div>
+                </label>
+                <p class="informationFields"><i class="ion-information"></i>Todos los campos son obligatorios</p>
+            </div>
+            <p class='messageError' ng-class="{'showError' : showError }">* Las constraseñas no coinciden</p>
+            <button class="button buttonPass" type="submit">
+                <i class="ion-checkmark-round"></i>
+            </button>         
+        </form>
+    </ion-content>
+</ion-view>
+        

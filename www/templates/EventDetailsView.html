@@ -1,23 +1,23 @@
-<ion-view view-title="Detalles del Evento" class="eventsBar">
+<ion-view view-title="Evento" class="eventsBar">
 	<ion-nav-buttons side="right">
-		<button class="button button-icon button-clear mapIcon" ng-click="eventMap()"></button>
+		<button class="button button-icon button-clear" ng-click="eventMap()"><i class="barIcon ion-android-pin"></i></button>
 	</ion-nav-buttons>
-	<ion-content>
+	<ion-content class="backgroundWhite">
 		<div class="imageEvent">
-			<img src="http://83.36.56.136/fotos/evento9.png" />
+			<img src="http://213.97.238.120/fotos/000_fotosapp/{{event.Foto}}">
 		</div>
 		<div class="detailsEvent">
 			<ul>
 				<li class="tEvent">{{event.Titulo}}</li>
-				<li><spam>Lugar:</spam> {{event.Direccion}}</li>
-				<li><spam>Población:</spam> {{event.Poblacion}}</li>
-				<li><spam>Provincia:</spam> {{event.Provincia}}</li>
-				<li><spam>Fecha:</spam> {{event.FechaInicio}} - {{event.FechaFin}}</li>
-				<li><spam>Horario:</spam> {{event.Horario}}</li>
+				<li><p class="headerDetail">Lugar:</p><p class="contentDetail">{{event.Direccion}}</p></li>
+				<li><p class="headerDetail">Población:</p><p class="contentDetail">{{event.Poblacion}}</p></li>
+				<li><p class="headerDetail">Provincia:</p><p class="contentDetail">{{event.Provincia}}</p></li>
+				<li><p class="headerDetail">Fecha:</p><p class="contentDetail"> {{event.FechaInicio}} - {{event.FechaFin}}</p></li>
+				<li><p class="headerDetail">Horario:</p><p class="contentDetail"> {{event.Horario}}</p></li>
 			</ul>
 		</div>
 		<div class="descriptionEvent">
-			<h3 class="tEvent">DESCRIPCIÓN</h3>
+			<!--<h3 class="tEvent">DESCRIPCIÓN</h3>-->
 			<p>{{event.Descripcion}}</p>
 		</div>
   	</ion-content>

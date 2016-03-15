@@ -3,7 +3,7 @@
 		<div class="list referenceList">
 			<label class="item item-input">
 				<span class="input-label">Rereferencia</span>
-				<input type="text" placeholder="Referencia artículo" ng-model="reference">
+				<input type="text" placeholder="Referencia artículo" ng-model="reference" ng-enter="searchArticle()">
 			</label>
 		</div>
 		<div class="list articleList">
@@ -40,7 +40,6 @@
 				<input type="text" placeholder="Precio maximo" ng-model="filter.maxPrice">
 			</label>
 		</div>
-		
 		<button class="button buttonSearch" ng-click="searchArticle()" />
   	</ion-content>
 </ion-view>

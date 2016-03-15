@@ -1,0 +1,34 @@
+<ion-view cache-view="false" view-title="Código de Barras" class="clientsBar">
+	<ion-content class="backgroundWhite">
+		<div class="imageBarCode">
+			<img src="http://213.97.238.120/fotos/001_codebarclients/{{client.Codigo}}.png">
+		</div>
+		<div class="detailsBarCode">
+			{{client.Codigo}}
+		</div>
+		<div class="descriptionBarCode">
+			<ul>
+				<li>{{client.Nombre}} {{client.Apellidos}}</li>
+				<li>{{client.Nif}}</li>
+				<li>{{client.Direccion}}</li>
+				<li>{{client.Localidad}} - {{client.CP}}</li>
+				<li>{{client.Provincia}} - {{client.Pais}}</li>
+			</ul>
+		</div>
+		<div class="moreInfoBarCode">
+			<div class="availableBarCode">
+				<i class="ion-trophy"></i>PUNTOS
+			</div>
+			<div class="pointBarCode">
+				<p>{{client.Puntos}}</p>
+			</div>
+			<div class="clear"></div>
+			<div class="availableBarCode">
+				<i class="ion-social-euro"></i>COMPRAS
+			</div>
+			<div class="pointBarCode">
+				<p>{{client.Compras}}</p>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

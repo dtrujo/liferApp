@@ -1,0 +1,56 @@
+<ion-view view-title="Detalles Compra" class="clientsBar">
+	<ion-content class="backgroundWhite">
+		<div class="detailsHeader">
+			<div class="pricePurchase">
+				<p class="pHeader"><span>Nº Factura:</span> {{purchase.Ndocumento}}</p>
+				<p class="pHeader"><span>Vendedor:</span> {{purchase.Vendedor}}</p>
+				<p class="pHeader"><span>Fecha:</span> {{purchase.Fecha}}</p>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="clear"></div>
+		<ion-scroll direction="y" style="height: 60%">
+			<ion-list show-delete="false" can-swipe="true" class="listPurchaseDetails">
+				<ion-item ng-repeat="article in articles" class="itemArticlesDetails">
+					<div class="offerItem">
+						<div class="pricePurchase">
+							<p>{{article.Codigo}}</p>
+						</div>
+						<div class="detailPurchase">
+							<h4>{{article.Descripcion}}</h4>
+							<p class="pointByPurchase">
+								Uds: {{article.Uds}}
+							</p>
+						</div>
+						<div class="purchaseDetailsItem">
+							<div class="detailPurchase">
+								<h3>{{article.Precio}} €</h3>
+								<p class="dtoPurchase">
+									Dto%: {{article.Descuento}}
+								</p>
+							</div>	    				
+						</div>
+					</div>
+					<ion-option-button class="button-light showArticle" ng-click="articleDetails(article.Codigo)">
+						<i class="ion-android-search"></i>
+					</ion-option-button>
+				</ion-item>
+			</ion-list>
+	 	</ion-scroll>
+		<div class="bar bar-footer bar-balanced detailsFooter">
+			<div class="purchaseFooterItem">
+				<div class="detailDtoPurchase">
+					<h4>{{purchase.Descuento}}% Dto</h4>
+				</div>
+				<div class="purchaseTotalItem">
+					<!--<p><span>Base:</span> {{purchase.Base}} €</p>
+					<p><span>Impuestos:</span> {{purchase.Impuestos}} €</p>-->
+					<h4>TOTAL: {{purchase.Total}} €</h4>
+					<div class='clear'></div>
+				</div>
+				<div class='clear'></div>
+			</div>
+		</div>
+  	</ion-content>
+</ion-view>
