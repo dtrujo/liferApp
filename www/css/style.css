@@ -24,7 +24,8 @@
 ::-webkit-input-placeholder { color: white !important; }
 .backButton                 { color: white !important; }
 .backgroundWhite            { background-color: white !important;} 
-.slider                     { height: 100% !important;}          
+.slider                     { height: 100% !important; } 
+.has-tabs.pane, .bar-footer.has-tabs.pane { height: 100% !important; }         
 
 
 /***********/
@@ -123,7 +124,7 @@
 .offersOptions      { background: #D64E5E; background-size: 100%; left: 50%; border-top: 2px solid white; }
 .articleOptions     { background: #EEC058; background-size: 100%; left: 0%; border-top: 2px solid white; }
 .newsOptions        { background: #5D99E2; background-size: 100%; left: 0%; top: 33.4% !important; }
-.clientsOptions     { background: #FA6F56; background-size: 100%; left: 0%; top: 66.9% !important;  width: 100%;}
+.clientsOptions     { background: #FA6F56; background-size: 100%; left: 0%; top: 66.8% !important;  width: 100%;}
 .shopsOptions       { background: #EE91AB; background-size: 100%; left: 50%; top: 33.4% !important; }
 .clientsOptions img { width: 58% !important; left: 21% !important; } 
 .clientsOptions h4  { left: 42% !important; top: 69% !important; } 
@@ -295,7 +296,7 @@
                                       background-repeat: no-repeat !important; background-position: 17px !important; border: none !important;
                                       width: 40px; border-radius: 50%; padding: 30px;  margin: 8% 43%; text-align: center;}
 .item-select:after                  { right: 30px !important; }
-.articleList .item select           { font-family: 'gulim'; color: gray; width: 100%; direction: ltr; padding: 14px 48px 16px 0px !important;}
+.articleList .item select           { font-family: 'gulim'; color: gray; width: 100%; direction: ltr; padding: 14px 48px 16px 0px !important; margin-right: 15px;}
 .articleList .item select option    { text-align: left !important}
 
 

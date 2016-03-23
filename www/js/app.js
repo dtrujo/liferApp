@@ -4,7 +4,15 @@ angular.module('liferapp', ['ionic', 'jrCrop', 'ngCordova', 'liferapp.controller
 // Run
 .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
-
+        
+        //hide the status bar using the StatusBar plugin
+        if(window.StatusBar) {
+            
+            // org.apache.cordova.statusbar required
+            StatusBar.hide();
+            ionic.Platform.fullScreen();
+        }
+        
     });
 })
 
