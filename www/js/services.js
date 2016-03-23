@@ -124,4 +124,101 @@ angular.module('liferapp.services', [])
 				})
 			}    
 		}
+})
+
+// service to control image profile 
+.factory('FileService', function() {
+    var images;
+    var IMAGE_STORAGE_KEY = 'dav-images';
+    var PROFILE_IMAGE_STORAGE_KEY = 'profile-image';
+    
+    // get all image in local storage
+    function getImages() {
+        var img = window.localStorage.getItem(IMAGE_STORAGE_KEY);
+        if (img) {
+            images = JSON.parse(img);
+        } else {
+            images = [];
+        }
+        return images;
+    };
+    
+    // get image profile taking local storage
+    function getProfileImage() {
+        var img = window.localStorage.getItem(PROFILE_IMAGE_STORAGE_KEY);
+        if (img) {
+            return img;
+        } else {
+            return '';
+        }
+    };
+    
+    // save image in local storage
+    function addImage(img) {
+        images.push(img);
+        window.localStorage.setItem(IMAGE_STORAGE_KEY, JSON.stringify(images));
+    };
+    
+    // save image in local storage
+    function addProfileImage(img) {  
+        
+        // remove localstorage and insert new one
+		window.localStorage.removeItem(PROFILE_IMAGE_STORAGE_KEY); 
+        window.localStorage.setItem(PROFILE_IMAGE_STORAGE_KEY, img);
+    };
+ 
+    // return functions
+    return {        
+        storeImage: addImage,
+        storeProfileImage: addProfileImage,
+        images: getImages,
+        profileImage: getProfileImage
+    }
+})
+
+// Service to control profile
+.factory('ImageService', function($cordovaCamera, FileService, $q, $cordovaFile) {
+    
+    // take options to save image
+    function optionsForType (type) {
+        var source;
+        switch (type) {
+            case 0:
+                source = Camera.PictureSourceType.CAMERA;
+                break;
+            case 1:
+                source = Camera.PictureSourceType.PHOTOLIBRARY;
+                break;
+        }            
+        return {
+            quality: 90,
+            destinationType: Camera.DestinationType.DATA_URL,
+            sourceType: source,
+            allowEdit: false,
+            encodingType: Camera.EncodingType.JPEG,
+            popoverOptions: CameraPopoverOptions,
+            saveToPhotoAlbum: false,
+            correctOrientation:true
+        };
+    };        
+    
+    // save media using ayncronous method
+    function saveMedia(type) {                
+        var defered = $q.defer();
+        var promise = defered.promise;
+        var options = optionsForType(type);
+
+        // get image of camera or using gallery 
+        $cordovaCamera.getPicture(options).then(function(imageBase64) {	
+            FileService.storeProfileImage(imageBase64);	            
+            defered.resolve(FileService.profileImage());               
+        });                    
+        
+        return promise;                        
+    };
+    
+    // return functions call
+    return {           
+         handleMediaDialog : saveMedia   
+    }
 });

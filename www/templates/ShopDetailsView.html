@@ -18,8 +18,8 @@
 		<div class="descriptionShop">
 			<ul class="principalUl">
 				<li class="tlfli"><i class="icon ion-android-call"></i><p class="spamDetail">TELÉFONOS:</p><p class="spamContentDetail">{{shop.Telefono}}</p><div class="clear"></div></li>
-				<li class="emailli"><i class="icon ion-ios-email-outline"></i><p class="spamDetail">EMAIL:</p><p class="spamContentDetail">{{shop.Email}}</p></li>
-				<li class="webli"><i class="icon ion-android-globe"></i><p class="spamDetail">WEB:</p><p class="spamContentDetail">{{shop.Web}}</p></li>
+				<li class="emailli"><i class="icon ion-ios-email-outline"></i><p class="spamDetail">EMAIL:</p><p class="spamContentDetail"><a href="mailto:{{shop.Email}}">{{shop.Email}}</a></p></li>
+				<li class="webli"><i class="icon ion-android-globe"></i><p class="spamDetail">WEB:</p><p class="spamContentDetail"><a href="#" ng-click="openURL()">{{shop.Web}}</a></p></li>
 				<li class="timeli"><i class="icon ion-android-time"></i><p class="spamDetail">HORARIO:</p><p class="spamContentDetail">{{shop.Horario}}</p></li>				
 			</ul>
 			<p>{{shop.Descripcion}}</p>

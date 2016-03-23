@@ -11,7 +11,7 @@ angular.module('liferapp.controllers', [])
 /**
  * Dashboard Controller
  */
-.controller('DashboardController', function($timeout, $ionicHistory, $scope, $state, $ionicViewSwitcher, $ionicSideMenuDelegate){
+.controller('DashboardController', function($timeout, $ionicPopover, $ionicHistory, $scope, $state, $ionicViewSwitcher, $ionicSideMenuDelegate){
 
 	// inizializate object
 	$scope.property = {};
@@ -21,6 +21,29 @@ angular.module('liferapp.controllers', [])
 		$scope.property.animatedEvent = "";	
     });
 	
+    // show popover with the options 
+    $ionicPopover.fromTemplateUrl('templates/DashBoardPopoverView.html', {
+		scope: $scope,
+	}).then(function(popover) {
+		$scope.popover = popover;
+	});
+    
+    // go to bonus
+    $scope.bonus = function (){ 
+        
+        // remove popoup before to change the state
+		$scope.popover.hide();                   
+		$state.go('eventmenu.bonus');  
+    };
+    
+    // go to legal
+    $scope.legalWarning = function (){ 
+        
+        // remove popoup before to change the state
+		$scope.popover.hide();                   
+		$state.go('eventmenu.legal');  
+    };
+    
 	// go to events
 	$scope.events = function(){
 		
@@ -111,6 +134,14 @@ angular.module('liferapp.controllers', [])
 			$state.go('eventmenu.shops');
 		}, 1000);
 	};
+})
+
+
+/**
+ * Dashboard Controller
+ */
+.controller('DashBoardBonusController', function($timeout, $ionicPopover, $ionicHistory, $scope, $state, $ionicViewSwitcher, $ionicSideMenuDelegate){
+
 })
 
 
@@ -792,6 +823,11 @@ angular.module('liferapp.controllers', [])
 		});
     });
 	
+    // open new url in the native browser using cordoba plugin
+	$scope.openURL = function() {
+		window.open('http://' + $scope.shop.Web, '_system');
+	}
+    
 	// Make actions when the view be loaded
 	$scope.$on('$ionicView.enter', function (viewInfo, state) {
 				
@@ -972,8 +1008,11 @@ angular.module('liferapp.controllers', [])
 /**
  * Client Controller
  */
-.controller('ClientController', function($scope, $state, $ionicLoading, $stateParams, API, $ionicPopover, $ionicHistory){
-	
+.controller('ClientController', function(    
+    $scope, $state, $ionicPlatform, $ionicHistory, 
+    $ionicLoading, $stateParams, API, $ionicPopover, 
+    $cordovaDevice, $cordovaFile, ImageService, FileService)
+{	            
 	// this var is for change style when
 	// the client has not code
 	$scope.hasCode = false;
@@ -983,7 +1022,7 @@ angular.module('liferapp.controllers', [])
 	}).then(function(popover) {
 		$scope.popover = popover;
 	});
-  
+
   	// logout function
 	$scope.logout = function(){
 		
@@ -1032,6 +1071,17 @@ angular.module('liferapp.controllers', [])
 		$state.go('eventmenu.messages');  
 	};
 	
+    // when ionic view is completly load
+    $ionicPlatform.ready(function() {  
+             
+        // if the client has not image profile load in localstorage the default image
+		if(window.localStorage.getItem("profile-image") == null){
+            $scope.image = "img/emptyuser.png";                                        
+        }else{
+            $scope.image = "data:image/jpeg;base64," + FileService.profileImage();
+        }            
+    });
+            
 	// load cliente date before to render view
 	$scope.$on('$ionicView.beforeEnter', function (viewInfo, state) {
 
@@ -1060,6 +1110,132 @@ angular.module('liferapp.controllers', [])
  * Client Settings Controller
  */
 .controller('ClientSettingsController', function($scope, $state, $stateParams, API, $ionicLoading){
+	
+	// Make actions when the view be loaded
+	$scope.$on('$ionicView.beforeEnter', function (viewInfo, state) {
+		
+		// setup the loader and show spinner
+		$ionicLoading.show({
+			template:'<img src="img/osito.png"></img><br/><ion-spinner icon="dots" class="spinner-dark"></ion-spinner>',
+            duration: 2000,
+			noBackdrop: true
+		});
+    });
+    
+    // got to change password view
+	$scope.password = function(form){		
+        $state.go('eventmenu.password', $stateParams.user );         
+    }
+    
+    // got to change password view
+	$scope.profile = function(form){		
+        $state.go('eventmenu.profile', $stateParams.user );         
+    }
+})
+
+
+/**
+ * Client Profile Controller
+ */
+.controller('ClientProfileController', function(
+    $scope, $state, $stateParams, API, $ionicLoading,
+    $jrCrop, $ionicPlatform, $ionicActionSheet,$q,
+    $cordovaDevice, $cordovaFile, ImageService, FileService )
+{
+	
+	// Make actions when the view be loaded
+	$scope.$on('$ionicView.beforeEnter', function (viewInfo, state) {
+		
+		// setup the loader and show spinner
+		$ionicLoading.show({
+			template:'<img src="img/osito.png"></img><br/><ion-spinner icon="dots" class="spinner-dark"></ion-spinner>',
+            duration: 2000,
+			noBackdrop: true
+		});
+    });
+                  
+    // if the client has not image profile load in localstorage the default image
+    if(window.localStorage.getItem("profile-image") == null){
+        $scope.image = "img/emptyuser.png";                                           	                                
+    }else{
+        $scope.image = "data:image/jpeg;base64," + FileService.profileImage();
+    }    
+        
+    // load view to select picture or take picture
+    $scope.addMedia = function() {
+        $scope.hideSheet = $ionicActionSheet.show({
+            buttons: [
+                { text: '<div class="optionsPicture"><i class="ion-android-camera iOptions"></i>Sacar Foto</div>' },
+                { text: '<div class="optionsPicture"><i class="ion-image iOptions"></i>Foto de la galería</div>' }
+            ],
+            titleText: 'Añadir imagen',
+            cancelText: 'Cancelar',
+            buttonClicked: function(index) {
+                $scope.addImage(index);
+            }
+        });
+    } 
+    
+    // delete image
+    $scope.deleteMedia = function(){
+        
+        // remove localstorage and insert new one
+		window.localStorage.removeItem('profile-image'); 
+        
+        // add empty user                
+        $scope.image = "img/emptyuser.png";
+    }           
+    
+    // add new image into profile image
+    $scope.addImage = function(type) {       
+        $scope.hideSheet();
+        
+        // save image to later crop
+        ImageService.handleMediaDialog(type).then(function(data) {                       	                           
+            var noCropImage; 
+            
+            //  control if the user has profile image                            
+            if(window.localStorage.getItem("profile-image") == null){
+                noCropImage = "img/emptyuser.png";                                           	                                
+            }else{
+                noCropImage = "data:image/jpeg;base64," + FileService.profileImage();
+            }  
+              
+            // crop image       
+            $jrCrop.crop({
+                url: noCropImage,
+                width: 200,
+                height: 200,
+                circle: true
+            }).then(function(canvas) {
+                
+                // success, we need to save the cropping image!                
+                $scope.image = canvas.toDataURL();
+                
+                // slice string to save without base64 
+                FileService.storeProfileImage(
+                    $scope.image.slice($scope.image.indexOf(',') + 1)
+                );            
+                
+            }, function() {
+                
+                // if user cancel save actual image
+                FileService.storeProfileImage( 
+                    $scope.image.slice($scope.image.indexOf(',') + 1)
+                );   
+            });                                                       
+        })
+        .catch(function(err) {
+            console.log ('error');
+        })             
+    }      
+})
+
+
+/**
+ * Client ChangePassword Controller
+ */
+.controller('ClientChangePasswordController', function($scope, $state, $stateParams, API, $ionicLoading){
 	
     $scope.personalDetails = {};
     $scope.showError = false;
@@ -1263,6 +1439,7 @@ angular.module('liferapp.controllers', [])
     });
 })
 
+
 /**
  * Client Article Purchase Details Controller
  */
@@ -1293,6 +1470,7 @@ angular.module('liferapp.controllers', [])
 		});
     });	
 })
+
 
 /**
  * Client Points Controller

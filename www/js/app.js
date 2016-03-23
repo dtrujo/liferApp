@@ -1,5 +1,5 @@
 // Ionic liferapp
-angular.module('liferapp', ['ionic', 'liferapp.controllers', 'uiGmapgoogle-maps', 'liferapp.services', 'ngIOS9UIWebViewPatch'])
+angular.module('liferapp', ['ionic', 'jrCrop', 'ngCordova', 'liferapp.controllers', 'uiGmapgoogle-maps', 'liferapp.services', 'ngIOS9UIWebViewPatch'])
 
 // Run
 .run(function($ionicPlatform) {
@@ -49,6 +49,26 @@ angular.module('liferapp', ['ionic', 'liferapp.controllers', 'uiGmapgoogle-maps'
         'menuContent' :{
           templateUrl: "templates/DashBoardView.html",
           controller: "DashboardController"
+        }
+      }
+    })
+    
+    // Parent menu call dashboard bonus view
+    .state('eventmenu.bonus', {
+      url: "/bonus",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/DashBoardBonusView.html"
+        }
+      }
+    })
+    
+    // Parent menu call dashboard bonus view
+    .state('eventmenu.legal', {
+      url: "/legalwarning",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/DashBoardLegalWarningView.html"
         }
       }
     })
@@ -197,9 +217,31 @@ angular.module('liferapp', ['ionic', 'liferapp.controllers', 'uiGmapgoogle-maps'
       }
     }) 
     
-    // Create state to client settigns view
+    // Create state to client change password view
+    .state('eventmenu.password', {
+      url: "/password/:user",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/ClientChangePasswordView.html",
+          controller: "ClientChangePasswordController"
+        }
+      }
+    }) 
+    
+    // Create state to client profile view
+    .state('eventmenu.profile', {
+      url: "/profile/:user",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/ClientProfileView.html",
+          controller: "ClientProfileController"
+        }
+      }
+    })
+    
+    // Create state to client settigns menu view
     .state('eventmenu.settings', {
-      url: "/client/:user",
+      url: "/settings/:user",
       views: {
         'menuContent' :{
           templateUrl: "templates/ClientSettingsView.html",

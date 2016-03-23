@@ -8,7 +8,7 @@
 .clear        { float: none; clear: both;}
 .title        { top: 1px !important; left: 45px !important; }
 .iconGroup 	  { float: right;}
-.scroll       { height: 99% !important;}
+.scroll       { padding: 0!important; margin:0 !important; height: 99%}
 .emptyItem    { border: none !important; text-align: center; margin: 45% 20% 50% 25%; }
 
 
@@ -33,35 +33,35 @@
 
 
 .menuIcon   { background: url(../img/menuicon.svg) !important;
-  			    background-size: 18px 15px !important;
-  			    background-repeat: no-repeat !important;
-  			    background-position: 12px !important;
-  			    width: 45px; }
+  			  background-size: 18px 15px !important;
+  			  background-repeat: no-repeat !important;
+  			  background-position: 12px !important;
+  			  width: 45px; }
 .orderIcon  { background: url(../img/ordericon.svg) !important;
-  			    background-size: 25px 20px !important;
-  			    background-repeat: no-repeat !important;
-  			    background-position: 12px !important;
-  			    width: 50px; }
+  			  background-size: 25px 20px !important;
+  			  background-repeat: no-repeat !important;
+  			  background-position: 12px !important;
+  			  width: 50px; }
 .settingIcon{ background: url(../img/settingicon.svg) !important;
-  			    background-size: 25px 20px !important;
-  			    background-repeat: no-repeat !important;
-  			    background-position: 12px !important;
-  			    width: 50px; }
+  			  background-size: 25px 20px !important;
+  			  background-repeat: no-repeat !important;
+  			  background-position: 12px !important;
+  			  width: 50px; }
 .searchIcon { background: url(../img/searchicon.svg) !important;
-			    background-size: 25px 20px !important;
-			    background-repeat: no-repeat !important;
-			    background-position: 12px !important;
-			    width: 40px; }
+			  background-size: 25px 20px !important;
+			  background-repeat: no-repeat !important;
+			  background-position: 12px !important;
+			  width: 40px; }
 .filterIcon { background: url(../img/filtericon.svg) !important;
-			    background-size: 25px 20px !important;
-			    background-repeat: no-repeat !important;
-			    background-position: 12px !important;
-			    width: 40px; margin-right: 10px }
+			  background-size: 25px 20px !important;
+			  background-repeat: no-repeat !important;
+			  background-position: 12px !important;
+			  width: 40px; margin-right: 10px }
 .mapIcon    { background: url(../img/mapicon.svg) !important;
-                background-size: 25px 20px !important;
-                background-repeat: no-repeat !important;
-                background-position: 12px !important;
-                width: 40px; margin-right: 10px }
+              background-size: 25px 20px !important;
+              background-repeat: no-repeat !important;
+              background-position: 12px !important;
+              width: 40px; margin-right: 10px }
 
 
 /***********/
@@ -87,16 +87,16 @@
 /***********/
 
 
-.customBar, .title            { font-family: 'gulim' !important; background: none !important; color: white !important; }
-.barIcon                      { font-size: 22px; color:white; margin: 3px 10px 0px 10px;}
+.customBar, .title          { font-family: 'gulim' !important; background: none !important; color: white !important; }
+.barIcon                    { font-size: 22px; color:white; margin: 3px 10px 0px 10px;}
 .errorBar   	            { background-color: #262626 !important } 
 .eventsBar, .mEvents   		{ background-color: #B5D5A6 !important }
 .offersBar, .mOffers   		{ background-color: #D64E5E !important }
 .newsBar, .mNews     		{ background-color: #5D99E2 !important }
 .articlesBar, .mArticles	{ background-color: #EEC058 !important }
 .clientsBar, .mClients		{ background-color: #FA6F56 !important }
-.shopsBar, .mShops	      { background-color: #EE91AB !important }
-.dashboardBar, .mHome         { background-color: #8DCFC8 !important }
+.shopsBar, .mShops	        { background-color: #EE91AB !important }
+.dashboardBar, .mHome       { background-color: #8DCFC8 !important }
 
 
 /******************/
@@ -118,13 +118,40 @@
 
 .shopsOptions h4    { left: 37% !important; }
 
-.options         { position: absolute !important; height: 33.4% !important; width: 50% !important; }
-.eventsOptions   { background: #B5D5A6; background-size: 100%; left: 0%; border-top: 2px solid white;}
-.offersOptions   { background: #D64E5E; background-size: 100%; left: 50%; border-top: 2px solid white; }
-.newsOptions     { background: #5D99E2; background-size: 100%; left: 0%; top: 33.4% !important; }
-.articleOptions  { background: #EEC058; background-size: 100%; left: 50%; top: 33.4% !important; }
-.clientsOptions  { background: #FA6F56; background-size: 100%; left: 0%; top: 66.9% !important; }
-.shopsOptions    { background: #EE91AB; background-size: 100%; left: 50%; top: 66.9% !important; }
+.options            { position: absolute !important; height: 33.4% !important; width: 50%; }
+.eventsOptions      { background: #B5D5A6; background-size: 100%; left: 0%; border-top: 2px solid white;}
+.offersOptions      { background: #D64E5E; background-size: 100%; left: 50%; border-top: 2px solid white; }
+.articleOptions     { background: #EEC058; background-size: 100%; left: 0%; border-top: 2px solid white; }
+.newsOptions        { background: #5D99E2; background-size: 100%; left: 0%; top: 33.4% !important; }
+.clientsOptions     { background: #FA6F56; background-size: 100%; left: 0%; top: 66.9% !important;  width: 100%;}
+.shopsOptions       { background: #EE91AB; background-size: 100%; left: 50%; top: 33.4% !important; }
+.clientsOptions img { width: 58% !important; left: 21% !important; } 
+.clientsOptions h4  { left: 42% !important; top: 69% !important; } 
+
+
+/************************/
+/* DashBoard Bonus View */
+/************************/
+
+
+.bonus              { margin: 12% 0 0 0 !important}
+.bonus .col h2      { text-align: center; margin: 25px 0px 0px 0px !important; font-weight: 600; color:white; }
+.bonus .col h3      { text-align: center; font-size: 14px !important; color: darkslategray}
+.bonus .col p       { font-size: 14px; text-align: center !important; margin: 0px 0px 0px 0px !important; color: White; }
+.bonus .col .small  { font-size: 10px; line-height:15px; color: darkslategray; opacity: 0.4 } 
+.bonus img          { width: 28%; }
+.bonus .col         { margin: 0 !important; padding:0 !important }
+
+.development              { margin: 40% 0 0 0 !important}
+.development .col h2      { text-align: center; margin: 25px 0px 0px 0px !important; font-weight: 600; color:white; }
+.development .col h3      { text-align: center; font-size: 14px !important; color: darkslategray}
+.development .col p       { font-size: 14px; text-align: center !important; margin: 0px 0px 0px 0px; color: darkslategray; opacity: 0.9 }
+.development .col .small  { font-size: 10px; line-height: 15px; opacity: 0.4; margin: 0px 0px 7px 0px; } 
+.development img          { width: 28%; }
+.development .col         { margin: 0 !important; padding:0 !important }
+
+.scrollLegal              { text-align: justify; padding: 0 30px; }
+.scrollLegal h4           { font-weight: 600 !important; margin: 30px 0px !important; text-align: left !important; }
 
 
 /******************/
@@ -139,7 +166,7 @@
 .eventInfoItem .small { color:black; font-size: 10px !important; margin-top: -5px !important; margin-left: 1px !important}
 .eventValueItem p     { float:left; background-color: #DF0808; padding: 1px 7px 1px 7px; color: white; border-radius: 5px; font-size: 11px; font-weight: bolder; margin-right: 15px; }
 .eventValueItem img   { width: 45%; margin: 30% 0% 0% 4%;}
-.item                 { border: none !important; padding: 20px 25px 1px 25px}
+.item                 { border: none !important; padding: 20px 25px 1px 25px; }
 .separator            { border-bottom: 1px solid rgb(239, 239, 239) !important; margin: 20px 1% 1px 1%;}
   
 
@@ -147,10 +174,11 @@
 /*   Events Details View  */
 /********************+*****/
 
+
 /*.imageEvent                    { height: 37%; overflow: hidden; }*/
 .imageEvent img                  { width: 100%; }
-.detailsEvent                    { background-color: rgb(237, 237, 237); padding: 40px 20px 30px 20px; min-height: 130px;}
-.descriptionEvent                { padding: 40px 20px 10px 20px; background-color: white; margin-bottom: 10px !important; min-height: 185px;}
+.detailsEvent                    { background-color: rgb(237, 237, 237); padding: 40px 20px 30px 20px; min-height: 130px; margin-top: -7px;}
+.descriptionEvent                { padding: 40px 20px 10px 20px; background-color: white; margin-bottom: 10px !important; min-height: 155px;}
 .descriptionEvent p              { font-family: 'gulim'; letter-spacing: -0.3px; font-size: 13px; }
 .urlEvent                        { padding: 0px 20px 0px 20px; background-color: white; margin-bottom: 20px !important; min-height: 50px;}
 .urlEvent a                      { font-family: 'gulim'; letter-spacing: -0.3px; font-size: 13px; }
@@ -178,12 +206,12 @@
 /**********************/
 
 
-.detailsNew                    { background-color: rgb(237, 237, 237); padding: 40px 20px 30px 20px; min-height: 130px;}
+.detailsNew                    { background-color: rgb(237, 237, 237); padding: 40px 20px 30px 20px; min-height: 130px; margin-top: -6px;}
 .detailsNew ul                 { list-style: none; }
 .detailsNew ul .tNew,.tNew     { font-family: "Helvetica Neue", "Roboto", "Segoe UI", sans-serif !important; text-transform: uppercase; color: #4E4E4E; font-size: 12px; font-weight: 600; margin-bottom: 30px !important; }
 .detailsNew ul spam            { font-family: "Helvetica Neue", "Roboto", "Segoe UI", sans-serif !important; font-weight: 600; text-transform: uppercase; font-size: 10px; margin: 0px !important; padding: 0px !important; width: 200px !important; }
 .detailsNew ul li              { font-family: 'gulim'; font-size: 12px; margin: -5px 0px 0px 0px !important; padding: 0px !important; }
-.headerNewDetail               { font-family: "Helvetica Neue", "Roboto", "Segoe UI", sans-serif !important; font-weight: 600; text-transform: uppercase; font-size: 10px; padding: 0px !important; float: left; margin: 0px 10px 0px 0px; width: 60px; clear: both; }
+.headerNewDetail               { font-family: "Helvetica Neue", "Roboto", "Segoe UI", sans-serif !important; font-weight: 600; text-transform: uppercase; font-size: 10px; padding: 0px !important; float: left; margin: 0px 10px 0px 0px; clear: both; }
 
 
 /******************/
@@ -243,7 +271,7 @@
 .detailsArticle ul li              { font-family: 'gulim'; font-size: 12px; margin: 0px 0px 0px 0px !important; padding: 0px !important; }
 .detailsArticle ul .tEvent,.tEvent { font-family: "Helvetica Neue", "Roboto", "Segoe UI", sans-serif !important; text-transform: uppercase; color: #4E4E4E; font-size: 12px; font-weight: 600; margin-bottom: 30px !important; }
 .detailsArticle ul spam            { font-family: "Helvetica Neue", "Roboto", "Segoe UI", sans-serif !important; font-weight: 600; text-transform: uppercase; font-size: 10px; margin: 0px !important; padding: 0px !important; width: 200px !important; }
-.tabsArticles .list     { margin-top: 15%; margin-bottom: 15%;}
+.tabsArticles .list     { padding-top: 50px; }
 .tabsArticles .tabs     { top:-2px !important; }
 .moreInfoArticle        { margin-bottom: 10px !important; background-color: white!important; height: 70px !important; padding: 25px 20px 25px 20px !important; border-top: 1px solid #ddd;}
 .availableArticle       { float: left; }
@@ -282,33 +310,52 @@
 .modal ul li            { margin: 20px 0px 20px 0px !important; border-top: 1px solid rgb(53, 52, 52) !important; font-family: 'gulim'; padding: 30px 0px 10px 0px; font-size: 30px; }
 .modal ul li:last-child { border-bottom: 1px solid rgb(53, 52, 52) !important; padding: 30px 0px 30px 0px;}
 .modal h1               { font-family: 'gulim'; font-size: 35px !important; margin-top: 20%; color: gray !important; }
-.modal .button          { width: 40px !important; }
+.modal .button          { width: 40px; }
 
 
 /******************/
-/*   Login View   */
+/*  Client View   */
 /******************/
 
 
-.login                    { background-color: #FA6F56; padding: 0px 30px; }
-.login img                { width: 115px; margin: 10% 30% 0% 30%; }
-.loginForm                { padding: 10% }
-.itemUsername, .itemPassword { background-color: transparent; background-repeat: no-repeat; border-bottom: 1px solid lightgray !important;
-                              border-width: 0px 0px 1px 0px; padding: 14px 3px 0px 3px !important;
-                              border-color: rgba(255, 255, 255, 0.3); margin-bottom: 10px; }
-.loginForm .itemUsername  { background-image: url("../img/usericon.png"); background-size: 20px; background-position: 0px 12px; }
-.loginForm .itemPassword  { background-image: url("../img/passwordicon.png"); background-size: 16px; background-position: 4px 11px; }
-.loginForm input          { color: white; padding-left: 35px;padding-bottom: 11px; }
-.login .button            { border: none; border-radius: 0; background-color: #EEC058 !important; 
-                            color:rgba(255,255,255,1) !important;  margin-top: 45px !important; font-size: 16px}
-.clientContent            { background-color: #FA6F56 }
-.addAccount               { margin: 5% 30% 0 30%; text-align: center } 
-.addAccount p             { font-size: 12px; color: White;}
-.addAccount button        { width: 45px; height: 45px; border-radius: 50px; border: none; color: white; margin-bottom: 10px;
-                            font-size: 34px; font-weight: 100; font-family: 'gulim'; padding: 0px 9px 0px 11px; 
-                            background: rgba(250, 250, 250, 0.57);}
-       
-       
+.login                          { background-color: #FA6F56; padding: 0px 30px; }
+.login img                      { width: 115px; margin: 10% 30% 0% 30%; }
+.loginForm                      { padding: 10% }
+.itemUsername, .itemPassword    { background-color: transparent; background-repeat: no-repeat; border-bottom: 1px solid lightgray !important;
+                                  border-width: 0px 0px 1px 0px; padding: 14px 3px 0px 3px !important;
+                                  border-color: rgba(255, 255, 255, 0.3); margin-bottom: 10px; }
+.loginForm .itemUsername        { background-image: url("../img/usericon.png"); background-size: 20px; background-position: 0px 12px; }
+.loginForm .itemPassword        { background-image: url("../img/passwordicon.png"); background-size: 16px; background-position: 4px 11px; }
+.loginForm input                { color: white; padding-left: 35px;padding-bottom: 11px; }
+.login .button                  { border: none; border-radius: 0; background-color: #EEC058 !important; 
+                                  color:rgba(255,255,255,1) !important;  margin-top: 45px !important; font-size: 16px}
+.clientContent                  { background-color: #FA6F56 }
+.addAccount                     { margin: 5% 30% 0 30%; text-align: center } 
+.addAccount p                   { font-size: 12px; color: White;}
+.addAccount button              { width: 45px; height: 45px; border-radius: 50px; border: none; color: white; margin-bottom: 10px;
+                                  font-size: 34px; font-weight: 100; font-family: 'gulim'; padding: 0px 9px 0px 11px; 
+                                  background: rgba(250, 250, 250, 0.57);}
+ .itemSettings                  { padding: 15px 25px 15px 20px !important; }
+                            
+
+/*******************************/
+/*     Client Profile View     */
+/*******************************/
+
+
+.iOptions           { margin: 0px 10px 0px 15px;}
+.optionsPicture     { font-size: 14px !important; color: #5D5B5B !important; padding: 5px 0 }
+.imageProfile       { height: 200px; border-radius: 50%; border: 5px solid #F1F1F1; margin: 27% 25% 0% 23%; padding: 5px 5px 5px 5px;}
+.buttonChange i     { color: white; }
+.buttonDelete i     { color: white; }
+.buttonChange       { background: #8DCFC8 !important; background-size: 25px 20px !important; font-size: 35px; float: left;
+                      background-repeat: no-repeat !important; background-position: 17px !important; border: none !important;
+                      width: 40px; border-radius: 50%; padding: 20px 53px 15px 25px;  margin: 8% 0% 8% 24%; text-align: center;}
+.buttonDelete       { background: red !important; background-size: 25px 20px !important; font-size: 35px;
+                      background-repeat: no-repeat !important; background-position: 17px !important; border: none !important;
+                      width: 40px; border-radius: 50%; padding: 20px 53px 15px 25px;  margin: 8% 20% 8% 10%; text-align: center;}
+      
+ 
 /******************/
 /*   Login View   */
 /******************/    

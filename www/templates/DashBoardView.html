@@ -6,9 +6,9 @@
   	</ion-nav-buttons>
 	  
 	<!-- Add right button to filter for now disable -->
-	<!--<ion-nav-buttons side="right">
-		<button class="button button-icon button-clear settingIcon"></button>
-	</ion-nav-buttons>-->
+	<ion-nav-buttons side="right">
+		<button class="button button-icon button-clear" ng-click="popover.show($event)"><i class="barIcon ion-information-circled"></i></button>
+	</ion-nav-buttons>
 	
 	<ion-content scroll="false">
 		<div class="contentImage">
@@ -31,9 +31,9 @@
 			</ion-slide-box>
 		</div>
 		<div class="contentOptions">
-			<div class="options eventsOptions" ng-click="events()">
-				<img src="img/iconevent.png" class="animated infinite {{property.animatedEvent}}" />			
-				<h4>EVENTOS</h4>
+			<div class="options articleOptions" ng-click="articles()">
+				<img src="img/iconarticle.png" class="animated infinite {{property.animatedArticle}}" />		
+				<h4>ARTÍCULOS</h4>
 			</div>
 			<div class="options offersOptions" ng-click="offers()">	
 				<img src="img/iconoffer.png" class="animated infinite {{property.animatedOffer}}" />		
@@ -42,19 +42,15 @@
 			<div class="options newsOptions" ng-click="news()">	
 				<img src="img/iconnew.png" class="animated infinite {{property.animatedNew}}" />		
 				<h4>NOTICIAS</h4>
-			</div>
-			<div class="options articleOptions" ng-click="articles()">
-				<img src="img/iconarticle.png" class="animated infinite {{property.animatedArticle}}" />		
-				<h4>ARTÍCULOS</h4>
-			</div>
+			</div>	
+            <div class="options shopsOptions" ng-click="shops()">	
+				<img src="img/iconshop.png" class="animated infinite {{property.animatedShop}}" />			
+				<h4>TIENDAS</h4>
+			</div>		
 			<div class="options clientsOptions" ng-click="clients()">
 				<img src="img/iconclient.png" class="animated infinite {{property.animatedClient}}" />
 				<h4>CLIENTES</h4>
-			</div>
-			<div class="options shopsOptions" ng-click="shops()">	
-				<img src="img/iconshop.png" class="animated infinite {{property.animatedShop}}" />			
-				<h4>TIENDAS</h4>
-			</div>
+			</div>			
 		</div>
   	</ion-content>
 </ion-view>
