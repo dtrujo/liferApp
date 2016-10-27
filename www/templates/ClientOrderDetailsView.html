@@ -1,0 +1,59 @@
+<ion-view view-title="Detalles del pedido" class="clientsBar">
+	<ion-content class="backgroundWhite">
+		<div class="detailsHeader">
+			<div class="pricePurchase">
+				<p class="pHeader"><span>Nº Pedido:</span> {{order.Npedido}}</p>
+				<p class="pHeader"><span>Fecha:</span> {{order.Fecha}}</p>
+				<p class="pHeader"><span>Estado:</span> {{order.DescripcionProceso}}</p>
+				<p class="pHeader"><span>Entrega:</span> {{order.DireccionEntrega}}</p>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="clear"></div>
+		<ion-scroll direction="y" style="height: 60%">
+			<ion-list show-delete="false" can-swipe="false" class="listPurchaseDetails">
+				<ion-item ng-repeat="article in articles" class="itemArticlesDetails">
+					<div class="cartImage">
+						<img src="http://194.140.149.253/Fotos/{{article.Codigo}}.jpg">
+						<!--<div class="clear"></div>-->
+					</div>
+					<div class="offerItem">
+						<div class="pricePurchase">
+							<p>{{article.Codigo}}</p>
+						</div>
+						<div class="detailPurchase">
+							<h4>{{article.Descripcion}}</h4>
+							<p class="pointByPurchase">
+								Uds: {{article.Uds}}
+							</p>
+						</div>
+						<div class="purchaseDetailsItem">
+							<div class="detailPurchase">
+								<h3>{{article.Precio}} €</h3>
+								<!--<p class="dtoPurchase">
+									Dto%: {{article.Descuento}}
+								</p>-->
+							</div>
+						</div>
+					</div>
+					<ion-option-button class="button-light showArticle" ng-click="articleDetails(article.Codigo)">
+						<i class="ion-android-search"></i>
+					</ion-option-button>
+				</ion-item>
+			</ion-list>
+	 	</ion-scroll>
+		<div class="bar bar-footer bar-balanced detailsFooter">
+			<div class="purchaseFooterItem">
+				<!--<div class="detailDtoPurchase">
+					<h4>{{order.Descuento}}% Dto</h4>
+				</div>-->
+				<div class="purchaseTotalItem">
+					<h4>TOTAL: {{order.TotalImporte}} €</h4>
+					<div class='clear'></div>
+				</div>
+				<div class='clear'></div>
+			</div>
+		</div>
+  	</ion-content>
+</ion-view>

@@ -1,44 +1,44 @@
 // Ionic liferapp
-angular.module('liferapp', ['ionic', 'jrCrop', 'ngCordova', 'liferapp.controllers', 'uiGmapgoogle-maps', 'liferapp.services', 'ngIOS9UIWebViewPatch'])
+angular.module('liferapp', ['ionic', 'jrCrop', 'ngCordova', 'liferapp.controllers', 'uiGmapgoogle-maps', 'liferapp.services', 'ngIOS9UIWebViewPatch', 'ionic-numberpicker'])
 
 // Run
 .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
-        
+
         //hide the status bar using the StatusBar plugin
         if(window.StatusBar) {
-            
+
             // org.apache.cordova.statusbar required
             StatusBar.hide();
             ionic.Platform.fullScreen();
         }
-        
+
     });
 })
 
 // Config
-.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) { 
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 
-    
-    // GENERAL CONFIG PARAMS  
-  
-    
+
+    // GENERAL CONFIG PARAMS
+
+
     // disable title text in the back button
     $ionicConfigProvider.backButton.previousTitleText(false);
-    
+
     // change the previous text if you dont show the title back button
     $ionicConfigProvider.backButton.text('');
-  
+
     // disable animation between pages
     $ionicConfigProvider.views.transition('platform');
-    
+
     // Forward cache when navigate not recreate state
     $ionicConfigProvider.views.forwardCache(true)
-    
 
-    //  NAVIGATIONS TO STATES 
- 
-    
+
+    //  NAVIGATIONS TO STATES
+
+
     // navigation
     $stateProvider
 
@@ -60,7 +60,7 @@ angular.module('liferapp', ['ionic', 'jrCrop', 'ngCordova', 'liferapp.controller
         }
       }
     })
-    
+
     // Parent menu call dashboard bonus view
     .state('eventmenu.bonus', {
       url: "/bonus",
@@ -70,7 +70,7 @@ angular.module('liferapp', ['ionic', 'jrCrop', 'ngCordova', 'liferapp.controller
         }
       }
     })
-    
+
     // Parent menu call dashboard bonus view
     .state('eventmenu.legal', {
       url: "/legalwarning",
@@ -91,7 +91,7 @@ angular.module('liferapp', ['ionic', 'jrCrop', 'ngCordova', 'liferapp.controller
         }
       }
     })
-    
+
      // Create state to event details view
     .state('eventmenu.eventDetails', {
       url: "/eventDetails/:id",
@@ -123,7 +123,7 @@ angular.module('liferapp', ['ionic', 'jrCrop', 'ngCordova', 'liferapp.controller
           controller: "OffersController"
         }
       }
-    }) 
+    })
 
     // Create state to offer details view
     .state('eventmenu.offerDetails', {
@@ -134,7 +134,7 @@ angular.module('liferapp', ['ionic', 'jrCrop', 'ngCordova', 'liferapp.controller
           controller: "OfferDetailsController"
         }
       }
-    })   
+    })
 
     // Create state to news view
     .state('eventmenu.news', {
@@ -145,7 +145,7 @@ angular.module('liferapp', ['ionic', 'jrCrop', 'ngCordova', 'liferapp.controller
           controller: "NewsController"
         }
       }
-    })  
+    })
 
     // Create state to new details view
     .state('eventmenu.newDetails', {
@@ -156,7 +156,40 @@ angular.module('liferapp', ['ionic', 'jrCrop', 'ngCordova', 'liferapp.controller
           controller: "NewDetailsController"
         }
       }
-    }) 
+    })
+
+    // Create state to cart view
+    .state('eventmenu.cart', {
+      url: "/cart",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/CartView.html",
+          controller: "CartController"
+        }
+      }
+    })
+
+    // Create state to cart confirm view
+    .state('eventmenu.cartConfirm', {
+      url: "/cartConfirm",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/CartConfirmView.html",
+          controller: "CartConfirmController"
+        }
+      }
+    })
+
+    // Create state to cart confirm adress pickUp view
+    .state('eventmenu.cartConfirmAddress', {
+      url: "/cartConfirmAddress",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/CartConfirmAddressView.html",
+          controller: "CartConfirmAddressController"
+        }
+      }
+    })
 
     // Create state to articles view
     .state('eventmenu.articles', {
@@ -167,7 +200,7 @@ angular.module('liferapp', ['ionic', 'jrCrop', 'ngCordova', 'liferapp.controller
           controller: "ArticlesController"
         }
       }
-    }) 
+    })
 
     // Create state to article details view
     .state('eventmenu.articleDetails', {
@@ -178,8 +211,8 @@ angular.module('liferapp', ['ionic', 'jrCrop', 'ngCordova', 'liferapp.controller
           controller: "ArticleDetailsController"
         }
       }
-    }) 
-   
+    })
+
     // Create state to articles search result view
     .state('eventmenu.articlesSearchResult', {
       url: "/articlesSearchResult/:filtro",
@@ -190,7 +223,7 @@ angular.module('liferapp', ['ionic', 'jrCrop', 'ngCordova', 'liferapp.controller
         }
       }
     })
-    
+
     // Create state to article search view
     .state('eventmenu.articlesSearch', {
       url: "/articlesSearch",
@@ -200,7 +233,7 @@ angular.module('liferapp', ['ionic', 'jrCrop', 'ngCordova', 'liferapp.controller
           controller: "ArticlesSearchController"
         }
       }
-    }) 
+    })
 
     // Create state to login view
     .state('eventmenu.login', {
@@ -212,8 +245,8 @@ angular.module('liferapp', ['ionic', 'jrCrop', 'ngCordova', 'liferapp.controller
           controller: "ClientLoginController"
         }
       }
-    }) 
-    
+    })
+
     // Create state to client view
     .state('eventmenu.client', {
       url: "/client/:user",
@@ -223,8 +256,8 @@ angular.module('liferapp', ['ionic', 'jrCrop', 'ngCordova', 'liferapp.controller
           controller: "ClientController"
         }
       }
-    }) 
-    
+    })
+
     // Create state to client change password view
     .state('eventmenu.password', {
       url: "/password/:user",
@@ -234,8 +267,8 @@ angular.module('liferapp', ['ionic', 'jrCrop', 'ngCordova', 'liferapp.controller
           controller: "ClientChangePasswordController"
         }
       }
-    }) 
-    
+    })
+
     // Create state to client profile view
     .state('eventmenu.profile', {
       url: "/profile/:user",
@@ -246,7 +279,7 @@ angular.module('liferapp', ['ionic', 'jrCrop', 'ngCordova', 'liferapp.controller
         }
       }
     })
-    
+
     // Create state to client settigns menu view
     .state('eventmenu.settings', {
       url: "/settings/:user",
@@ -256,8 +289,8 @@ angular.module('liferapp', ['ionic', 'jrCrop', 'ngCordova', 'liferapp.controller
           controller: "ClientSettingsController"
         }
       }
-    }) 
-    
+    })
+
     // Create state to client successfully view
     .state('eventmenu.successfully', {
       url: "/successfully/:user",
@@ -267,8 +300,8 @@ angular.module('liferapp', ['ionic', 'jrCrop', 'ngCordova', 'liferapp.controller
           controller: "ClientSuccessfullyController"
         }
       }
-    }) 
-    
+    })
+
     // Create state to client successfully recovery view
     .state('eventmenu.successfullyRecovery', {
       url: "/successfullyRecovery",
@@ -278,8 +311,8 @@ angular.module('liferapp', ['ionic', 'jrCrop', 'ngCordova', 'liferapp.controller
           controller: "ClientSuccessfullyRecoveryController"
         }
       }
-    }) 
-    
+    })
+
    // Create state to client successfully change password view
     .state('eventmenu.successfullyChangePass', {
       url: "/successfullyChangePass",
@@ -289,8 +322,8 @@ angular.module('liferapp', ['ionic', 'jrCrop', 'ngCordova', 'liferapp.controller
           controller: "ClientSuccessfullyChangePassController"
         }
       }
-    }) 
-    
+    })
+
     // Create state to client recovery view
     .state('eventmenu.recovery', {
       url: "/recovery",
@@ -300,8 +333,8 @@ angular.module('liferapp', ['ionic', 'jrCrop', 'ngCordova', 'liferapp.controller
           controller: "ClientRecoveryController"
         }
       }
-    }) 
-    
+    })
+
     // Create state to barcode view
     .state('eventmenu.barcode', {
       url: "/barcode/:user",
@@ -311,8 +344,8 @@ angular.module('liferapp', ['ionic', 'jrCrop', 'ngCordova', 'liferapp.controller
           controller: "ClientBarCodeController"
         }
       }
-    }) 
-    
+    })
+
     // Create state to purchases view
     .state('eventmenu.purchases', {
       url: "/purchases/:code",
@@ -322,8 +355,19 @@ angular.module('liferapp', ['ionic', 'jrCrop', 'ngCordova', 'liferapp.controller
           controller: "ClientPurchasesController"
         }
       }
-    }) 
-    
+    })
+
+    // Create state to purchase details view
+    .state('eventmenu.selectArticleTicketPresent', {
+      url: "/articleTicketPresent/:code",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/ClientSelectArticleTicketPresent.html",
+          controller: "SelectArticleTicketPresentController"
+        }
+      }
+    })
+
     // Create state to purchase details view
     .state('eventmenu.purchaseDetails', {
       url: "/purchaseDetails/:purchase",
@@ -334,7 +378,7 @@ angular.module('liferapp', ['ionic', 'jrCrop', 'ngCordova', 'liferapp.controller
         }
       }
     })
-    
+
     // Create state to article purchase details view
     .state('eventmenu.purchaseArticleDetails', {
       url: "/purchaseArticleDetails/:article",
@@ -345,7 +389,7 @@ angular.module('liferapp', ['ionic', 'jrCrop', 'ngCordova', 'liferapp.controller
         }
       }
     })
-    
+
     // Create state to points view
     .state('eventmenu.points', {
       url: "/points/:code",
@@ -355,8 +399,41 @@ angular.module('liferapp', ['ionic', 'jrCrop', 'ngCordova', 'liferapp.controller
           controller: "ClientPointsController"
         }
       }
-    }) 
-    
+    })
+
+    // Create state to orders view
+    .state('eventmenu.orders', {
+      url: "/orders/:code",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/ClientOrdersView.html",
+          controller: "ClientOrdersController"
+        }
+      }
+    })
+
+    // Create state to order success view
+    .state('eventmenu.orderSuccess', {
+      url: "/orderSuccess/:user",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/ClientOrderSuccessView.html",
+          controller: "ClientOrderSuccessController"
+        }
+      }
+    })
+
+    // Create state to order details view
+    .state('eventmenu.orderDetails', {
+      url: "/orderDetails/:order",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/ClientOrderDetailsView.html",
+          controller: "ClientOrderDetailsController"
+        }
+      }
+    })
+
     // Create state to messages view
     .state('eventmenu.messages', {
       url: "/messages",
@@ -366,8 +443,8 @@ angular.module('liferapp', ['ionic', 'jrCrop', 'ngCordova', 'liferapp.controller
           controller: "ClientMessagesController"
         }
       }
-    }) 
-    
+    })
+
     // Create state to clients register view
     .state('eventmenu.clientRegister', {
       url: "/clientRegister",
@@ -377,7 +454,7 @@ angular.module('liferapp', ['ionic', 'jrCrop', 'ngCordova', 'liferapp.controller
           controller: "ClientRegisterController"
         }
       }
-    }) 
+    })
 
     // Create state to shops view
     .state('eventmenu.shops', {
@@ -400,7 +477,7 @@ angular.module('liferapp', ['ionic', 'jrCrop', 'ngCordova', 'liferapp.controller
         }
       }
     })
-    
+
     // Create state to shops Map view
     .state('eventmenu.shopMap', {
       url: "/shopMap/:coordenadas",
@@ -411,7 +488,7 @@ angular.module('liferapp', ['ionic', 'jrCrop', 'ngCordova', 'liferapp.controller
         }
       }
     })
-    
+
     // Create state to error view
     .state('eventmenu.error', {
       url: "/error",

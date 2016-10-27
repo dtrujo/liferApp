@@ -1,16 +1,16 @@
 angular.module('liferapp.services', [])
 	.factory('API', function($http) {
 
-		// API directions 
-		var urlBase = 'http://213.97.238.120/webapilinkios/api';
+		// API directions
+		var urlBase = 'http://194.140.149.253/webapilinkios/api';
 
 		// return diferent methods
 		return{
-            getLocations : function(idProvincia) {
+      getLocations : function(idProvincia) {
 				return $http({
 					url: urlBase + '/clientes?CodProvince=' + idProvincia,
 					method: 'GET'
-				})	
+				})
 			},
 			getEvents : function() {
 				return $http({
@@ -22,7 +22,7 @@ angular.module('liferapp.services', [])
 				return $http({
 					url: urlBase + '/eventos?Id=' + Id,
 					method: 'GET'
-				})	
+				})
 			},
 			getNews: function() {
 				return $http({
@@ -34,14 +34,14 @@ angular.module('liferapp.services', [])
 				return $http({
 					url: urlBase + '/noticias?Id=' + Id,
 					method: 'GET'
-				})	
+				})
 			},
 			getFamilies: function() {
 				return $http({
 					url: urlBase + '/familias',
 					method: 'GET'
 				})
-			},			
+			},
 			getArticles: function(ArticleType) {
 				return $http({
 					url: urlBase + '/articulos?ArticleType=' + ArticleType,
@@ -52,13 +52,13 @@ angular.module('liferapp.services', [])
 				return $http({
 					url: urlBase + '/articulos?' + Filter,
 					method: 'GET'
-				})	
+				})
 			},
 			getArticleByCode : function(Codigo) {
 				return $http({
 					url: urlBase + '/articulos?codigo=' + Codigo,
 					method: 'GET'
-				})	
+				})
 			},
 			getShops: function() {
 				return $http({
@@ -79,14 +79,14 @@ angular.module('liferapp.services', [])
 					data: client
 				})
 			},
-            recoveryPass: function(email) {
+      recoveryPass: function(email) {
 				return $http({
 					url: urlBase + '/clientes?UserEmail=' + email,
 					method: 'POST',
                     data: { UserEmail: email }
 				})
 			},
-            changePass: function(user, password) {
+      changePass: function(user, password) {
 				return $http({
 					url: urlBase + '/clientes?UserPass=' + user + '&DatPassWord=' + password,
 					method: 'POST',
@@ -104,7 +104,7 @@ angular.module('liferapp.services', [])
 					url: urlBase + '/clientes?User=' + user + '&PassWord=' + password,
 					method: 'GET'
 				})
-			},  
+			},
 			getClientPurchase: function(code) {
 				return $http({
 					url: urlBase + '/compras?Codigo=' + code,
@@ -122,16 +122,35 @@ angular.module('liferapp.services', [])
 					url: urlBase + '/compras?CodigoUsuario=' + code,
 					method: 'GET'
 				})
-			}    
+			},
+			getClientOrders: function(code) {
+				return $http({
+					url: urlBase + '/pedidos?PedidosCodigoCliente=' + code,
+					method: 'GET'
+				})
+			},
+			getOrderDetails: function(code) {
+				return $http({
+					url: urlBase + '/pedidos?NumeroPedidoGeneral=' + code,
+					method: 'GET'
+				})
+			},
+			sendOrder: function(order) {
+				return $http({
+					url: urlBase + '/pedidos',
+					method: 'POST',
+					data: order
+				})
+			}
 		}
 })
 
-// service to control image profile 
+// service to control image profile
 .factory('FileService', function() {
     var images;
     var IMAGE_STORAGE_KEY = 'dav-images';
     var PROFILE_IMAGE_STORAGE_KEY = 'profile-image';
-    
+
     // get all image in local storage
     function getImages() {
         var img = window.localStorage.getItem(IMAGE_STORAGE_KEY);
@@ -142,7 +161,7 @@ angular.module('liferapp.services', [])
         }
         return images;
     };
-    
+
     // get image profile taking local storage
     function getProfileImage() {
         var img = window.localStorage.getItem(PROFILE_IMAGE_STORAGE_KEY);
@@ -152,23 +171,31 @@ angular.module('liferapp.services', [])
             return '';
         }
     };
-    
+
     // save image in local storage
     function addImage(img) {
         images.push(img);
         window.localStorage.setItem(IMAGE_STORAGE_KEY, JSON.stringify(images));
     };
-    
+
     // save image in local storage
-    function addProfileImage(img) {  
-        
+    function addProfileImage(img) {
+
         // remove localstorage and insert new one
-		window.localStorage.removeItem(PROFILE_IMAGE_STORAGE_KEY); 
-        window.localStorage.setItem(PROFILE_IMAGE_STORAGE_KEY, img);
+		window.localStorage.removeItem(PROFILE_IMAGE_STORAGE_KEY);
+
+        // save new image
+        try {
+            window.localStorage.setItem('profile-image', img);
+        }catch (error) {
+            console.log( 'error Liferapp: ' + error );
+        }
+
+        return true;
     };
- 
+
     // return functions
-    return {        
+    return {
         storeImage: addImage,
         storeProfileImage: addProfileImage,
         images: getImages,
@@ -178,7 +205,7 @@ angular.module('liferapp.services', [])
 
 // Service to control profile
 .factory('ImageService', function($cordovaCamera, FileService, $q, $cordovaFile) {
-    
+
     // take options to save image
     function optionsForType (type) {
         var source;
@@ -189,36 +216,42 @@ angular.module('liferapp.services', [])
             case 1:
                 source = Camera.PictureSourceType.PHOTOLIBRARY;
                 break;
-        }            
+        }
         return {
             quality: 90,
             destinationType: Camera.DestinationType.DATA_URL,
             sourceType: source,
             allowEdit: false,
+            targetWidth: 1000,
+            targetHeight: 1000,
             encodingType: Camera.EncodingType.JPEG,
             popoverOptions: CameraPopoverOptions,
             saveToPhotoAlbum: false,
-            correctOrientation:true
+            correctOrientation:false
         };
-    };        
-    
+    };
+
     // save media using ayncronous method
-    function saveMedia(type) {                
+    function saveMedia(type) {
         var defered = $q.defer();
         var promise = defered.promise;
         var options = optionsForType(type);
 
-        // get image of camera or using gallery 
-        $cordovaCamera.getPicture(options).then(function(imageBase64) {	
-            FileService.storeProfileImage(imageBase64);	            
-            defered.resolve(FileService.profileImage());               
-        });                    
-        
-        return promise;                        
+        // get image of camera or using gallery
+        $cordovaCamera.getPicture(options).then(function(imageBase64) {
+
+             // save picture in to local storage
+            FileService.storeProfileImage(imageBase64);
+
+            // return correct value using promise
+            defered.resolve(FileService.profileImage());
+        });
+
+        return promise;
     };
-    
+
     // return functions call
-    return {           
-         handleMediaDialog : saveMedia   
+    return {
+         handleMediaDialog : saveMedia
     }
 });

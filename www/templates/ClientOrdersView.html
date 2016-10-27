@@ -1,0 +1,30 @@
+<ion-view view-title="Pedidos" class="clientsBar">
+	<ion-content class="backgroundWhite">
+		<ion-list show-delete="false" can-swipe="true" class="listPurchaseDetails">
+			<ion-item ng-repeat="order in orders" class="itemArticlesDetails">
+				<div class="cartItem">
+					<div class="cartImage">
+						<img src="http://194.140.149.253/Fotos/{{order.Codigo}}.jpg">
+						<!--<div class="clear"></div>-->
+					</div>
+					<div class="cartArticle">
+						<p>{{order.Codigo}}</p>
+						<h4>{{order.Descripcion}}</h4>
+					</div>
+					<div class="cartUds">
+						<h4>{{order.Uds}} Uds</h4>
+					</div>
+					<div class="clear"></div>
+					<div class="cartDetails">
+						<p>Nº Pedido:</p><button class="button button-small button-light" ng-click="showOrderDetails(order.NPedido)">{{order.NPedido}}</button>
+						<p>Fecha: {{order.fecha}}</p>
+						<p>Estado: <strong>{{order.EsTadoPedido}}</strong></p>
+					</div>
+				</div>
+				<ion-option-button class="button-light showArticle" ng-click="articleDetails(order.Codigo)">
+					<i class="ion-android-search"></i>
+				</ion-option-button>
+			</ion-item>
+		</ion-list>
+  </ion-content>
+</ion-view>

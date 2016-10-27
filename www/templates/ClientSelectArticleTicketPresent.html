@@ -1,0 +1,60 @@
+<ion-view view-title="Seleccionar artículos" class="clientsBar">
+	<ion-nav-buttons side="right">
+		<button class="button button-icon button-clear" ng-click="showPresentBill()"><i class="barIcon ion-android-pin"></i></button>
+	</ion-nav-buttons>
+	<ion-content class="backgroundWhite">
+		<div class="detailsHeader">
+			<div class="pricePurchase">
+				<h4 class="pHeader"><span>Nº Ticket:</span> {{purchase.Ndocumento}}</h4>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="clear"></div>
+		<ion-scroll direction="y" style="height: 60%">
+			<ion-list show-delete="false" can-swipe="true" class="listPurchaseDetails">
+				<ion-item ng-repeat="article in articles" class="itemArticlesDetails">
+					<div class="offerItem">
+						<!--<div class="pricePurchase">
+							<p>{{article.Codigo}}</p>
+						</div>
+						<div class="detailPurchase">
+							<h4>{{article.Descripcion}}</h4>
+							<p class="pointByPurchase">
+								Uds: {{article.Uds}}
+							</p>
+						</div>-->
+
+						<div class="cartImage">
+							<img src="http://194.140.149.253/Fotos/{{article.Imagen}}">
+							<div class="clear"></div>
+						</div>
+						<div class="cartInfoItem ">
+							<h3>{{article.Nombre}}</h3>
+							<p>{{article.Familia}}</p>
+							<p class='small'><strong>Referencia:</strong> {{article.Codigo}}</p>
+						</div>
+
+						<!--<div class="purchaseDetailsItem">
+							<div class="detailPurchase">
+								<h3>{{article.Precio}} €</h3>
+								<p class="dtoPurchase">
+									Dto%: {{article.Descuento}}
+								</p>
+							</div>
+						</div>-->
+					</div>
+
+					<ion-option-button class="button-light showArticle" ng-click="articleDetails(article.Codigo)">
+						<i class="ion-android-search"></i>
+					</ion-option-button>
+				</ion-item>
+			</ion-list>
+	 	</ion-scroll>
+		<div class="bar bar-footer detailsFooter">
+			<button class="button button-full button-positive" style="min-height: 40px;">
+  			Generar Ticket
+			</button>
+		</div>
+  	</ion-content>
+</ion-view>

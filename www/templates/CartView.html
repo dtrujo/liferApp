@@ -1,0 +1,56 @@
+<ion-view view-title="Carrito del pedido" class="cartBar">
+	<ion-nav-buttons side="right">
+		<button class="button button-icon button-clear" ng-click="confirmRemoveCart()"><i class="icon ion-trash-b buttonWhite"></i></button>
+		<button class="button button-icon button-clear" ng-click="confirmOrderCart()" style="margin-left:5px;"><i class="icon ion-android-done buttonWhite"></i></button>
+	</ion-nav-buttons>
+	<ion-content class="backgroundWhite">
+		<ion-scroll direction="y" style="height: 88%">
+			<ion-list show-delete="false" can-swipe="true">
+				<ion-item ng-repeat="article in articles" class="itemCart">
+					<div class="shopItem">
+						<div class="cartImage">
+							<img src="http://194.140.149.253/Fotos/{{article.Imagen}}">
+							<div class="clear"></div>
+						</div>
+						<div class="cartInfoItem ">
+							<h3>{{article.Nombre}}</h3>
+							<p>{{article.Familia}}</p>
+							<p class='small'><strong>Referencia:</strong> {{article.Codigo}}</p>
+						</div>
+						<div class="cartValueItem">
+							<!--<ionic-numberpicker input-obj="numberPickerObject">
+					      <button class="button button-positive order-button">
+					        <i class="ion-archive"></i>
+					      </button>
+					    </ionic-numberpicker>-->
+							<span>UDS</span>
+							<label class="item-input ammount" ng-class="{cartRed: article.Uds <= 0}">
+							  <!--<input type="number" value="{{article.Uds}}">-->
+								<input type="search" ng-model="article.Uds" value="{{article.Uds}}" ng-change="onUdsChange(article)" ng-class="{cartRed: article.Uds <= 0}" />
+							</label>
+						</div>
+						<div class="clear"></div>
+						<div class="pvp">
+								<span class="pvpInfo">PVP: </span><span class="pvpValue">{{article.Precio}}</span>
+						</div>
+					</div>
+					<ion-option-button class="button-light showArticle" ng-click="removeArticle($index)">
+						<i class="ion-trash-b"></i>
+					</ion-option-button>
+				</ion-item>
+				<ion-item ng-show="showTopEmpty" class="emptyItem">
+					<img src="img/empty.png" style=" width: 100px; height: 100px;"></img><br /> El carrito está vacío
+				</ion-item>
+			</ion-list>
+	 	</ion-scroll>
+		<div class="bar bar-footer bar-balanced detailsFooterCart">
+			<div class="purchaseFooterItem">
+				<div class="purchaseTotalItem">
+					<h4>TOTAL: {{Total}} €</h4>
+					<div class='clear'></div>
+				</div>
+				<div class='clear'></div>
+			</div>
+		</div>
+  </ion-content>
+</ion-view>

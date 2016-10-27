@@ -1,0 +1,31 @@
+<ion-view view-title="Dirección de entrega" class="cartBar">
+	<ion-nav-buttons side="right">
+		<button class="button button-icon button-clear" ng-click="confirmAddress()" style="margin-left:5px;"><i class="icon ion-android-done buttonWhite"></i></button>
+	</ion-nav-buttons>
+	<ion-content class="backgroundWhite">
+		<div class="list articleList">
+			<p class='pTitle'>Envío del pedido</p>
+			<p class="informationFieldsRecovery ">Debe seleccionar alguna de las formas mostradas a continuación para recibir o recoger su pedido. En caso de seleccionar una dirección alternativa, asegúrese de introducir la dirección correctamente.</p>
+			<br>
+			<div class="pickUpShop">
+				<ion-checkbox ng-model="pickUpOption.shop" ng-checked="pickUpOption.shop==true" ng-change="check(1)">
+					Recoger en tienda
+				</ion-checkbox>
+				<select class="inputAddressShop" ng-model="personalAddress.dir1" ng-options="template.value as template.name for template in personalAddress.items">					
+		    </select>
+			</div>
+			<div class="pickUpShop">
+				<ion-checkbox ng-model="pickUpOption.address" ng-checked="pickUpOption.address==true" ng-change="check(2)">
+					Domicilio por defecto
+				</ion-checkbox>
+				<input ng-model="personalAddress.dir2" name="dir2" type="text" placeholder="Dirección del domicilio" class="inputAddressShop" value="{{client.Direccion}} - {{client.CP}}">
+			</div>
+			<div class="pickUpShop">
+				<ion-checkbox ng-model="pickUpOption.alternative" ng-checked="pickUpOption.alternative==true" ng-change="check(3)">
+					Dirección alternativa
+				</ion-checkbox>
+				<input ng-model="personalAddress.dir3" name="dir3" type="text" placeholder="Dirección alternativa" class="inputAddressShop">
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

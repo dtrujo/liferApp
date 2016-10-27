@@ -1,10 +1,9 @@
 <ion-view cache-view="false" view-title="Cliente" class="clientsBar" hide-back-button="true">
 	<ion-nav-buttons side="left">
-    	<button class="button button-clear backButton" menu-toggle="left">
-			<i class="icon ion-navicon"></i>
-		</button>
+    	<button class="button button-clear backButton" menu-toggle="left"><i class="icon ion-navicon"></i></button>
   	</ion-nav-buttons>
 	<ion-nav-buttons side="right">
+		<button class="button button-icon button-clear" ng-click="cart()" ng-class='{hidden: isNotLogin}'><i class="icon ion-ios-cart buttonWhite"></i></button>
 		<button class="button button-icon button-clear" ng-click="popover.show($event)"><i class="barIcon ion-gear-a"></i></button>
 	</ion-nav-buttons>
 	<ion-content class="backgroundWhite">
@@ -19,7 +18,7 @@
 				</div>
 				<div class="infoCenter">
 					<h3>{{client.Nombre}}</h3>
-					<h4 ng-class="{'hasNotCode' : hasCode }">{{client.Codigo}}</h4>
+					<h4 ng-class="{'hasNotCode' : hasCode }"><strong>{{client.Codigo}}</strong></h4>
 				</div>
 				<div class="infoRight">
 					<i class="ion-social-euro"></i>
@@ -29,7 +28,7 @@
 				</div>
 				<div class="clear"></div>
 			</div>
-			<div class="clear"></div>    
+			<div class="clear"></div>
 		</div>
 		<div class="clear"></div>
 	    <ul class="list">
@@ -38,16 +37,16 @@
 				<p>CÓDIGO BARRAS</p>
 		    </li>
 		    <li class="itemDashboard" ng-class='{disabled: hasCode}' ng-click="hasCode || purchases()">
-		    	<i class="icons ion-android-cart"></i>
+		    	<i class="icons ion-bag"></i>
 		    	<p>COMPRAS</p>
 		    </li>
 		    <li class="itemDashboard" ng-class='{disabled: hasCode}' ng-click="hasCode || points()">
 				<i class="icons ion-ribbon-b"></i>
 				<p>PUNTOS</p>
 		    </li>
-		    <li class="itemDashboard" ng-class='{disabled: true}' ng-click="true">
-				<i class="icons ion-chatbox"></i>
-				<p>MENSAJES</p>
+		    <li class="itemDashboard" ng-class='{disabled: hasCode}' ng-click="hasCode || orders()">
+				<i class="icons ion-document-text"></i>
+				<p>PEDIDOS</p>
 		    </li>
 		</ul>
   	</ion-content>

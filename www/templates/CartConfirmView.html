@@ -1,0 +1,45 @@
+<ion-view view-title="Detalles del pedido" class="cartBar">
+	<ion-nav-buttons side="right">
+		<button class="button button-icon button-clear" ng-click="confirmOrder()" style="margin-left:5px;"><i class="icon ion-android-done buttonWhite"></i></button>
+	</ion-nav-buttons>
+	<ion-content class="backgroundWhite">
+		<div class="detailsHeader">
+			<div class="pricePurchase">
+				<p class="pHeader"><span>{{client.Nombre}} {{client.Apellidos}}</span></p>
+				<p class="pHeader"><span>{{client.Nif}}</span></p>
+				<p class="pHeader"><span>{{client.Direccion}}</span></p>
+				<p class="pHeader"><span>{{client.Localidad}} - {{client.CP}}</span></p>
+				<p class="pHeader"><span>{{client.Provincia}} - {{client.Pais}}</span></p>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="clear"></div>
+		<ion-scroll direction="y" style="height: 60%">
+			<ion-list show-delete="false" can-swipe="false" class="listPurchaseDetails">
+				<ion-item ng-repeat="article in articles" class="itemArticlesDetails">
+					<div class="offerItem">
+						<div class="">
+							<p>{{article.Codigo}}</p>
+						</div>
+						<div class="detailCartArticle">
+							<h4>{{article.Nombre}}</h4>
+							<p class="pointByArticle">{{article.Familia}}</p>
+						</div>
+						<div class="detailCartPriceArticle">
+							<h3>{{article.Uds}} x {{article.Precio}} €</h3>
+						</div>
+					</div>
+					<ion-option-button class="button-light showArticle">
+						<i class="ion-trash-b"></i>
+					</ion-option-button>
+				</ion-item>
+			</ion-list>
+	 	</ion-scroll>
+		<div class="totalAmmount">
+			<div>
+				<h4><span>TOTAL:</span> {{Total}} €</h4>
+			</div>
+		</div>
+		<div class="clear"></div>
+  	</ion-content>
+</ion-view>

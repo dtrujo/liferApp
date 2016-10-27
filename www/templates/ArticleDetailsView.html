@@ -1,14 +1,18 @@
 <ion-view view-title="Artículo" class="articlesBar">
+	<ion-nav-buttons side="right">
+		<button class="button button-icon button-clear" ng-click="confirm()" ng-class='{hidden: isNotLogin}'><i class="icon ion-android-add buttonWhite"></i></button>
+		<button class="button button-icon button-clear" ng-click="cart()" ng-class='{hidden: isNotLogin}' style="margin-left:5px;"><i class="icon ion-ios-cart buttonWhite"></i></button>
+	</ion-nav-buttons>
 	<ion-content class="backgroundWhite">
 		<div class="imageEvent">
-			<img src="http://213.97.238.120/Fotos/{{article.Foto}}" />
+			<img src="http://194.140.149.253/Fotos/{{article.Foto}}" />
 		</div>
 		<div class="detailsArticle">
 			<ul>
-				<li class="tEvent">{{article.Nombre}}</li>		
+				<li class="tEvent">{{article.Nombre}}</li>
 				<li><p class="headerDetail">Familia:</p><p class="contentDetail">{{article.Familia}}</p></li>
 				<li><p class="headerDetail">Edad:</p><p class="contentDetail">{{article.EdadMin}} - {{article.EdadMax}} años</p></li>
-				<li><p class="headerDetail">Referencia:</p><p class="contentDetail">{{article.Codigo}}</p></li>															
+				<li><p class="headerDetail">Referencia:</p><p class="contentDetail">{{article.Codigo}}</p></li>
 			</ul>
 		</div>
 		<div class="descriptionArticle">
