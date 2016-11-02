@@ -1,8 +1,11 @@
-<ion-view view-title="Seleccionar artículos" class="clientsBar">
+<ion-view view-title="Ticket regalo" class="clientsBar">
+  <ion-nav-buttons side="right">
+    <button class="button button-icon button-clear" ng-click="shareTicket()"><i class="barIcon ion-android-share-alt"></i></button>
+  </ion-nav-buttons>
 	<ion-content class="backgroundWhite">
 		<div class="detailsHeader">
 			<div class="pricePurchase">
-				<h4 class="pHeader"><span>Nº Ticket:</span> {{purchase.Ndocumento}}</h4>
+				<h4 class="pHeader"><span>Nº Ticket:</span> {{ Ndocumento }}</h4>
 				<div class="clear"></div>
 			</div>
 			<div class="clear"></div>
@@ -10,9 +13,9 @@
 		<div class="clear"></div>
 		<ion-scroll direction="y" style="height: 60%">
 			<ion-list show-delete="false" can-swipe="true" class="listPurchaseDetails">
-				<ion-checkbox ng-model="article.checked"  ng-checked="article.checked" ng-repeat="article in articles" class="itemSelectArticlesDetails">
+				<ion-item ng-repeat="article in articles" class="itemTicketArticlesDetails">
 					<div class="offerItem">
-						<div class="selectArticleImage">
+						<div class="ticketArticleImage">
 							<img src="http://194.140.149.253/Fotos/{{article.Codigo}}.jpg">
 							<div class="clear"></div>
 						</div>
@@ -22,13 +25,8 @@
 							<p class='small'><strong>Uds:</strong> {{article.Uds}}</p>
 						</div>
 					</div>
-				</ion-checkbox>
+				</ion-item>
 			</ion-list>
 	 	</ion-scroll>
-		<div class="bar bar-footer detailsFooter">
-			<button ng-click="createTicket(purchase.Ndocumento)" class="button button-full button-positive" style="min-height: 40px;">
-  			Generar Ticket
-			</button>
-		</div>
   </ion-content>
 </ion-view>

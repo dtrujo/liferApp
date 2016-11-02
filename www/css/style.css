@@ -481,6 +481,27 @@
 .button.button-light.active, .button.button-light.activated { box-shadow: none !important}
 
 
+/************************************/
+/*    Ticket Select Articles View   */
+/************************************/
+
+
+.itemSelectArticlesDetails                  { padding: 20px 0px 20px 60px !important; border: none !important; border-bottom: 1px solid whitesmoke !important; margin: 0px 10px 0px 10px; }
+.selectArticleImage                         { float: left; margin-right: 20px; margin-top: 5px; }
+.selectArticleImage img                     { width: 55px !important; height: 55px !important; }
+.itemSelectArticlesDetails .checkbox-icon   { margin-top: 5px; }
+
+
+/************************************/
+/*  Ticket Articles Details View    */
+/************************************/
+
+
+.itemTicketArticlesDetails                  { padding: 20px 0px 20px 20px !important; border: none !important; border-bottom: 1px solid whitesmoke !important; margin: 0px 10px 0px 0px; }
+.ticketArticleImage                         { float: left; margin-right: 20px; margin-top: 5px; }
+.ticketArticleImage img                     { width: 55px !important; height: 55px !important; }
+
+
 /**********************/
 /*    Points View   */
 /**********************/

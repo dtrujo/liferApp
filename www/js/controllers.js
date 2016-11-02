@@ -751,6 +751,7 @@ angular.module('liferapp.controllers', [])
 .controller('ArticleDetailsController', function($scope, $state, $ionicLoading, $stateParams, API, $ionicPopup){
 
 	var codigoUsuario = '';
+	var dto = 0;
 
 	// go to cart
 	$scope.cart = function(){
@@ -786,11 +787,12 @@ angular.module('liferapp.controllers', [])
 					}
 
 					var article = {
-						'Codigo'  : $scope.article.Codigo,
-						'Nombre'  : $scope.article.Nombre,
-						'Familia' : $scope.article.Familia,
-						'Precio'  :	$scope.article.Precio,
-						'Imagen'  : $scope.article.Foto,
+						'Codigo'    : $scope.article.Codigo,
+						'Nombre'    : $scope.article.Nombre,
+						'Familia'   : $scope.article.Familia,
+						'Precio'    :	($scope.article.Precio - (($scope.article.Precio * dto)/100)).toFixed(2),
+						'Imagen'    : $scope.article.Foto,
+						'Descuento' : dto,
 						'Uds' : 1
 					}
 
@@ -818,8 +820,9 @@ angular.module('liferapp.controllers', [])
 							'Codigo'  : $scope.article.Codigo,
 							'Nombre'  : $scope.article.Nombre,
 							'Familia' : $scope.article.Familia,
-							'Precio'  :	$scope.article.Precio,
+							'Precio'  :	($scope.article.Precio - (($scope.article.Precio*dto)/100)).toFixed(2),
 							'Imagen'  : $scope.article.Foto,
+							'Descuento' : dto,
 							'Uds' : 1
 						}
 
@@ -852,6 +855,7 @@ angular.module('liferapp.controllers', [])
 			API.getClientByUser( window.localStorage.getItem("username") ).success( function (data){
 				if (data != null){
 					codigoUsuario = data.Codigo;
+					dto = data.Descuento;
 				}
 			});
 		}
@@ -1574,16 +1578,6 @@ angular.module('liferapp.controllers', [])
  */
 .controller('PurchaseDetailsController', function($scope, $state, $ionicLoading, API, $stateParams, $cordovaSocialSharing){
 
-	// go to present bill and create new document
-	$scope.showPresentBill = function () {
-		$cordovaSocialSharing.shareViaWhatsApp("Hola cerdo", null, null).
-		then(function(result) {
-			console.log("OK");
-		}, function(err) {
-			console.log("erro:" + err);
-		});
-	}
-
 	// go to select article to compose ticket present
 	$scope.selectArticle = function ( code ) {
 		$state.go('eventmenu.selectArticleTicketPresent', { "code" : code });
@@ -1677,6 +1671,12 @@ angular.module('liferapp.controllers', [])
 
 			// pass to articles binding adn hiden loading
 			$scope.purchase = data;
+
+			// add checked field to control checkbox binding
+			data.Articulos.forEach( function (a) {
+				a.checked = false;
+			});
+
 			$scope.articles = data.Articulos;
 			$ionicLoading.hide();
 		})
@@ -1688,6 +1688,69 @@ angular.module('liferapp.controllers', [])
 		$ionicLoading.hide();
 	});
 
+	// go to ticket view and create ticket
+	$scope.createTicket = function ( code ) {
+
+		var articlesChecked = [];
+		$scope.articles.forEach ( function (a) {
+			if (a.checked === true)
+				articlesChecked.push(a);
+
+				a.checked = false;
+		});
+
+		$state.go('eventmenu.ticketPresent', { "code" : code , "articlesChecked" : angular.toJson(articlesChecked) });
+	}
+})
+
+
+/**
+ * Client ticket present to show ticket and share
+ */
+.controller('ClientTicketPresentController', function($scope, $state, $ionicPlatform, $ionicLoading, API, $stateParams, $cordovaSocialSharing, $cordovaScreenshot){
+
+	// Make actions when the view be loaded
+	$scope.$on('$ionicView.beforeEnter', function (viewInfo, state) {
+
+		// setup the loader and show spinner
+		$ionicLoading.show({
+			template:'<img src="img/osito.png"></img><br/><ion-spinner icon="dots" class="spinner-dark"></ion-spinner>',
+			noBackdrop: true
+		});
+  });
+
+	$scope.$on('$ionicView.enter', function (viewInfo, state) {
+		$ionicLoading.hide();
+
+		// get bill id
+		$scope.Ndocumento = $stateParams.code;
+
+		// retrive articles using json decode
+		$scope.articles = angular.fromJson($stateParams.articlesChecked);
+	});
+
+	// go to present bill and create new document
+	$scope.shareTicket = function () {
+
+		// take picture of the screen
+		$cordovaScreenshot.capture('filename', 'png', 100).then(function(res) {
+
+			// we need to check the platform beacuse the local storage path
+			// is diferent and we need to selected depending of the system
+			var archive = "";
+			if ($ionicPlatform.is('ios')){
+				archive = res;
+			}else{
+				archive = "file:///" + res;
+			}
+
+			// share using cordova plugin
+			$cordovaSocialSharing.share(null, null, archive, null);
+
+		}, function(err) {
+			console.log(err);
+		});
+	}
 })
 
 

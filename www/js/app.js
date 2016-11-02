@@ -16,6 +16,30 @@ angular.module('liferapp', ['ionic', 'jrCrop', 'ngCordova', 'liferapp.controller
     });
 })
 
+.service('$cordovaScreenshot', ['$q', function($q) {
+    return {
+        capture: function(filename, extension, quality) {
+        filename = filename || 'pic';
+            extension = extension || 'jpg';
+            quality = quality || '100';
+
+            var defer = $q.defer();
+
+            navigator.screenshot.save(function(error, res) {
+                if (error) {
+                    console.error(error);
+                    defer.reject(error);
+                } else {
+                    console.log('screenshot saved in: ', res.filePath);
+                    defer.resolve(res.filePath);
+                }
+            }, extension, quality, filename);
+
+            return defer.promise;
+        }
+    };
+}])
+
 // Config
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 
@@ -364,6 +388,17 @@ angular.module('liferapp', ['ionic', 'jrCrop', 'ngCordova', 'liferapp.controller
         'menuContent' :{
           templateUrl: "templates/ClientSelectArticleTicketPresent.html",
           controller: "SelectArticleTicketPresentController"
+        }
+      }
+    })
+
+    // Create state present ticket information
+    .state('eventmenu.ticketPresent', {
+      url: "/ticketPresent/:code/:articlesChecked",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/ClientTicketPresentView.html",
+          controller: "ClientTicketPresentController"
         }
       }
     })
