@@ -19,7 +19,7 @@ angular.module('liferapp', ['ionic', 'jrCrop', 'ngCordova', 'liferapp.controller
 .service('$cordovaScreenshot', ['$q', function($q) {
     return {
         capture: function(filename, extension, quality) {
-        filename = filename || 'pic';
+            filename = filename || 'pic';
             extension = extension || 'jpg';
             quality = quality || '100';
 

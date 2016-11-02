@@ -5,135 +5,135 @@
 			<!-- Personal Details -->
 			<ion-tab title="1">
 				<ion-content>
-					<form name="authorizationDetailsForm" novalidate="" ng-submit="checkDetails(authorizationDetailsForm)"> 						
+					<form name="authorizationDetailsForm" novalidate="" ng-submit="checkDetails(authorizationDetailsForm)">
 						<div class="list articleList">
 							<p class='pTitle'>Datos Personales</p>
 							<label class="item item-input">
-								<span class="input-label" 
-										ng-class="{'span-has-errors':authorizationDetailsForm.name.$invalid 
+								<span class="input-label"
+										ng-class="{'span-has-errors':authorizationDetailsForm.name.$invalid
 													&& authorizationDetailsForm.$submitted }">Nombre</span>
 								<input type="text" placeholder="Nombre" name="name" ng-model="personalDetails.name" required>
-								<div class="requiredAlert" 
-										ng-class="{'has-errors-i':authorizationDetailsForm.name.$invalid 
+								<div class="requiredAlert"
+										ng-class="{'has-errors-i':authorizationDetailsForm.name.$invalid
 												&& authorizationDetailsForm.$submitted }">
-										<i class="ion-alert"></i>	
+										<i class="ion-alert"></i>
 								</div>
 							</label>
 							<label class="item item-input">
-								<span class="input-label" 
-										ng-class="{'span-has-errors':authorizationDetailsForm.surname.$invalid 
+								<span class="input-label"
+										ng-class="{'span-has-errors':authorizationDetailsForm.surname.$invalid
 													&& authorizationDetailsForm.$submitted }">Apellidos</span>
 								<input type="text" placeholder="Apellidos" name="surname" ng-model="personalDetails.surname" required>
-								<div class="requiredAlert" 
-										ng-class="{'has-errors-i':authorizationDetailsForm.surname.$invalid 
+								<div class="requiredAlert"
+										ng-class="{'has-errors-i':authorizationDetailsForm.surname.$invalid
 												&& authorizationDetailsForm.$submitted }">
-										<i class="ion-alert"></i>	
+										<i class="ion-alert"></i>
 								</div>
 							</label>
 							<label class="item item-input">
-								<span class="input-label" 
-										ng-class="{'span-has-errors':authorizationDetailsForm.nif.$invalid 
+								<span class="input-label"
+										ng-class="{'span-has-errors':authorizationDetailsForm.nif.$invalid
 													&& authorizationDetailsForm.$submitted }">Nif</span>
 								<input type="text" placeholder="Nif" name="nif" ng-model="personalDetails.nif" required>
-								<div class="requiredAlert" 
-										ng-class="{'has-errors-i':authorizationDetailsForm.nif.$invalid 
+								<div class="requiredAlert"
+										ng-class="{'has-errors-i':authorizationDetailsForm.nif.$invalid
 												&& authorizationDetailsForm.$submitted }">
-										<i class="ion-alert"></i>	
+										<i class="ion-alert"></i>
 								</div>
 							</label>
 							<label class="item item-input">
-								<span class="input-label" 
-										ng-class="{'span-has-errors':authorizationDetailsForm.date.$invalid 
+								<span class="input-label"
+										ng-class="{'span-has-errors':authorizationDetailsForm.date.$invalid
 													&& authorizationDetailsForm.$submitted }">Nacimiento</span>
-								<input type="text" placeholder="Nacimiento" name="date" ng-model="personalDetails.date" required>
-								<div class="requiredAlert" 
-										ng-class="{'has-errors-i':authorizationDetailsForm.date.$invalid 
+								<input type="date" placeholder="Nacimiento" name="date" ng-model="personalDetails.date" required>
+								<div class="requiredAlert"
+										ng-class="{'has-errors-i':authorizationDetailsForm.date.$invalid
 												&& authorizationDetailsForm.$submitted }">
-										<i class="ion-alert"></i>	
+										<i class="ion-alert"></i>
 								</div>
 							</label>
 							<p class="informationFields"><i class="ion-information"></i>Todos los campos son obligatorios</p>
 							<p class='pTitle'>&nbsp;</p>
 							<label class="item item-input">
-								<span class="input-label" 
-										ng-class="{'span-has-errors':authorizationDetailsForm.email.$invalid 
+								<span class="input-label"
+										ng-class="{'span-has-errors':authorizationDetailsForm.email.$invalid
 													&& authorizationDetailsForm.$submitted }">Email</span>
 								<input type="text" placeholder="Email" name="email" ng-model="personalDetails.email" required>
-								<div class="requiredAlert" 
-										ng-class="{'has-errors-i':authorizationDetailsForm.email.$invalid 
+								<div class="requiredAlert"
+										ng-class="{'has-errors-i':authorizationDetailsForm.email.$invalid
 												&& authorizationDetailsForm.$submitted }">
-										<i class="ion-alert"></i>	
+										<i class="ion-alert"></i>
 								</div>
 							</label>
 							<label class="item item-input">
-								<span class="input-label" 
-										ng-class="{'span-has-errors':authorizationDetailsForm.telephone.$invalid 
+								<span class="input-label"
+										ng-class="{'span-has-errors':authorizationDetailsForm.telephone.$invalid
 													&& authorizationDetailsForm.$submitted }">Tlf</span>
 								<input type="text" placeholder="Teléfono" name="telephone" ng-model="personalDetails.telephone" required>
-								<div class="requiredAlert" 
-										ng-class="{'has-errors-i':authorizationDetailsForm.telephone.$invalid 
+								<div class="requiredAlert"
+										ng-class="{'has-errors-i':authorizationDetailsForm.telephone.$invalid
 												&& authorizationDetailsForm.$submitted }">
-										<i class="ion-alert"></i>	
+										<i class="ion-alert"></i>
 								</div>
 							</label>
 							<p class="informationFields"><i class="ion-information"></i>Todos los campos son obligatorios</p>
 							<p class='pTitle'>&nbsp;</p>
 							<label class="item item-input">
-								<span class="input-label" 
-										ng-class="{'span-has-errors':authorizationDetailsForm.address.$invalid 
+								<span class="input-label"
+										ng-class="{'span-has-errors':authorizationDetailsForm.address.$invalid
 													&& authorizationDetailsForm.$submitted }">Dirección</span>
 								<input type="text" placeholder="Dirección" name="address" ng-model="personalDetails.address" required>
-								<div class="requiredAlert" 
-										ng-class="{'has-errors-i':authorizationDetailsForm.address.$invalid 
+								<div class="requiredAlert"
+										ng-class="{'has-errors-i':authorizationDetailsForm.address.$invalid
 												&& authorizationDetailsForm.$submitted }">
-                                                <i class="ion-alert"></i>	
+                                                <i class="ion-alert"></i>
 								</div>
-							</label>                        
+							</label>
                             <label class="item item-input">
-								<span class="input-label" 
-									  ng-class="{'span-has-errors':authorizationDetailsForm.state.$invalid 
+								<span class="input-label"
+									  ng-class="{'span-has-errors':authorizationDetailsForm.state.$invalid
 													&& authorizationDetailsForm.$submitted }">Provincia</span>
                                 <select class="registerInput" ng-options="state as state.provincia for state in states" ng-model="personalDetails.state" ng-change="loadLocations(personalDetails.state.id_provincia)"></select>
-								<div class="requiredAlert" 
-										ng-class="{'has-errors-i':authorizationDetailsForm.state.$invalid 
+								<div class="requiredAlert"
+										ng-class="{'has-errors-i':authorizationDetailsForm.state.$invalid
 												&& authorizationDetailsForm.$submitted }">
-										<i class="ion-alert"></i>	
+										<i class="ion-alert"></i>
 								</div>
 							</label>
 							<label class="item item-input">
-								<span class="input-label" 
-									  ng-class="{'span-has-errors':authorizationDetailsForm.town.$invalid 
-													&& authorizationDetailsForm.$submitted }">Localidad</span>								
+								<span class="input-label"
+									  ng-class="{'span-has-errors':authorizationDetailsForm.town.$invalid
+													&& authorizationDetailsForm.$submitted }">Localidad</span>
                                 <select class="registerInput" ng-options="location as location.Descripcion for location in locations" ng-model="personalDetails.location"></select>
-								<div class="requiredAlert" 
-										ng-class="{'has-errors-i':authorizationDetailsForm.town.$invalid 
+								<div class="requiredAlert"
+										ng-class="{'has-errors-i':authorizationDetailsForm.town.$invalid
 												&& authorizationDetailsForm.$submitted }">
-										<i class="ion-alert"></i>	
+										<i class="ion-alert"></i>
 								</div>
-							</label>                                                    
+							</label>
 							<label class="item item-input">
-								<span class="input-label" 
-									  ng-class="{'span-has-errors':authorizationDetailsForm.cp.$invalid 
+								<span class="input-label"
+									  ng-class="{'span-has-errors':authorizationDetailsForm.cp.$invalid
 													&& authorizationDetailsForm.$submitted }">CP</span>
 								<input type="text" placeholder="CP" name="cp" ng-model="personalDetails.cp" required>
-								<div class="requiredAlert" 
-								     ng-class="{'has-errors-i':authorizationDetailsForm.cp.$invalid 
+								<div class="requiredAlert"
+								     ng-class="{'has-errors-i':authorizationDetailsForm.cp.$invalid
 												&& authorizationDetailsForm.$submitted }">
-										<i class="ion-alert"></i>	
+										<i class="ion-alert"></i>
 								</div>
 							</label>
 							<label class="item item-input">
-								<span class="input-label" 
-										ng-class="{'span-has-errors':authorizationDetailsForm.country.$invalid 
+								<span class="input-label"
+										ng-class="{'span-has-errors':authorizationDetailsForm.country.$invalid
 													&& authorizationDetailsForm.$submitted }">País</span>
 								<input type="text" placeholder="País" name="country" ng-model="personalDetails.country" required>
-								<div class="requiredAlert" 
-										ng-class="{'has-errors-i':authorizationDetailsForm.country.$invalid 
+								<div class="requiredAlert"
+										ng-class="{'has-errors-i':authorizationDetailsForm.country.$invalid
 												&& authorizationDetailsForm.$submitted }">
-										<i class="ion-alert"></i>	
+										<i class="ion-alert"></i>
 								</div>
 							</label>
-							<p class="informationFields"><i class="ion-information"></i>Todos los campos son obligatorios</p>																	
+							<p class="informationFields"><i class="ion-information"></i>Todos los campos son obligatorios</p>
 						</div>
 						<button type="submit" class="button buttonPass"><i class="ion-chevron-right"></i></button>
 					</form>
@@ -146,8 +146,8 @@
 					<div class="list articleList">
 						<p class='pTitle'>Cliente Lifer</p>
                         <p class="informationFieldsRecovery ">En caso de ser un cliente Lifer y tener a su disposición nuestra tarjeta Lifer 10, debe introducir el código de la misma.</p>
-                        <center><img src="img/tarjetalifer.jpg"></center>    
-						<label class="item item-input">                               	
+                        <center><img src="img/tarjetalifer.jpg"></center>
+						<label class="item item-input">
 							<span class="input-label">Código</span>
 							<input type="text" placeholder="Codigo" ng-model="personalDetails.code">
 						</label>
@@ -155,37 +155,37 @@
 					<button type="button" class="button buttonPass" ng-click="changeTab()"><i class="ion-chevron-right"></i></button>
 				</ion-content>
 			</ion-tab>
-			
+
 			<!-- Login Details -->
 			<ion-tab title="3" disabled="disableTab3">
-				<ion-content>   
+				<ion-content>
 					<form name="authorizationAccessForm" novalidate="" ng-click="checkAccess(authorizationAccessForm)">
 						<div class="list articleList">
-							<p class='pTitle'>Datos Acceso</p>	 
+							<p class='pTitle'>Datos Acceso</p>
 							<label class="item item-input">
-								<span class="input-label" 
-										ng-class="{'span-has-errors':authorizationAccessForm.user.$invalid 
+								<span class="input-label"
+										ng-class="{'span-has-errors':authorizationAccessForm.user.$invalid
 												&& authorizationAccessForm.$submitted }">Usuario
 								</span>
-								<input type="text" placeholder="Usuario" name="user" 
+								<input type="text" placeholder="Usuario" name="user"
 										ng-model="personalDetails.user" required>
-								<div class="requiredAlert" 
-										ng-class="{'has-errors-i':authorizationAccessForm.user.$invalid 
+								<div class="requiredAlert"
+										ng-class="{'has-errors-i':authorizationAccessForm.user.$invalid
 												&& authorizationAccessForm.$submitted }">
-										<i class="ion-alert"></i>	
+										<i class="ion-alert"></i>
 								</div>
 							</label>
 							<label class="item item-input">
 								<span class="input-label"
-										ng-class="{'span-has-errors':authorizationAccessForm.password.$invalid 
+										ng-class="{'span-has-errors':authorizationAccessForm.password.$invalid
 													&& authorizationAccessForm.$submitted }">Password
 								</span>
-								<input type="text" placeholder="Password" name="password" 
+								<input type="text" placeholder="Password" name="password"
 										ng-model="personalDetails.password" required>
-								<div class="requiredAlert" 
-										ng-class="{'has-errors-i':authorizationAccessForm.password.$invalid 
+								<div class="requiredAlert"
+										ng-class="{'has-errors-i':authorizationAccessForm.password.$invalid
 													&& authorizationAccessForm.$submitted }" >
-									<i class="ion-alert"></i>	
+									<i class="ion-alert"></i>
 								</div>
 							</label>
 							<p class="informationFields"><i class="ion-information"></i>Todos los campos son obligatorios</p>
