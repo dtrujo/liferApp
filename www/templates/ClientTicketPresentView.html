@@ -3,9 +3,18 @@
     <button class="button button-icon button-clear" ng-click="shareTicket()"><i class="barIcon ion-android-share-alt"></i></button>
   </ion-nav-buttons>
 	<ion-content class="backgroundWhite">
-		<div class="detailsHeader">
+		<div class="detailsTicketHeader">
 			<div class="pricePurchase">
-				<h4 class="pHeader"><span>Nº Ticket:</span> {{ Ndocumento }}</h4>
+        <img src="img/icon.png" style="width:25%;float:left;margin: 0px 0px 0px 30px;" />
+        <div style="margin: 10px 0px 0px 10px;float: left;">
+          <h4 class="pHeader"><span>Jugueterías Lifer</span></h4>
+          <h6 class="pHeader"><span>liferapp@lifer.es</span></h6>
+          <h6 class="pHeader"><span>www.lifer.es</span></h6>
+        </div>
+      	<div class="clear"></div>
+        <p style="margin:5px 0px 5px;text-align:center">Puede realizar cambios en nuestras jugueterías LIFER</p>
+        <p style="margin:0px 0px 0px;text-align:center">{{ Ddocumento }}</p>
+				<h5 class="pHeader" style="text-align:center"><span>Nº Ticket:</span> {{ Ndocumento }}</h5>
 				<div class="clear"></div>
 			</div>
 			<div class="clear"></div>

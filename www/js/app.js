@@ -394,7 +394,7 @@ angular.module('liferapp', ['ionic', 'jrCrop', 'ngCordova', 'liferapp.controller
 
     // Create state present ticket information
     .state('eventmenu.ticketPresent', {
-      url: "/ticketPresent/:code/:articlesChecked",
+      url: "/ticketPresent/:code/:articlesChecked/:date",
       views: {
         'menuContent' :{
           templateUrl: "templates/ClientTicketPresentView.html",

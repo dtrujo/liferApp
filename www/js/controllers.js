@@ -1699,7 +1699,7 @@ angular.module('liferapp.controllers', [])
 				a.checked = false;
 		});
 
-		$state.go('eventmenu.ticketPresent', { "code" : code , "articlesChecked" : angular.toJson(articlesChecked) });
+		$state.go('eventmenu.ticketPresent', { "code" : code , "articlesChecked" : angular.toJson(articlesChecked), "date" : $scope.purchase.Fecha  });
 	}
 })
 
@@ -1724,6 +1724,9 @@ angular.module('liferapp.controllers', [])
 
 		// get bill id
 		$scope.Ndocumento = $stateParams.code;
+
+		// get bill date
+		$scope.Ddocumento = $stateParams.date;
 
 		// retrive articles using json decode
 		$scope.articles = angular.fromJson($stateParams.articlesChecked);

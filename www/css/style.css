@@ -500,6 +500,7 @@
 .itemTicketArticlesDetails                  { padding: 20px 0px 20px 20px !important; border: none !important; border-bottom: 1px solid whitesmoke !important; margin: 0px 10px 0px 0px; }
 .ticketArticleImage                         { float: left; margin-right: 20px; margin-top: 5px; }
 .ticketArticleImage img                     { width: 55px !important; height: 55px !important; }
+.detailsTicketHeader                        { padding: 10px 25px 15px 25px; background: whitesmoke !important; }
 
 
 /**********************/
